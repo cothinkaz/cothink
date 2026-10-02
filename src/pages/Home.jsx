@@ -3,7 +3,6 @@ const Home=()=>{
     return(
         <>
           <h2>Hello world</h2>
-          <Header/>
         </>
     )
 }
