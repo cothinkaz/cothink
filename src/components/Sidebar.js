@@ -1,8 +1,8 @@
 
-const Sidebar = ()=>{
-    return(
-        <>
-          {/* <div className="sidebar w-full md:p-0 px-2 ">
+const Sidebar = () => {
+  return (
+    <>
+      {/* <div className="sidebar w-full md:p-0 px-2 ">
       <ul className="w-full flex flex-col md:gap-3 gap-5 md:pl-0 pl-7">
         {
           open && (
@@ -167,7 +167,7 @@ const Sidebar = ()=>{
         </li>
       </ul>
     </div> */}
-        </>
-    )
+    </>
+  )
 }
 export default Sidebar;

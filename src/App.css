@@ -1,2 +1,4 @@
   @import "tailwindcss";
+  @import "./styles/color/learninggoal.css";
+  @import "./styles/typography/learninggoal.css";
   

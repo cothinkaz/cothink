@@ -1,0 +1,54 @@
+@theme {
+    --font-dm: "DM Sans", sans-serif;
+}
+
+@utility type-medium-32 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+@utility type-semibold-48 {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+@utility type-medium-24 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+@utility type-regular-24 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+@utility type-medium-20 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+@utility type-regular-20 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+@utility type-medium-18 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@utility type-regular-18 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+@utility type-regular-16 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+@utility type-regular-14 {
+    font-size: 14px;
+    font-weight: 400;
+}
