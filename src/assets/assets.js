@@ -1,4 +1,3 @@
-import avatarImage from "../assets/avatarr.svg";
 import mainLogo from "../assets/logo_main.svg";
 import searchImage from "../assets/search-normal.svg";
 import notificationImage from "../assets/elements.svg";
@@ -19,4 +18,5 @@ import libraryImage from "../assets/book.svg"
 import discussionImage from "../assets/messages-2.svg"
 import progressImage from "../assets/chart.svg"
 import learningImage from "../assets/star.svg"
-export {avatarImage, mainLogo, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage}
+import profileImage from "../assets/avatarr.svg"
+export {profileImage, mainLogo, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage}
