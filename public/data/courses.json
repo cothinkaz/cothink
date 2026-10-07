@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Math",
+    "duration": "6 months",
+    "image":"https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "provider": "Khan Academy",
+    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
+    "level": "Beginner to Advanced",
+    "rating": "4.7/5",
+    "students": 777,
+    "price": "Free"
+  },
+  {
+    "id": 1,
+    "name": "Math",
+    "provider": "Khan Academy",
+    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
+    "duration": "6 months",
+    "image":"https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "level": "Beginner to Advanced",
+    "rating": "4.7/5",
+    "students": 777,
+    "price": "Free"
+  },
+  {
+    "id": 1,
+    "name": "Math",
+    "duration": "6 months",
+    "image":"https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "provider": "Khan Academy",
+    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
+    "level": "Beginner to Advanced",
+    "rating": "4.7/5",
+    "students": 777,
+    "price": "Free"
+  }
+]
