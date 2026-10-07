@@ -1,7 +1,7 @@
 
 import { NavLink } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import navItems from "../../public/data/navItems.js";
+import navItems from "../data/navItems";
 import { logoutImage } from "../assets/assets";
 const Sidebar = ({open, setOpen})=>{
     return(

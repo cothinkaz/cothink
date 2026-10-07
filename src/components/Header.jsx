@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import {FaPlus} from "react-icons/fa";
 import {IoIosMenu} from "react-icons/io";
 import { useState } from "react";
+import navItems from "../data/navItems";
 import { mainLogo, searchImage, chatImage, notificationImage, profileImage } from "../assets/assets";
 const Header = () =>{
     const [search, setSearch] = useState(false);
