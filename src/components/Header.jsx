@@ -6,6 +6,7 @@ import {FaPlus} from "react-icons/fa";
 import {IoIosMenu} from "react-icons/io";
 import { useState } from "react";
 import navItems from "../../public/data/navItems.js";
+import mainLogo from "../assets/logo_main.svg";
 const Header = () =>{
     const [search, setSearch] = useState(false);
     const [searchValue, setSearchValue] = useState("");
@@ -19,7 +20,7 @@ const Header = () =>{
         <div className="w-full mt-3">
         <div className="md:flex hidden items-center justify-between gap-5">
           <a href="/" className="flex items-center justify-center">
-          <img src="../src/assets/logo_main.svg" />
+          <img src={mainLogo} />
           </a>            
           <div className="hidden sm:flex flex-1 justify-center">     
                 <form className="relative w-full max-w-md" onSubmit={(e)=>e.preventDefault()}>
@@ -52,7 +53,7 @@ const Header = () =>{
          </div>
          <div className="flex justify-between items-center mt-3">
             <a href="/" className="flex items-center justify-center md:hidden">
-            <img src="../src/assets/logo_main.svg" />
+            <img src={mainLogo} />
             </a>
             <div className="md:hidden flex justify-end items-center gap-3">
             <button className="cursor-pointer p-2" onClick={()=>setOpenMenu(!openMenu)}>
