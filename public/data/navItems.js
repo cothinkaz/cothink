@@ -1,38 +1,39 @@
+ import { homeImage, courseImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
  const navItems = [
     {
     to:"/",
     title: "Ana səhifə",
-    src:"./src/assets/home-2.svg"
+    src:homeImage
 },
 {
      to:"/courses",
     title: "Kurslar",
-    src:"./src/assets/play-circle.svg"
+    src:courseImage
   },
   {
     to:"/library",
     title: "Kitabxana",
-    src:"./src/assets/book.svg"
+    src:libraryImage
   },
    {
     to:"/discussion",
     title: "Forum",
-    src:"./src/assets/messages-2.svg"
+    src:discussionImage
 },
 {
      to:"/progress",
     title: "İrəliləyişim",
-    src:"./src/assets/chart.svg"
+    src:progressImage
   },
   {
     to:"/learning",
     title: "Öyrənmə hədəfi",
-    src:"./src/assets/star.svg"
+    src:learningImage
   },
     {
     to:"/certificates",
     title: "Sertifikatlarım",
-    src:"./src/assets/certificate.svg"
+    src:certificateImage
   }
  
   ]

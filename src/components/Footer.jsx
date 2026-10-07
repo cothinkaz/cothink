@@ -1,9 +1,10 @@
+import { footerLogo, footerEmail, footerPhone, footerLocation, footerFacebook, footerInstagram, footerLinkedin, footerYoutube } from "../assets/assets";
 const Footer = ()=>{
     return(
         <footer className="w-full border-t border-gray-200 bg-white shadow-lg">
             < div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 px-6 py-10">
             <div className="flex items-center justify-center md:col-span-3 sm:col-span-2 col-span-2">
-                <img  src="../src/assets/logo_footer.svg"></img>
+                <img  src={footerLogo}></img>
                 </div>
             <div className="md:col-span-2 sm:col-span-2">
             <h4 className="text-sm font-semibold">Platforma</h4>
@@ -48,13 +49,13 @@ const Footer = ()=>{
     <div className="md:col-span-2 sm:col-span-2 col-span-2">
             <h4 className="text-sm font-semibold">Əlaqə</h4>
             <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                <li  className="flex gap-3"> <img src="./src/assets/email.svg"/>
+                <li  className="flex gap-3"> <img src={footerEmail}/>
                     <a>support@cothink.az</a>
                 </li>
-                 <li  className="flex gap-3"> <img src="./src/assets/phone.svg"/>
+                 <li  className="flex gap-3"> <img src={footerPhone}/>
                     <a> +994 50 123 45 67</a>
                 </li>
-                 <li className="flex gap-3"> <img src="./src/assets/location.svg"/>
+                 <li className="flex gap-3"> <img src={footerLocation}/>
                     <a>Bakı, Azərbaycan</a>
                 </li>
             </ul>
@@ -68,16 +69,16 @@ const Footer = ()=>{
             </form>
             <ul className="flex md:justify-end justify-center items-center gap-3">
                 <li>
-                    <a href="https://www.facebook.com/cothink.az"><img src="./src/assets/logos_facebook.svg"/></a>
+                    <a href="https://www.facebook.com/cothink.az"><img src={footerFacebook}/></a>
                 </li>
                   <li>
-                    <a href="https://www.instagram.com/cothink.az"><img src="./src/assets/logos_instagram.svg"/></a>
+                    <a href="https://www.instagram.com/cothink.az"><img src={footerInstagram}/></a>
                 </li>
                   <li>
-                    <a href="https://www.linkedin.com/company/cothink.az"><img src="./src/assets/logos_linkedin.svg"/></a>
+                    <a href="https://www.linkedin.com/company/cothink.az"><img src={footerLinkedin}/></a>
                 </li>
                   <li>
-                    <a href=""><img src="./src/assets/logos_youtube.svg"/></a>
+                    <a href=""><img src={footerYoutube}/></a>
                 </li>
             </ul>
         </div>

@@ -2,6 +2,7 @@
 import { NavLink } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import navItems from "../../public/data/navItems.js";
+import { logoutImage } from "../assets/assets";
 const Sidebar = ({open, setOpen})=>{
     return(
         <>
@@ -35,7 +36,7 @@ const Sidebar = ({open, setOpen})=>{
             className="flex gap-3 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 text-red-500 hover:bg-gray-100 rounded-md" 
             to="/login"   
           >
-             <img src="./src/assets/logout.svg"/>
+             <img src={logoutImage}/>
             { open && <span>
               Çıxış edin
             </span>

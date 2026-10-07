@@ -1,12 +1,10 @@
 
-import { IoIosNotificationsOutline } from "react-icons/io";
-import {BsChatDots} from "react-icons/bs"
+
 import { Link, NavLink } from "react-router-dom";
 import {FaPlus} from "react-icons/fa";
 import {IoIosMenu} from "react-icons/io";
 import { useState } from "react";
-import navItems from "../../public/data/navItems.js";
-import mainLogo from "../assets/logo_main.svg";
+import { mainLogo, searchImage, chatImage, notificationImage, profileImage } from "../assets/assets";
 const Header = () =>{
     const [search, setSearch] = useState(false);
     const [searchValue, setSearchValue] = useState("");
@@ -24,7 +22,7 @@ const Header = () =>{
           </a>            
           <div className="hidden sm:flex flex-1 justify-center">     
                 <form className="relative w-full max-w-md" onSubmit={(e)=>e.preventDefault()}>
-                  <img src="../src/assets/search-normal.svg" className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5"/>
+                  <img src={searchImage} className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5"/>
                   <input 
                     type="text" 
                     placeholder="Axtarış..." 
@@ -41,13 +39,13 @@ const Header = () =>{
               <FaPlus fontSize={18}/> Yarat
             </button>
                    <button className="cursor-pointer md:flex hidden border border-gray-100 rounded-full p-2">
-              <img src="../src/assets/message-2.svg"/>
+              <img src={chatImage} />
             </button>
             <button className="cursor-pointer md:flex hidden border border-gray-100 rounded-full p-2">
-              <img src="../src/assets/elements.svg"/>
+              <img src={notificationImage} />
             </button>
             <a href="/profile">
-            <img src="../src/assets/avatarr.svg"/>  
+            <img src={profileImage} />  
             </a>
         </div>
          </div>
