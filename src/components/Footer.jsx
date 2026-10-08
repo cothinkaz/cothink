@@ -1,5 +1,19 @@
 import { footerLogo, footerEmail, footerPhone, footerLocation, footerFacebook, footerInstagram, footerLinkedin, footerYoutube } from "../assets/assets";
+import {useState} from "react"
 const Footer = ()=>{
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
+
+    const sendEmail = (e) => {
+    e.preventDefault();
+    if (!email) {
+      setError("Zəhmət olmasa email ünvanınızı daxil edin.");
+    } else {
+      setError('');
+      alert("Email göndərildi");
+      setEmail("");
+    }
+  };
     return(
         <footer className="w-full border-t border-gray-200 bg-white shadow-lg">
             < div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 px-6 py-10">
@@ -63,9 +77,11 @@ const Footer = ()=>{
         <div className="md:col-span-3 sm:col-span-3 col-span-2 space-y-4">
             <h4 className="text-sm font-semibold">Yeniliklərdən xəbərdar olun.</h4>
            <p className="text-sm text-gray-400">Email ünvanınızı daxil edin və yeni kurslar, tədbirlər haqqında ilk məlumatı əldə edin.</p>
+              {error && <p className="text-red-500 text-sm">{error}</p>}
             <form className="flex mt-3 justify-between gap-2">
-                <input type="email" className="flex-1 border border-indigo-800 outline-none text-indigo-800 text-center rounded-full px-7 py-2 w-full" required placeholder="E-poçt ünvanınız"></input>
-                <button type="submit" className="flex-1 cursor-pointer items-center justify-center rounded-full bg-indigo-700 px-4 py-2 text-sm font-semibold text-white">Abunə ol</button>
+                <input type="email" className="flex-1 border border-indigo-800 outline-none text-indigo-800 text-center rounded-full px-7 py-2 w-full" required placeholder="E-poçt ünvanınız" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+                  
+                <button type="submit" className="flex-1 cursor-pointer items-center justify-center rounded-full bg-indigo-700 px-4 py-2 text-sm font-semibold text-white" onClick={sendEmail}>Abunə ol</button>
             </form>
             <ul className="flex md:justify-end justify-center items-center gap-3">
                 <li>

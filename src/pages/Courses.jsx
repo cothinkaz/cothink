@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 const categories = ["Hamısı", "Frontend", "Backend", "Fullstack", "Data Science", "DevOps", "Mobile Development"];
 const Courses=()=>{
 	const [courses,setCourses]=useState([]);
@@ -62,7 +63,7 @@ const Courses=()=>{
 			   </div>
 				</div>
 				<h6 className="text-gray-700 text-sm">{course.provider}</h6>
-				<button className="bg-indigo-600 flex-1 w-full text-white py-2 px-4 rounded-full hover:bg-indigo-700" href={`/course/${course.id}`}>Kursa abunə ol</button>
+				<a className="bg-indigo-600 flex-1 w-full text-white py-2 px-4 rounded-full hover:bg-indigo-700" href={`/courses/${course.id}`}>Kursa abunə ol</a>
 			</div>
 				))
 			}

@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Courses from "./pages/Courses";
 import MainLayout from "./MainLayout";
+import NotFound from "./pages/NotFound";
+import CourseDetail from "./pages/CourseDetail"
 function App() {
 
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path = "/" element={<Home/>}/>
           <Route path = "/courses" element={<Courses/>}/>
+          <Route path = "/courses/:id" element={<CourseDetail/>}/>
+          {/*<Route path="/profile" element={<Profile />} />*/}
         </Route>
         {/*<Route path="*" element={<NotFound />} />*/}
       </Routes>
