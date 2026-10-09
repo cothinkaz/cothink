@@ -1,16 +1,16 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 const categories = ["Hamısı", "Frontend", "Backend", "Fullstack", "Data Science", "DevOps", "Mobile Development"];
 const Courses=()=>{
 	const [courses,setCourses]=useState([]);
 	const [query, setQuery] = useState("");
 	const [selectedCategory, setSelectedCategory] = useState("Hamısı");
-    const filteredCourses = courses.filter((course) => {
-		const searchedQuery = query.toLowerCase();	
-		const matchedSearch = course.name.toLowerCase().includes(searchedQuery) || course.description.toLowerCase().includes(searchedQuery);
-		const matchedCategory = selectedCategory === "Hamısı" || course.category === selectedCategory;
+   const filteredCourses = courses.filter((course) => {
+	const searchedQuery = query.toLowerCase();	
+	const matchedSearch = course.name.toLowerCase().includes(searchedQuery) || course.description.toLowerCase().includes(searchedQuery);
+	const matchedCategory = selectedCategory === "Hamısı" || course.category === selectedCategory;
 		return matchedSearch && matchedCategory;
 	});
 	
@@ -50,10 +50,11 @@ const Courses=()=>{
 		<div className="grid md:grid-cols-3 grid-cols-1 gap-4">
 			{
 				filteredCourses.map((course,index)=>(
-						<div className="bg-white shadow-lg border border-gray-100 rounded-lg p-4 relative space-y-4"	>
+						<div className="relative bg-white shadow-lg border border-gray-100 rounded-lg p-4 relative space-y-4"	>
+				
 				<img src={course.image} alt="" className="w-full h-48 object-cover rounded-md"/>
 			   <a className="absolute top-2 right-2 bg-white p-2 rounded-full">
-<i className="fa-solid fa-book"></i>
+<FaBookmark fontSize= {24}/>
 			   </a>
 			<div className="flex justify-between">
 				<p>{course.name}</p>
@@ -63,7 +64,7 @@ const Courses=()=>{
 			   </div>
 				</div>
 				<h6 className="text-gray-700 text-sm">{course.provider}</h6>
-				<a className="bg-indigo-600 flex-1 w-full text-white py-2 px-4 rounded-full hover:bg-indigo-700" href={`/courses/${course.id}`}>Kursa abunə ol</a>
+				<a className="block bg-indigo-600 flex-1 w-full text-center text-white py-2 px-4 rounded-full hover:bg-indigo-700" href={`/courses/${course.id}`}>Kursa abunə ol</a>
 			</div>
 				))
 			}

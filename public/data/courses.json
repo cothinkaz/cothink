@@ -1,88 +1,98 @@
+
 [
   {
     "id": 1,
-    "name": "Math",
-    "duration": "6 months",
-    "image":"https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "name": "Riyaziyyat",
+    "duration": "6 ay",
+    "image": "https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
     "provider": "Khan Academy",
-    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
-    "level": "Beginner to Advanced",
+    "description": "Əsas hesablamalardan diferensial və inteqral hesablamalara qədər riyaziyyat kursu.",
+    "level": "Başlanğıcdan irəli səviyyəyə",
     "rating": "4.7/5",
     "students": 777,
-    "price": "Free",
+    "price": "Pulsuz",
     "lessons": [
       {
         "id": 1,
-        "lesson_title": "Introduction to Mathematics",
-        "duration": "3 dəq 45 san"
+        "lesson_title": "Riyaziyyata giriş",
+        "duration": "3 dəq 45 san",
+        "video_link": "https://www.youtube.com/watch?v=WUvTyaaNkzM"
       },
       {
         "id": 2,
-        "lesson_title": "Basic Arithmetic",
-        "duration": "5 dəq 20 san"
+        "lesson_title": "Əsas hesab əməlləri",
+        "duration": "5 dəq 20 san",
+        "video_link": "https://www.youtube.com/watch?v=8idr1WZ1A7Q"
       },
       {
         "id": 3,
-        "lesson_title": "Introduction to Algebra",
-        "duration": "8 dəq 10 san"
+        "lesson_title": "Cəbrə giriş",
+        "duration": "8 dəq 10 san",
+        "video_link": "https://www.youtube.com/watch?v=NybHckSEQBI"
       }
     ]
   },
   {
     "id": 2,
-    "name": "Math",
-    "provider": "Khan Academy",
-    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
-    "duration": "6 months",
-    "image":"https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
-    "level": "Beginner to Advanced",
-    "rating": "4.7/5",
-    "students": 777,
-    "price": "Free",
+    "name": "Proqramlaşdırmaya giriş",
+    "duration": "3 ay",
+    "image": "https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "provider": "freeCodeCamp",
+    "description": "Proqramlaşdırmanın əsasları, alqoritmlər və kod yazmağa giriş.",
+    "level": "Başlanğıc",
+    "rating": "4.8/5",
+    "students": 1250,
+    "price": "Pulsuz",
     "lessons": [
       {
         "id": 1,
-        "lesson_title": "Introduction to Mathematics",
-        "duration": "3 dəq 45 san"
+        "lesson_title": "Proqramlaşdırma nədir?",
+        "duration": "4 dəq 10 san",
+        "video_link": "https://www.youtube.com/watch?v=zOjov-2OZ0E"
       },
       {
         "id": 2,
-        "lesson_title": "Basic Arithmetic",
-        "duration": "5 dəq 20 san"
+        "lesson_title": "Dəyişənlər və məlumat tipləri",
+        "duration": "6 dəq 30 san",
+        "video_link": "https://www.youtube.com/watch?v=9I7o7Xq9J5g"
       },
       {
         "id": 3,
-        "lesson_title": "Introduction to Algebra",
-        "duration": "8 dəq 10 san"
+        "lesson_title": "Şərt operatorları",
+        "duration": "7 dəq 15 san",
+        "video_link": "https://www.youtube.com/watch?v=IsG4Xd6LlsM"
       }
     ]
   },
   {
     "id": 3,
-    "name": "Math",
-    "duration": "6 months",
-    "image":"https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
-    "provider": "Khan Academy",
-    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
-    "level": "Beginner to Advanced",
-    "rating": "4.7/5",
-    "students": 777,
-    "price": "Free",
+    "name": "Veb proqramlaşdırma",
+    "duration": "4 ay",
+    "image": "https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "provider": "freeCodeCamp",
+    "description": "HTML, CSS və JavaScript vasitəsilə interaktiv veb səhifələrin hazırlanması.",
+    "level": "Başlanğıcdan orta səviyyəyə",
+    "rating": "4.9/5",
+    "students": 980,
+    "price": "Pulsuz",
     "lessons": [
       {
         "id": 1,
-        "lesson_title": "Introduction to Mathematics",
-        "duration": "3 dəq 45 san"
+        "lesson_title": "HTML-ə giriş",
+        "duration": "5 dəq 15 san",
+        "video_link": "https://www.youtube.com/watch?v=UB1O30fR-EE"
       },
       {
         "id": 2,
-        "lesson_title": "Basic Arithmetic",
-        "duration": "5 dəq 20 san"
+        "lesson_title": "CSS əsasları",
+        "duration": "8 dəq 25 san",
+        "video_link": "https://www.youtube.com/watch?v=yfoY53QXEnI"
       },
       {
         "id": 3,
-        "lesson_title": "Introduction to Algebra",
-        "duration": "8 dəq 10 san"
+        "lesson_title": "JavaScript-ə giriş",
+        "duration": "10 dəq 40 san",
+        "video_link": "https://www.youtube.com/watch?v=W6NZfCO5SIk"
       }
     ]
   }

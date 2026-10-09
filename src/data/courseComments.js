@@ -1,0 +1,43 @@
+const courseComments = [
+ {
+    comment_id: 1,
+    course_id: 1,
+    student_name: "Tural Məmmədov",
+    mentor_position: "Frontend Developer",
+    profile_img: "/images/admin.png",
+    comment_text: "React kursu çox faydalıdır.",
+    likes: 12,
+    comments: 3,
+  },
+  {
+    comment_id: 2,
+    course_id: 1,
+    student_name: "Aysel Əliyeva",
+    mentor_position: "UI/UX Designer",
+    profile_img: "/images/admin.png",
+    comment_text: "Mövzular aydın izah olunur.",
+    likes: 8,
+    comments: 2,
+  },
+  {
+    comment_id: 3,
+    course_id: 2,
+    student_name: "Elvin Həsənov",
+    mentor_position: "Frontend Developer",
+    profile_img: "/images/admin.png",
+    comment_text: "JavaScript kursunu bəyəndim.",
+    likes: 15,
+    comments: 0,
+  },
+  {
+    comment_id: 4,
+    course_id: 3,
+    student_name: "Nigar Hüseynova",
+    mentor_position: "Tələbə",
+    profile_img: "/images/admin.png",
+    comment_text: "Kursun mövzuları çox maraqlıdır.",
+    likes: 6,
+    comments: 1,
+  },
+]
+export default courseComments;
