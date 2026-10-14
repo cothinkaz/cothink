@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import CertificatesCard from "../../../components/Certificates/CertificatesCard"
+import CertificatesCard from "../../components/Certificates/CertificatesCard"
 
 function CertificatesCardList({earnedCertificates}) {
     useEffect(()=>{

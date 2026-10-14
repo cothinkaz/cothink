@@ -1,0 +1,89 @@
+[
+  {
+    "id": 1,
+    "name": "Math",
+    "duration": "6 months",
+    "image":"https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "provider": "Khan Academy",
+    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
+    "level": "Beginner to Advanced",
+    "rating": "4.7/5",
+    "students": 777,
+    "price": "Free",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "Introduction to Mathematics",
+        "duration": "3 dəq 45 san"
+      },
+      {
+        "id": 2,
+        "lesson_title": "Basic Arithmetic",
+        "duration": "5 dəq 20 san"
+      },
+      {
+        "id": 3,
+        "lesson_title": "Introduction to Algebra",
+        "duration": "8 dəq 10 san"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Math",
+    "provider": "Khan Academy",
+    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
+    "duration": "6 months",
+    "image":"https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "level": "Beginner to Advanced",
+    "rating": "4.7/5",
+    "students": 777,
+    "price": "Free",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "Introduction to Mathematics",
+        "duration": "3 dəq 45 san"
+      },
+      {
+        "id": 2,
+        "lesson_title": "Basic Arithmetic",
+        "duration": "5 dəq 20 san"
+      },
+      {
+        "id": 3,
+        "lesson_title": "Introduction to Algebra",
+        "duration": "8 dəq 10 san"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Math",
+    "duration": "6 months",
+    "image":"https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "provider": "Khan Academy",
+    "description": "A comprehensive course on mathematics covering topics from basic arithmetic to advanced calculus.",
+    "level": "Beginner to Advanced",
+    "rating": "4.7/5",
+    "students": 777,
+    "price": "Free",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "Introduction to Mathematics",
+        "duration": "3 dəq 45 san"
+      },
+      {
+        "id": 2,
+        "lesson_title": "Basic Arithmetic",
+        "duration": "5 dəq 20 san"
+      },
+      {
+        "id": 3,
+        "lesson_title": "Introduction to Algebra",
+        "duration": "8 dəq 10 san"
+      }
+    ]
+  }
+]

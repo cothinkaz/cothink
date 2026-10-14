@@ -7,7 +7,16 @@ import Right from "../../assets/icon/arrow-right.svg";
 import { Link } from "react-router-dom";
 
 function PendingCertificateCard({ item }) {
-  const { type, title, video, instructor, progress, estimatedTime, steps, image } = item;
+  const {
+    type,
+    title,
+    video,
+    instructor,
+    progress,
+    estimatedTime,
+    steps,
+    image,
+  } = item;
 
   const stepIcons = [
     { tamamlandı: Succes, "davam edir": PendingBlue, gözləyir: Waiting }, // AI yoxlanması
@@ -45,11 +54,19 @@ function PendingCertificateCard({ item }) {
             <div className="text-[18px] font-sans text-[#050505] max-xl:line-clamp-2 max-md:text-[16px]">
               {title}
             </div>
-            <p className="text-[14px] text-[#00000033] max-xl:truncate">{type}</p>
+            <p className="text-[14px] text-[#00000033] max-xl:truncate">
+              {type}
+            </p>
           </div>
           <div className="flex gap-[8px] items-center min-w-0">
-            <img className="w-[24px] h-[24px] rounded-[36px] shrink-0 object-cover" src={image} alt="" />
-            <p className="text-[12px] text-[#050505] max-xl:truncate">{instructor}</p>
+            <img
+              className="w-[24px] h-[24px] rounded-[36px] shrink-0 object-cover"
+              src={image}
+              alt=""
+            />
+            <p className="text-[12px] text-[#050505] max-xl:truncate">
+              {instructor}
+            </p>
           </div>
         </div>
       </div>
@@ -70,9 +87,19 @@ function PendingCertificateCard({ item }) {
               key={step.name}
               className="relative flex-1 min-w-0 flex flex-col items-center gap-[4px] text-center max-md:px-0.5"
             >
-              <img className="relative w-[20px] h-[20px] p-[2px]" src={icon} alt="" />
-              <p className="text-[12px] text-[#404040] max-md:leading-tight max-md:break-words">{step.name}</p>
-              <p className={`text-[12px] ${style.color} max-md:leading-tight max-md:break-words`}>{step.status}</p>
+              <img
+                className="relative w-[20px] h-[20px] p-[2px]"
+                src={icon}
+                alt=""
+              />
+              <p className="text-[12px] text-[#404040] max-md:leading-tight max-md:break-words">
+                {step.name}
+              </p>
+              <p
+                className={`text-[12px] ${style.color} max-md:leading-tight max-md:break-words`}
+              >
+                {step.status}
+              </p>
             </div>
           );
         })}
@@ -84,25 +111,25 @@ function PendingCertificateCard({ item }) {
           max-xl:col-start-2 max-xl:row-start-1 max-xl:m-0 max-xl:w-[280px] max-xl:py-4 max-xl:pr-4 max-xl:pl-6
           max-md:w-full max-md:p-0 max-md:border-l-0"
       >
-    {/* sol: faiz, zolaq, vaxt */}
-<div className="flex-1 min-w-0 flex flex-col gap-[24px] max-xl:gap-3 max-md:gap-2">
-  <div className="max-md:flex max-md:flex-row-reverse max-md:items-center max-md:gap-[8px]">
-    <span className="text-[18px] font-medium text-[#050505] max-md:text-[14px] max-md:shrink-0">
-      {progress}%
-    </span>
-    <div className="h-[6px] rounded-full bg-[#E4E6EE] overflow-hidden my-[6px] max-md:flex-1 max-md:my-0">
-      <div
-        className="h-full rounded-full bg-[#4468D5]"
-        style={{ width: `${progress}%` }}
-      />
-    </div>
-  </div>
+        {/* sol: faiz, zolaq, vaxt */}
+        <div className="flex-1 min-w-0 flex flex-col gap-[24px] max-xl:gap-3 max-md:gap-2">
+          <div className="max-md:flex max-md:flex-row-reverse max-md:items-center max-md:gap-[8px]">
+            <span className="text-[18px] font-medium text-[#050505] max-md:text-[14px] max-md:shrink-0">
+              {progress}%
+            </span>
+            <div className="h-[6px] rounded-full bg-[#E4E6EE] overflow-hidden my-[6px] max-md:flex-1 max-md:my-0">
+              <div
+                className="h-full rounded-full bg-[#4468D5]"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
 
-  <div className="max-md:flex max-md:items-center max-md:justify-between max-md:gap-2">
-    <p className="text-[12px] text-[#737373]">Təxmini tamamlanma:</p>
-    <p className="text-[12px] text-[#0D0D0D]">{estimatedTime}</p>
-  </div>
-</div>
+          <div className="max-md:flex max-md:items-center max-md:justify-between max-md:gap-2">
+            <p className="text-[12px] text-[#737373]">Təxmini tamamlanma:</p>
+            <p className="text-[12px] text-[#0D0D0D]">{estimatedTime}</p>
+          </div>
+        </div>
       </div>
     </div>
   );

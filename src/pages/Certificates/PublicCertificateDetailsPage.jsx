@@ -1,18 +1,18 @@
 import { useParams } from "react-router-dom";
-import certificates from "./certificates..json";
-import Succes from "../../../assets/icon/success.svg";
-import IdIcon from "../../../assets/icon/card.svg";
-import CalendarIcon from "../../../assets/icon/calendar-1.svg";
-import DownloadIcon from "../../../assets/icon/dowloand-blue.svg";
-import UserIcon from "../../../assets/icon/user.svg";
-import AiIcon from "../../../assets/icon/verified-badge-svgrepo-com 1.svg";
-import OrgIcon from "../../../assets/icon/copyright.svg";
-import InfoIcon from "../../../assets/icon/info-circle.svg";
-import CartIcon from "../../../assets/icon/shopping-cart.svg";
-import MentorIcon from "../../../assets/icon/mentor.svg";
-import PlayIcon from "../../../assets/icon/palyiocn.svg";
-import { useEffect } from "react";
 
+import Succes from "../../assets/icon/success.svg";
+import IdIcon from "../../assets/icon/card.svg";
+import CalendarIcon from "../../assets/icon/calendar-1.svg";
+import DownloadIcon from "../../assets/icon/dowloand-blue.svg";
+import UserIcon from "../../assets/icon/user.svg";
+import AiIcon from "../../assets/icon/verified-badge-svgrepo-com 1.svg";
+import OrgIcon from "../../assets/icon/copyright.svg";
+import InfoIcon from "../../assets/icon/info-circle.svg";
+import CartIcon from "../../assets/icon/shopping-cart.svg";
+import MentorIcon from "../../assets/icon/mentor.svg";
+import PlayIcon from "../../assets/icon/palyiocn.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const cardSoft =
   "max-xl:rounded-[20px] max-xl:shadow-[0_4px_20px_rgba(15,23,42,0.05)] max-md:rounded-[16px]";
@@ -24,7 +24,9 @@ function Row({ icon, label, value, green }) {
         <img className="w-[16px] h-[16px] shrink-0" src={icon} alt="" />
         {label}
       </span>
-      <span className={`text-right ${green ? "text-[#00A31F]" : ""}`}>{value}</span>
+      <span className={`text-right ${green ? "text-[#00A31F]" : ""}`}>
+        {value}
+      </span>
     </li>
   );
 }
@@ -36,21 +38,50 @@ function InfoRow({ icon, label, value, green }) {
         <img className="w-[16px] h-[16px] shrink-0" src={icon} alt="" />
         {label}
       </span>
-      <span className={`min-w-0 max-md:text-right ${green ? "text-[#00A31F]" : ""}`}>
+      <span
+        className={`min-w-0 max-md:text-right ${green ? "text-[#00A31F]" : ""}`}
+      >
         {value}
       </span>
     </li>
   );
 }
 
+const CERTIFICATES_URL = "/data/certificates..json";
+
 function PublicCertificateDetailsPage() {
-    useEffect(()=>{
-      window.scrollTo(0,0)
-    },[])
-  const { id } = useParams();
+   const { id } = useParams();
+
+  const [certificates, setCertificates] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    async function getCertificates() {
+      try {
+        const res = await axios.get(CERTIFICATES_URL);
+        setCertificates(res.data);
+      } catch (error) {
+        console.error("Sertifikatlar yüklənmədi:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    getCertificates();
+  }, []);
+
   const data = certificates.find(
-    (item) => String(item.id) === id && item.status === "qazanılmış",
+    (item) =>
+      String(item.id) === id && item.status === "qazanılmış",
   );
+
+  if (loading) {
+    return <main className="py-10 text-center">Yüklənir...</main>;
+  }
 
   if (!data) {
     return (
@@ -61,8 +92,16 @@ function PublicCertificateDetailsPage() {
   }
 
   const {
-    video, certificateId, qr, date, mentorStatus,
-    aiScore, category, instructor, title, fullName,
+    video,
+    certificateId,
+    qr,
+    date,
+    mentorStatus,
+    aiScore,
+    category,
+    instructor,
+    title,
+    fullName,
   } = data;
 
   const summaryRows = [
@@ -81,7 +120,12 @@ function PublicCertificateDetailsPage() {
   const rightRows = [
     { icon: OrgIcon, label: "Təqdim edən təşkilat", value: "CoThink" },
     { icon: AiIcon, label: "AI yoxlaması", value: `${aiScore}%`, green: true },
-    { icon: Succes, label: "Mentor qiymətləndirməsi", value: mentorStatus, green: true },
+    {
+      icon: Succes,
+      label: "Mentor qiymətləndirməsi",
+      value: mentorStatus,
+      green: true,
+    },
   ];
 
   return (
@@ -99,7 +143,8 @@ function PublicCertificateDetailsPage() {
           </h3>
         </div>
         <p className="text-[#737373] max-md:text-[14px]">
-          Bu sertifikat CoThink tərəfindən rəsmi olaraq yaradılıb və etibarlıdır.
+          Bu sertifikat CoThink tərəfindən rəsmi olaraq yaradılıb və
+          etibarlıdır.
         </p>
       </header>
 
@@ -151,7 +196,9 @@ function PublicCertificateDetailsPage() {
         <section
           className={`col-span-2 max-xl:col-span-1 border border-[#D9D9D9] rounded-[16px] p-[20px] flex flex-col gap-[16px] max-xl:p-[24px] max-md:p-[16px] ${cardSoft}`}
         >
-          <h2 className="text-[18px] font-semibold text-[#050505]">Əlavə Məlumatlar</h2>
+          <h2 className="text-[18px] font-semibold text-[#050505]">
+            Əlavə Məlumatlar
+          </h2>
 
           <div className="grid grid-cols-2 gap-x-[40px] gap-y-[14px] max-xl:gap-x-[32px] max-md:grid-cols-1 max-md:gap-y-[12px]">
             <ul className="flex flex-col gap-[14px] max-md:gap-[12px]">
@@ -167,7 +214,11 @@ function PublicCertificateDetailsPage() {
           </div>
 
           <div className="flex items-center gap-[12px] rounded-[32px] bg-[#E5ECFF] px-[20px] py-[12px] text-[16px] text-[#2A4EBB] max-xl:text-[15px] max-md:items-start max-md:rounded-[16px] max-md:px-[14px] max-md:text-[14px]">
-            <img className="w-[20px] h-[20px] shrink-0 max-md:mt-[2px]" src={InfoIcon} alt="" />
+            <img
+              className="w-[20px] h-[20px] shrink-0 max-md:mt-[2px]"
+              src={InfoIcon}
+              alt=""
+            />
             <p>
               Bu sertifikat əldə edən şəxs CoThink platformasında kursu uğurla
               tamamlamış və bütün yoxlama mərhələlərindən keçmişdir.

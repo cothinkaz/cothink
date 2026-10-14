@@ -1,33 +1,67 @@
 import { Link, useParams } from "react-router-dom";
-import data from "./certificates..json";
-import ArrowRight from "../../../assets/icon/arrow-right.svg";
-import Info from "../../../assets/icon/info-circle.svg";
-import ActiveIcon from "../../../assets/icon/success.svg";
-import WaitingIcon from "../../../assets/icon/clock.svg";
-import Share from "../../../assets/icon/share-1.svg";
-import Download from "../../../assets/icon/dowloand.svg";
-import LinkIcon from "../../../assets/icon/share.svg";
+import ArrowRight from "../../assets/icon/arrow-right.svg";
+import Info from "../../assets/icon/info-circle.svg";
+import ActiveIcon from "../../assets/icon/success.svg";
+import WaitingIcon from "../../assets/icon/clock.svg";
+import Share from "../../assets/icon/share-1.svg";
+import Download from "../../assets/icon/dowloand.svg";
+import LinkIcon from "../../assets/icon/share.svg";
 import { useEffect, useState } from "react";
-import Share_Modal from "../../../components/Certificates/Share_Modal";
+import Share_Modal from "../../components/Certificates/Share_Modal";
+import axios from "axios";
+
+const CERTIFICATES_URL = "/data/certificates..json";
 
 function CertificatesDetails() {
-  const [open,setOpen] = useState(false)
-
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    async function getCertificates() {
+      try {
+        const res = await axios.get(CERTIFICATES_URL);
+        setData(res.data);
+      } catch (error) {
+        console.error("Sertifikatlar yüklənmədi:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    getCertificates();
+  }, []);
+
   const product = data.find((item) => item.id === Number(id));
+
+  if (loading) {
+    return <h2 className="text-center mt-12">Yüklənir...</h2>;
+  }
 
   if (!product) {
     return (
-      <h2 className="text-center mt-12 font-semibold">Məhsul tapılmadı</h2>
+      <h2 className="text-center mt-12 font-semibold">
+        Məhsul tapılmadı
+      </h2>
     );
   }
 
-  const { type, title, video, instructor, progress, date, category, status } =
-    product;
+  const {
+    type,
+    title,
+    video,
+    instructor,
+    progress,
+    date,
+    category,
+    status,
+  } = product;
 
   const infoRows = [
     { label: "Kurs adı", value: title },

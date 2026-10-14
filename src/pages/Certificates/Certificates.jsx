@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Search from "../../../assets/icon/search-normal.svg";
-import Filter from "../../../assets/icon/filter.svg";
-import Timer from "../../../assets/icon/timer.svg";
-import Notification from "../../../assets/icon/notification-ding.svg";
-import CategoryFilterMobileModal from "../../../components/Certificates/CategoryFilterMobileModal";
+import Search from "../../assets/icon/search-normal.svg";
+import Filter from "../../assets/icon/filter.svg";
+import Timer from "../../assets/icon/timer.svg";
+import Notification from "../../assets/icon/notification-ding.svg";
+import CategoryFilterMobileModal from "../../components/Certificates/CategoryFilterMobileModal";
 import PendingCertificateList from "./PendingCertificateList";
-import certificates from "./certificates..json";
 import CertificatesCardList from "./CertificatesCardList";
+import axios from "axios";
 
 const categories = ["Pulsuz", "Xüsusi", "Professional"];
 
@@ -16,10 +16,24 @@ function Certificates() {
   const [search, setSearch] = useState("");
   const [filterOpen, setFilterOpen] = useState(false);
   const [tab, setTab] = useState("won"); // "won" = Qazanılmış, "wait" = Gözləyən
+  const [certificates, setCertificates] = useState([]);
 
-    useEffect(()=>{
-      window.scrollTo(0,0)
-    },[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    async function getCertificates() {
+      try {
+        const res = await axios.get("/data/certificates..json");
+        setCertificates(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getCertificates();
+  }, []);
 
   const gozleyenSay = certificates.filter(
     (item) => item.status === "gözləyən",
