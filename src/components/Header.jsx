@@ -11,8 +11,10 @@ const Header = () =>{
     const [searchValue, setSearchValue] = useState("");
     const [openMenu, setOpenMenu] = useState(false);
     function handleSearch(event) {
-        setSearchValue(event.target.value);
 
+        setSearchValue(event.target.value);
+        setSearch(true);
+      
     }
     return(
           <header className="w-full border-b border-gray-200 px-5 py-2">
@@ -44,7 +46,7 @@ const Header = () =>{
             </button>
             <button className="cursor-pointer md:flex hidden border border-gray-100 rounded-full p-2">
               <img src={notificationImage} />
-            </button>
+            </button>p
             <a href="/profile">
             <img src={profileImage} />  
             </a>

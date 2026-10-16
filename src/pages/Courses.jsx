@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import  {FaRegCircleUser} from "react-icons/fa6";
+import {saveImage} from '../assets/assets'
 const categories = ["Hamısı", "Frontend", "Backend", "Fullstack", "Data Science", "DevOps", "Mobile Development"];
 const Courses=()=>{
 	const [courses,setCourses]=useState([]);
@@ -30,8 +31,8 @@ const Courses=()=>{
 		<div className=" mb-4 mt-4">
 			<form className="relative flex gap-2 items-center" onSubmit={(e)=>e.preventDefault()}>
 				  <img src="../src/assets/search-normal.svg" className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" />
-				<input type="text" value={query} placeholder="Kursları axtar..." className="border border-gray-300 rounded-md p-2 pl-10 pr-2 outline-none text-sm w-full" onChange={handleSearch}/>
-		 <button className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-full hover:bg-indigo-700">Filtrlə</button>
+				<input type="text" value={query} placeholder="Kursları axtar..." className="border border-gray-300 rounded-full p-2 pl-10 pr-2 outline-none text-sm w-full max-w-sm" onChange={handleSearch}/>
+		 <button className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-full cursor-pointer">Filtrlə</button>
 		</form>
 		<div className="categories flex gap-2 mt-4 flex-wrap">
               {
@@ -50,26 +51,75 @@ const Courses=()=>{
 		<div className="grid md:grid-cols-3 grid-cols-1 gap-4">
 			{
 				filteredCourses.map((course,index)=>(
-						<div className="relative bg-white shadow-lg border border-gray-100 rounded-lg p-4 relative space-y-4"	>
-				
+						<div className="relative bg-white shadow-lg border border-gray-100 rounded-lg p-4 relative space-y-4"	>				
 				<img src={course.image} alt="" className="w-full h-48 object-cover rounded-md"/>
 			   <a className="absolute top-2 right-2 bg-white p-2 rounded-full">
-<FaBookmark fontSize= {24}/>
+<img src={saveImage }/>
 			   </a>
 			<div className="flex justify-between">
-				<p>{course.name}</p>
+				<span className="bg-orange-500/50 px-5 py-2 text-white rounded-full">{course.category}</span>
 			   <div className="flex items-center gap-3 text-sm text-gray-500">
 				<span>⭐ { course.rating}</span>
 				<span>{course.students}</span>
 			   </div>
 				</div>
-				<h6 className="text-gray-700 text-sm">{course.provider}</h6>
-				<a className="block bg-indigo-600 flex-1 w-full text-center text-white py-2 px-4 rounded-full hover:bg-indigo-700" href={`/courses/${course.id}`}>Kursa abunə ol</a>
+						<p>{course.name}</p>
+						<div className="flex gap-3">
+							<FaRegCircleUser fontSize={24}/>
+										<h6 className="font-medium text-sm">{course.author}</h6>
+						</div>
+						    <div className='mt-4 mb-4 flex-start flex h-2.5 w-full overflow-hidden rounded-full  bg-gray-200 text-xs font-medium'>
+           <div className="flex h-full w-1/2 items-center justify-center overflow-hidden bg-orange-700/50 text-white">
+           </div>
+         </div>
+	<div className="flex justify-between text-xs">
+		<p className="text-gray-400">19/20 dərs tamamlandı</p>
+		<a>Sonuncu 2 gün əvvəl</a>
+	</div>
+				<a className="block text-gray-500 font-semibold bg-orange-500/50 flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>Davam et</a>
 			</div>
 				))
 			}
+			<h2>Populyar olan kurslar</h2>
+			
+		</div>
+		<div className="grid md:grid-cols-3 grid-cols-1 gap-4 mt-4">
+				{
+					filteredCourses.map((course,index)=>(
+
+						<div className="relative bg-white shadow-lg border border-gray-100 rounded-lg p-4 relative space-y-4"	>
+							<img src={course.image} alt="" className="w-full h-48 object-cover rounded-md"/>
+							<a className="absolute top-2 right-2 bg-white p-2 rounded-full">
+								<img src={saveImage }/>
+							</a>
+							<div className="flex justify-between">
+								<span className="bg-orange-500/50 px-5 py-2 text-white rounded-full">{course.category}</span>
+								<div className="flex items-center gap-3 text-sm text-gray-500">
+									<span>⭐ { course.rating}</span>
+									<span>{course.students}</span>
+								</div>
+							</div>
+							<p>{course.name}</p>
+							<div className="flex gap-3">
+								<FaRegCircleUser fontSize={24}/>
+								<h6 className="font-medium text-sm">{course.author}</h6>
+							</div>
+							
+							<div className="flex justify-between items-center mt-4 mb-4">
+								<div>
+									<p className="text-gray-400">20 dərs</p>
+								<p className="text-gray-400">42 saat</p>
+								</div>
+								<h2 className="text-xl font-bold">35 AZN</h2>
+							</div>
+
+							<a className="block text-gray-500 font-semibold bg-orange-500/50 flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>Kursa başla</a>
+						</div>
+					))
+				}
 			</div>
-			</div>
+		</div>
+
 		
 	)
 }

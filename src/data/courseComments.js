@@ -8,6 +8,7 @@ const courseComments = [
     comment_text: "React kursu çox faydalıdır.",
     likes: 12,
     comments: 3,
+    createdAt:"2 gün əvvəl"
   },
   {
     comment_id: 2,
@@ -18,6 +19,8 @@ const courseComments = [
     comment_text: "Mövzular aydın izah olunur.",
     likes: 8,
     comments: 2,
+    createdAt:"2 gün əvvəl"
+
   },
   {
     comment_id: 3,
@@ -28,6 +31,8 @@ const courseComments = [
     comment_text: "JavaScript kursunu bəyəndim.",
     likes: 15,
     comments: 0,
+    createdAt:"2 gün əvvəl"
+
   },
   {
     comment_id: 4,
@@ -38,6 +43,8 @@ const courseComments = [
     comment_text: "Kursun mövzuları çox maraqlıdır.",
     likes: 6,
     comments: 1,
+    createdAt:"2 gün əvvəl"
+
   },
 ]
 export default courseComments;

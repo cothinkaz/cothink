@@ -13,7 +13,17 @@
   {
     to:"/library",
     title: "Kitabxana",
-    src:libraryImage
+    src:libraryImage,
+    children:[
+      {
+        to:"/library/resources",
+        title: "Resurslar"
+      },
+      {
+        to:"/library/bloqs",
+        title: "Bloqlar"
+      }
+    ]
   },
    {
     to:"/discussion",

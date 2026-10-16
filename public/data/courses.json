@@ -3,14 +3,17 @@
   {
     "id": 1,
     "name": "Riyaziyyat",
+    "category": "Riyaziyyat",
     "duration": "6 ay",
     "image": "https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
-    "provider": "Khan Academy",
     "description": "Əsas hesablamalardan diferensial və inteqral hesablamalara qədər riyaziyyat kursu.",
     "level": "Başlanğıcdan irəli səviyyəyə",
     "rating": "4.7/5",
     "students": 777,
-    "price": "Pulsuz",
+    "author": "Khan Academy",
+    "authorImage": "",
+    "authorPosition": "Riyaziyyat müəllimi",
+    "price": "35 AZN",
     "lessons": [
       {
         "id": 1,
@@ -35,14 +38,17 @@
   {
     "id": 2,
     "name": "Proqramlaşdırmaya giriş",
+    "category": "Proqramlaşdırma",
     "duration": "3 ay",
     "image": "https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
-    "provider": "freeCodeCamp",
     "description": "Proqramlaşdırmanın əsasları, alqoritmlər və kod yazmağa giriş.",
     "level": "Başlanğıc",
     "rating": "4.8/5",
     "students": 1250,
-    "price": "Pulsuz",
+    "author": "freeCodeCamp",
+    "authorImage": "",
+    "authorPosition": "Proqramlaşdırma təlimçisi",
+    "price": "40 AZN",
     "lessons": [
       {
         "id": 1,
@@ -67,19 +73,24 @@
   {
     "id": 3,
     "name": "Veb proqramlaşdırma",
+    "category": "proqramlaşdırma",
     "duration": "4 ay",
     "image": "https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
-    "provider": "freeCodeCamp",
     "description": "HTML, CSS və JavaScript vasitəsilə interaktiv veb səhifələrin hazırlanması.",
     "level": "Başlanğıcdan orta səviyyəyə",
     "rating": "4.9/5",
     "students": 980,
-    "price": "Pulsuz",
+    "author": "freeCodeCamp",
+    "authorImage": "",
+    "authorPosition": "Veb proqramlaşdırma təlimçisi",
+    "price": "50 AZN",
     "lessons": [
       {
         "id": 1,
         "lesson_title": "HTML-ə giriş",
         "duration": "5 dəq 15 san",
+        "views": "",
+        "updatedDate": "",
         "video_link": "https://www.youtube.com/watch?v=UB1O30fR-EE"
       },
       {
