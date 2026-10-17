@@ -46,7 +46,7 @@ const Header = () =>{
             </button>
             <button className="cursor-pointer md:flex hidden border border-gray-100 rounded-full p-2">
               <img src={notificationImage} />
-            </button>p
+            </button>
             <a href="/profile">
             <img src={profileImage} />  
             </a>

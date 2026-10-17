@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { BsChatRightText } from "react-icons/bs";
-import { FaBookmark, FaRegBookmark, FaRegComments, FaRegFile } from "react-icons/fa";
-import { FaRegCirclePlay } from "react-icons/fa6";
-import { ratingImage, durationImage, eyeImage, profileImage, playImage } from "../assets/assets";
-import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { ratingImage, durationImage, eyeImage, profileImage, playImage, saveImage } from "../assets/assets";
 import { IoIosNotificationsOutline, IoIosArrowDown } from "react-icons/io";
+import { FaRegCircleUser } from "react-icons/fa6";
+
 import Comments from "../components/Comments";
 import courseComments from "../data/courseComments";
 
@@ -35,9 +33,12 @@ const CourseDetail = () => {
   const filteredComments = courseComments.filter(
     (item) => String(item.course_id) === String(id)
   );
+
+
+
   const handleComment = () => {
     setOpenCommentForm(!openCommentForm);
-  }
+  } 
 
   const getEmbedUrl = (url) => {
     const videoUrl = url?.split("youtu.be/")[1]?.split("?")[0];
@@ -88,7 +89,91 @@ const CourseDetail = () => {
     <div>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-7">
         <div className="col-span-7">
-          <div className="flex justify-center relative flex-col items-center">
+          {
+            course.started === false ? (
+<div className="">
+
+      <h4 className="font-semibold mb-2">{course.name}</h4>
+          <p className="text-gray-400 ">{course.description}</p>
+  <div className=" gap-2 mt-3 mb-3">
+    <div className="flex gap-3">
+      <p> ⭐ {course.rating}</p> <span className="text-indigo-600">(200 rəy) </span> 
+      <p className="text-gray-400">{course.students} Tələbə</p>
+      </div>
+    <div className="course-author flex items-center gap-3 mt-3 mb-3">
+      <img src={profileImage} alt="profile" className="w-20 h-20 rounded-full" />
+      <div className="flex flex-col">
+        <h4 className="font-bold">{course.author}</h4>
+        <p className="text-gray-400">{course.authorPosition}</p>
+      </div>
+    </div>
+    <div className='course-include mb-3'>
+      <h4 className="text-lg font-semibold">Kursa daxildir:</h4>
+      <div className='flex gap-3 w-full'>
+      <div className='flex-col gap-4 mt-3 text-gray-400'>
+        <p>Başlanğıc səviyyə</p>
+        <p>20 video dərs</p>
+        <p>{course.duration}</p>
+      </div>
+        <div className='flex-col gap-4 mt-3 text-gray-400'>
+        <p>Azərbaycan dilində</p>
+        <p>20 Quiz</p>
+        <p>Sertifikat</p>
+      </div>
+      </div>
+        </div>
+    <div className='px-5 py-2 rounded-md border border-gray-200'>
+       <h2 className="font-semibold text-lg">Kurs haqqinda</h2>
+    <p className="text-gray-400 ">{course.description}</p>
+    <div className="flex justify-between items-center mt-4 mb-4">
+      <h2 className="font-semibold text-lg">Kurs proqramı</h2>
+      <a className='text-indigo-600'>Hamısına bax</a>
+      </div>
+         {open && (
+            <div className="bg-gray-100 shadow-md rounded-md px-5 py-2 mt-3 mb-3">
+              {course?.lessons && course?.lessons.length > 0 ? (
+                course.lessons.map((lesson, index) => (
+                  <div
+                    key={`${lesson.lesson_title}-${index}`}
+                    className="w-full mt-5 mb-5 bg-white rounded-md px-5 py-2"
+                  >
+                    <div className="cursor-pointer">
+                      <div className="flex w-full justify-between">
+                        <div className="text-gray-500 font-semibold">{lesson.lesson_title}</div>
+                        <IoIosArrowDown fontSize={24} className="text-gray-400" />
+                      </div>
+                      <div className="text-gray-400">3 dəq 45 san</div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="font-bold col-span-4 text-center text-xl">Dərs tapılmadı</p>
+              )}
+          
+              <div className='author-about gap-3 mt-5 mb-5'>
+                  <h4 className="font-bold text-lg">Təlimçi</h4>
+                   <h4 className="font-bold">{course.author}</h4>
+                   <p className="text-gray-400">{course.authorPosition}</p>
+                    <div className="flex items-center gap-3 mb-3 mt-3">
+                <img src={profileImage} alt="profile" className="w-20 h-20 rounded-full" />
+                <div className="flex flex-col gap-2">
+                 <span  className="text-gray-400 text-sm">{course.students} şagird</span>
+                  <span className="text-gray-400 text-sm">⭐ {course.rating}</span>
+                  <span className="text-gray-400 text-sm">  {filteredComments.length} rəy</span>
+                </div>
+                  </div>
+                  <h2 className="text-xl font-bold">Təlimçi haqqında</h2>
+                <p className="text-gray-600">{course.authorBio}</p>
+              </div>
+            </div>
+          )}
+          </div>
+    </div>
+  </div>
+
+            )
+            : <>
+  <div className="flex justify-center relative flex-col items-center">
             <iframe
               src={course && getEmbedUrl(course?.lessons[currentIndex]?.video_link)}
               className="md:h-[64vh] h-[40vh] w-full object-cover rounded-md"
@@ -110,25 +195,7 @@ const CourseDetail = () => {
               növbəti
             </button>
           </div>
-{
-  openCommentForm && (
-    <div className="mt-4 fixed flex inset-0 items-center w-full bg-black/50 bg-opacity-500 p-4 shadow-md z-50">
-<div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full relative">
-<button className="absolute top-2 right-5 text-gray-500 hover-text-gray-700" onClick={()=>setOpenCommentForm(false)}>
-&#x2715;
-</button>
-<textarea
-  className="p-2 border border-gray-300 rounded-md"
-  placeholder="Şərhinizi yazın..."  > </textarea>
-  <button onClick={handleSendComment} className="px-4 py-2 bg-indigo-600 text-white rounded-md">
-    Şərh göndər
-  </button>
-</div>
-
-    </div>
-  )
-}
-          <div className="mt-4 mb-4 flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-gray-200 text-xs font-medium">
+             <div className="mt-4 mb-4 flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-gray-200 text-xs font-medium">
             <div className="flex h-full w-1/2 items-center justify-center overflow-hidden bg-indigo-600 text-white" />
           </div>
 
@@ -178,10 +245,27 @@ const CourseDetail = () => {
               </p>
             </div>
           </div>
+            </>
 
+          }
+        
+{
+  openCommentForm && (
+    <div className="mt-4 fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md z-50">
+      <textarea
+        className="w-full p-2 border border-gray-300 rounded-md"
+        placeholder="Şərhinizi yazın..."  > </textarea>
+        <button onClick={handleSendComment} className="px-4 py-2 bg-indigo-600 text-white rounded-md">
+          Şərh göndər
+        </button>
+    </div>
+  )  
+}
+       
 
+   
 
-          <form className="mt-5 mb-5" onSubmit={(e) => e.preventDefault()}ss>
+          <form className="mt-5 mb-5" onSubmit={(e) => e.preventDefault()}>
             {error && (
               <p className="text-center text-red-600 bg-red-50 rounded-md p-2 font-bold text-lg mb-3">
                 {error}
@@ -190,7 +274,7 @@ const CourseDetail = () => {
             <h4 className="mt-5 font-bold text-lg">Rəylər</h4>
             <div className="flex justify-between">
               <img src={ratingImage} alt="rating" />
-              <button className="border border-indigo-600 text-indigo-600 rounded-full px-4 py-2" onClick={()=>setOpenCommentForm(true)}>
+              <button className="border border-indigo-600 text-indigo-600 rounded-full px-4 py-2" onClick={openCommentForm}>
                 Şərhinizi yazın
               </button>
             </div>
@@ -206,7 +290,41 @@ const CourseDetail = () => {
         </div>
 
         <div className="col-span-5">
-          {open && (
+          {
+            course.started === false ? (
+                <div className=" relative gap-3 text-indigo-600 rounded-md px-5 py-2 mb-3">
+                   <iframe
+              src={course && getEmbedUrl(course?.lessons[currentIndex]?.video_link)}
+              className="h-40 w-full object-cover rounded-md"
+              controls={true}
+            />
+                              <a className="absolute top-5 right-8 bg-white p-2 rounded-full">
+                                <img src={saveImage} alt="save" />
+                              </a>   
+                              <div className='border border-gray-200 px-5 py-2 mt-4 rounded-lg'> 
+                        <div className="flex justify-between items-center mt-4 mb-4 ">
+                           <div className="flex items-center gap-3">
+                          <h2 className="text-xl font-bold text-indigo-600 ">35 AZN</h2>
+                         <h2 className="text-sm font-bold text-gray-800 line-through">70 AZN</h2>
+                         </div>
+                         <span className="text-red-400 text-sm bg-red-200/50 px-2 py-1 rounded-full">50% endirim</span>
+                        </div>
+            <p className='text-gray-500'>Promokod</p>
+            <div className="flex items-center w-full gap-3 mt-2 mb-2">
+              <input type="text" placeholder="COTHINK10" className="w-full rounded-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+             
+              <button className=" w-full border border-indigo-600 text-indigo-600 font-semibold py-2 px-4 rounded-full">Tətbiq et</button>
+              </div>
+                        <a className="mb-3 mt-3 block text-white font-semibold bg-indigo-700 flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
+                          Kursa qoşul
+                        </a>
+                      </div>
+                      </div>
+             
+
+            ) : (
+              <>
+                {open && (
             <div className="bg-gray-100 shadow-md rounded-md px-5 py-2">
               {course?.lessons && course?.lessons.length > 0 ? (
                 course.lessons.map((lesson, index) => (
@@ -228,6 +346,10 @@ const CourseDetail = () => {
               )}
             </div>
           )}
+              </>
+            )
+          }
+        
         </div>
       </div>
     </div>
