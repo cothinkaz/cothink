@@ -1,5 +1,6 @@
 import { footerLogo, footerEmail, footerPhone, footerLocation, footerFacebook, footerInstagram, footerLinkedin, footerYoutube } from "../assets/assets";
-import {useState} from "react"
+import {useState} from "react";
+import { Link, NavLink } from "react-router-dom";
 const Footer = ()=>{
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
@@ -24,19 +25,19 @@ const Footer = ()=>{
             <h4 className="text-sm font-semibold">Platforma</h4>
             <ul className="mt-4 space-y-2 text-sm text-gray-600" >
                 <li>
-                    <a href="/">Ana səhifə</a>
+                    <NavLink to = "/">Ana səhifə</NavLink>
                 </li>
                  <li>
-                    <a href="/courses">Kurslar</a>
+                    <NavLink to="/courses">Kurslar</NavLink>
                 </li>
                  <li>
-                    <a href="/mentors">Mentorlar</a>
+                    <NavLink to ="/mentors">Mentorlar</NavLink>
                 </li>
                  <li>
-                    <a href="certificates">Sertifikatlar</a>
+                    <NavLink to ="/certificates">Sertifikatlar</NavLink>
                 </li>
                    <li>
-                    <a href="/blog">Blog</a>
+                    <NavLink to ="/library/blogs">Blog</NavLink>
                 </li>
             </ul>
         </div>

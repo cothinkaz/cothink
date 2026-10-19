@@ -17,6 +17,7 @@ import CourseDetail from "./pages/CourseDetail";
 import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
 import Certificates from "./pages/Certificates/Certificates";
 import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificateDetailsPage";
+import BlogDetails from './pages/BlogDetails';
 
 function App() {
   return (
@@ -39,8 +40,10 @@ function App() {
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/details/:id" element={<CertificatesDetails />} />
-          <Route path="/library/bloqs" element={<Blogs />} />
+      
           <Route path="/library" element={<Resources />} />
+          <Route path="/library/blogs" element={<Blogs />} />
+          <Route path="/library/blogs/:id" element={<BlogDetails />} />
           <Route path="/library/resources" element={<Resources />} />
           <Route path="/library/resources/category/:slug" element={<ResourceCategory />} />
           <Route path="/library/resources/detail/:id" element={<ResourceDetail />} />
