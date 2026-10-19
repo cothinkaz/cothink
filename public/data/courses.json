@@ -1,0 +1,266 @@
+[
+  {
+    "id": 1,
+    "name": "Riyaziyyat",
+    "category": "Riyaziyyat",
+    "duration": "6 ay",
+    "image": "https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "description": "Əsas hesablamalardan diferensial və inteqral hesablamalara qədər riyaziyyat kursu.",
+    "level": "Başlanğıcdan irəli səviyyəyə",
+    "rating": "4.7/5",
+    "students": 777,
+    "author": "Aysel Məmmədova",
+    "authorImage": "",
+    "addedDate": "2026-09-15",
+    "started": false,
+    "authorPosition": "Riyaziyyat müəllimi",
+    "authorBio": "Riyaziyyat üzrə 10 ildən çox təcrübəyə malik müəllim.",
+    "price": "35 AZN",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "Riyaziyyata giriş",
+        "duration": "3 dəq 45 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=WUvTyaaNkzM"
+      },
+      {
+        "id": 2,
+        "lesson_title": "Əsas hesab əməlləri",
+        "duration": "5 dəq 20 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=8idr1WZ1A7Q"
+      },
+      {
+        "id": 3,
+        "lesson_title": "Cəbrə giriş",
+        "duration": "8 dəq 10 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=NybHckSEQBI"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Proqramlaşdırmaya giriş",
+    "category": "Proqramlaşdırma",
+    "duration": "3 ay",
+    "image": "https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "description": "Proqramlaşdırmanın əsasları, alqoritmlər və kod yazmağa giriş.",
+    "level": "Başlanğıc",
+    "rating": "4.8/5",
+    "students": 1250,
+    "author": "Rəşad Əliyev",
+    "authorImage": "",
+    "addedDate": "2026-09-20",
+    "started": true,
+    "authorPosition": "Proqramlaşdırma təlimçisi",
+    "authorBio": "Proqramlaşdırma üzrə 3 ildən çox təcrübəyə malik təlimçi.",
+    "price": "40 AZN",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "Proqramlaşdırma nədir?",
+        "duration": "4 dəq 10 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=zOjov-2OZ0E"
+      },
+      {
+        "id": 2,
+        "lesson_title": "Dəyişənlər və məlumat tipləri",
+        "duration": "6 dəq 30 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=9I7o7Xq9J5g"
+      },
+      {
+        "id": 3,
+        "lesson_title": "Şərt operatorları",
+        "duration": "7 dəq 15 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=IsG4Xd6LlsM"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Veb proqramlaşdırma",
+    "category": "Proqramlaşdırma",
+    "duration": "4 ay",
+    "image": "https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "description": "HTML, CSS və JavaScript vasitəsilə interaktiv və responsiv veb səhifələrin hazırlanması.",
+    "level": "Başlanğıcdan orta səviyyəyə",
+    "rating": "4.9/5",
+    "students": 980,
+    "author": "Nigar Həsənova",
+    "authorImage": "",
+    "addedDate": "2026-09-25",
+    "started": true,
+    "authorPosition": "Veb proqramlaşdırma təlimçisi",
+    "authorBio": "Frontend texnologiyaları üzrə 5 ildən çox təcrübəyə malik təlimçi.",
+    "price": "50 AZN",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "HTML-ə giriş",
+        "duration": "5 dəq 15 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=UB1O30fR-EE"
+      },
+      {
+        "id": 2,
+        "lesson_title": "CSS əsasları",
+        "duration": "8 dəq 25 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=yfoY53QXEnI"
+      },
+      {
+        "id": 3,
+        "lesson_title": "JavaScript-ə giriş",
+        "duration": "10 dəq 40 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=W6NZfCO5SIk"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Frontend proqramlaşdırma",
+    "category": "Proqramlaşdırma",
+    "duration": "5 ay",
+    "image": "https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "description": "React, komponentlər, state idarəetməsi və API inteqrasiyası ilə müasir veb tətbiqlərin hazırlanması.",
+    "level": "Orta",
+    "rating": "4.8/5",
+    "students": 860,
+    "author": "Elvin Quliyev",
+    "authorImage": "",
+    "addedDate": "2026-10-01",
+    "started": false,
+    "authorPosition": "Frontend developer və mentor",
+    "authorBio": "React və JavaScript üzrə praktiki layihələrdə təcrübəli mentor.",
+    "price": "60 AZN",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "React-ə giriş",
+        "duration": "7 dəq 30 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=Tn6-PIqc4UM"
+      },
+      {
+        "id": 2,
+        "lesson_title": "Komponentlər və props",
+        "duration": "9 dəq 20 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=SqcY0GlETPk"
+      },
+      {
+        "id": 3,
+        "lesson_title": "State və hadisələrin idarə edilməsi",
+        "duration": "11 dəq 15 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=O6P86uwfdR0"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "İngilis dili",
+    "category": "Dil",
+    "duration": "4 ay",
+    "image": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800",
+    "description": "Gündəlik ünsiyyət, qrammatika, dinləmə və danışıq bacarıqlarını inkişaf etdirən ingilis dili kursu.",
+    "level": "Başlanğıc və orta səviyyə",
+    "rating": "4.6/5",
+    "students": 1120,
+    "author": "Leyla İsmayılova",
+    "authorImage": "",
+    "addedDate": "2026-10-05",
+    "started": false,
+    "authorPosition": "İngilis dili müəllimi",
+    "authorBio": "Ünsiyyət yönümlü dil tədrisi üzrə təcrübəli müəllim.",
+    "price": "45 AZN",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "İngilis dilinə giriş",
+        "duration": "6 dəq 10 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=juKd26qkNAw"
+      },
+      {
+        "id": 2,
+        "lesson_title": "Gündəlik ifadələr",
+        "duration": "8 dəq 20 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=owgYNqIlZM8"
+      },
+      {
+        "id": 3,
+        "lesson_title": "Sadə cümlələr qurmaq",
+        "duration": "9 dəq 35 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=G9X8b7g3NhI"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Qrafik dizayn",
+    "category": "Dizayn",
+    "duration": "3 ay",
+    "image": "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800",
+    "description": "Rəng nəzəriyyası, tipoqrafiya və vizual kompozisiya prinsipləri ilə dizayn bacarıqlarının inkişafı.",
+    "level": "Başlanğıc",
+    "rating": "4.7/5",
+    "students": 690,
+    "author": "Murad Rzayev",
+    "authorImage": "",
+    "addedDate": "2026-10-10",
+    "started": true,
+    "authorPosition": "Qrafik dizayner və mentor",
+    "authorBio": "Brendinq və rəqəmsal dizayn sahəsində təcrübəli mentor.",
+    "price": "55 AZN",
+    "lessons": [
+      {
+        "id": 1,
+        "lesson_title": "Qrafik dizayna giriş",
+        "duration": "5 dəq 40 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=YqQx75OPRa0"
+      },
+      {
+        "id": 2,
+        "lesson_title": "Rəng və kompozisiya",
+        "duration": "8 dəq 15 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=_2LLXnUdUIc"
+      },
+      {
+        "id": 3,
+        "lesson_title": "Tipoqrafiyanın əsasları",
+        "duration": "7 dəq 50 san",
+        "views": "",
+        "updatedDate": "",
+        "video_link": "https://www.youtube.com/watch?v=sByzHoiYFX0"
+      }
+    ]
+  }
+]
