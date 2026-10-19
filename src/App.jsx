@@ -5,7 +5,8 @@ import Home from './pages/Home';
 import Courses from "./pages/Courses";
 import Blogs from "./pages/Blogs";
 import MainLayout from "./MainLayout";
-import BlogDetails from './pages/blogDetails';
+import BlogDetails from './pages/BlogDetails';
+import BlogDetails from './pages/BlogDetails';
 function App() {
 
   return (
@@ -25,4 +26,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
