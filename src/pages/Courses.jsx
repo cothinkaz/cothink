@@ -4,7 +4,7 @@ import axios from "axios";
 import  {FaRegCircleUser} from "react-icons/fa6";
 import {saveImage} from '../assets/assets';
 import Categories from '../components/Categories';
-
+import {Link} from "react-router-dom";
 const categories = [ "Frontend", "Backend", "Fullstack", "Data Science", "DevOps", "Mobile Development"];
 const handleFilter= ()=>{
   return 
@@ -126,7 +126,6 @@ const Courses = () => {
     <div>
       <h2 className="text-2xl font-semibold mb-2">Kurslar</h2>
       <p className="text-gray-600">Bacarıqlarını inkişaf etdir yeni biliklər qazan!</p>
-
       <div className="mb-4 mt-4">
         <form className="relative flex gap-2 items-center" onSubmit={(e) => e.preventDefault()}>
           <img src="../src/assets/search-normal.svg" className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" alt="search" />
@@ -144,9 +143,7 @@ const Courses = () => {
             Filtrlə
           </button>
         </form>
-         
-
-      
+          
         <div className="categories flex gap-2 mt-4 flex-wrap">
           {categories.map((category, index) => (
             <button
@@ -211,9 +208,9 @@ const Courses = () => {
               <p className="text-gray-400">19/20 dərs tamamlandı</p>
               <a>Sonuncu 2 gün əvvəl</a>
             </div>
-                 <a className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
+                 <Link className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
               Davam et 
-            </a>
+            </Link>
                   </>
                    : (
                     <>
@@ -231,14 +228,12 @@ const Courses = () => {
               </div>
               <h2 className="text-xl font-bold">35 AZN</h2>
             </div>
-              <a className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
+              <Link className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
               Kursa başla
-            </a>
+            </Link>
             </>
                    )
                  }
-          
-       
           </div>
         ))}
       </div>
@@ -314,14 +309,12 @@ const Courses = () => {
               <h2 className="text-xl font-bold">35 AZN</h2>
             </div>
 
-            <a className="block text-white font-semibold bg-indigo-600 flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
+            <Link className="block text-white font-semibold bg-indigo-600 flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
               Kursa başla
-            </a>
+            </Link>
           </div>
         ))}
       </div>
-
-
         </>}
       <FilterModal
         open={openFilterModal}

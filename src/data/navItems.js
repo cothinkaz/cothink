@@ -20,7 +20,7 @@
         title: "Resurslar"
       },
       {
-        to:"/library/bloqs",
+        to:"/library/blogs",
         title: "Bloqlar"
       }
     ]
