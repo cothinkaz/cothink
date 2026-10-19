@@ -39,7 +39,7 @@ function App() {
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/details/:id" element={<CertificatesDetails />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/library/bloqs" element={<Blogs />} />
           <Route path="/library" element={<Resources />} />
           <Route path="/library/resources" element={<Resources />} />
           <Route path="/library/resources/category/:slug" element={<ResourceCategory />} />
