@@ -2,43 +2,49 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import  {FaRegCircleUser} from "react-icons/fa6";
+import {FaStar } from "react-icons/fa"
 import {saveImage} from '../assets/assets';
 import Categories from '../components/Categories';
 import {Link} from "react-router-dom";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const categories = [ "Frontend", "Backend", "Fullstack", "Data Science", "DevOps", "Mobile Development"];
 const handleFilter= ()=>{
   return 
 }
 const FilterModal = ({ open, onClose, selectedCategory, setSelectedCategory }) => {
  return(
-	<div className={`fixed inset-0 z-50 flex items-center justify-center ${open ? "" : "hidden"}`}>
+	<div className={`fixed inset-0 z-50 flex items-center justify-center p-3 ${open ? "" : "hidden"}`}>
 		<div className="fixed inset-0 bg-black opacity-50" onClick={onClose}></div>
-		<div className="bg-white p-6 rounded-lg z-10">
-			<h3 className="text-lg font-semibold mb-4">Filtrlə</h3>
-			<p className="text-gray-600 mb-4">Sizə uyğun kursları seçmək üçün filtrləri tətbiq edin</p>
+		<div className="bg-white overflow-y-scroll w-full overflow-hidden max-w-lg max-h-[90dvh] p-6 rounded-lg z-10">
+			<h3 className="text-2xl text-center font-semibold mb-3">Filtrasiya</h3>
+			<p className="text-center text-gray-600 mb-3">Sizə uyğun kursları seçmək üçün filtrləri tətbiq edin</p>
 			<div className="space-y-2">
-				<h4 className="font-semibold">Qiymət</h4>
-				<div className="flex gap-4 border-b border-gray-200 pb-2 mb-2">
-				<input type = "radio" name="price" value="pulsuz" className="mr-2" /> Pulsuz
+				<h4 className="font-semibold text-gray-800 mt-3 mb-3">Qiymət</h4>
+				<div className="grid grid-col-1 gap-3 sm:grid-col-3 border-b border-gray-200">
+				<label>
+        <input type = "radio" name="price" value="pulsuz" className="mr-2" /> Pulsuz
                  <input type = "radio" name="price" value="ödənişli" className="ml-4 mr-2" /> Ödənişli
 				 <input type = "radio" name="price" value="hamısı" className="ml-4 mr-2" /> Hamısı
+  </label>
 </div>
-<h4  className="font-semibold">Səviyyə	</h4>
-<div className="flex gap-4 border-b border-gray-200 pb-2 mb-2">		
-	<input type='radio' name="level" value="başlanğıc" className="mr-2" /> Başlanğıc
+<h4  className="font-semibold text-gray-800 mt-3 mb-3">Səviyyə	</h4>
+<div className="grid grid-cols-1 gap-3 sm:grid-col-3 border-b border-gray-200 pb-2 mb-2">		
+	<label>
+  <input type='radio' name="level" value="başlanğıc" className="mr-2" /> Başlanğıc
 	<input type='radio' name="level" value="orta" className="ml-4 mr-2" /> Orta
 	<input type='radio' name="level" value="yüksək" className="ml-4 mr-2" /> Yüksək	
-	</div>
-	<h4 className='font-semibold'>Vaxt aralığı</h4>
+	</label>
+  </div>
+	<h4 className='font-semibold text-gray-800 mt-3 mb-3'>Vaxt aralığı</h4>
 	<div className="flex items-center gap-4 border-b border-gray-200 pb-2 mb-2">
 		<p className='text-gray-600'>Minimium </p>
-		<select name="minimum" className="border border-gray-300 rounded-md p-1">
+		<select name="minimum" className="w-full outline-none border border-gray-300 rounded-md p-1">
            <option value="hamısı">Hamısı</option>
 		   <option value="20">20 dəqiqə</option>
 		   <option value="30">30 dəqiqə</option>
 			</select>
 			<p className='text-gray-600'>Maximum</p>
-            <select name="maximum" className="border border-gray-300 rounded-md p-1">
+            <select name="maximum" className="w-full outline-none border border-gray-300 rounded-md p-1">
 								<option value="hamısı">Hamısı</option>
 								<option value ='1'>1 saat</option>
 								<option value='2'>2 saat</option>
@@ -46,28 +52,28 @@ const FilterModal = ({ open, onClose, selectedCategory, setSelectedCategory }) =
 								</div>
 								<div className='flex gap-4 border-b border-gray-200 pb-2 mb-2'>
 									<h2 className="font-semibold">Qiymət aralığı</h2>
-									     <div className="mt-4 mb-4 flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-gray-200 text-xs font-medium">
-            <div className="flex h-full w-1/2 items-center justify-center overflow-hidden bg-indigo-600 text-white" />
-          </div>
+									  <input type="range" min='0' max='100' step = "20" value={50} className="w-full cursor-pointer accent-indigo-600"/>
                   </div>
 		  <div className="border-b border-gray-200 pb-2 mb-2">
-			<h2 className="font-semibold">Rating</h2>
-			<div className="flex-col gap-3">
-				<div className="flex justify-between">1/5
-          <input type='radio' name="rating" value="1" className="ml-4 mr-2" /> 
-        </div>
-				<div className="flex justify-between">2/5
-          <input type='radio' name="rating" value="2" className="ml-4 mr-2" /> 
-        </div>
-				<div className="flex justify-between">3/5
-          <input type='radio' name="rating" value="3" className="ml-4 mr-2" /> 
-        </div>
-				<div className="flex justify-between">4/5
-          <input type='radio' name="rating" value="4" className="ml-4 mr-2" /> 
-        </div>
-				<div className="flex justify-between">5/5
-          <input type='radio' name="rating" value="5" className="ml-4 mr-2" /> 
-        </div>
+			<h2 className="font-semibold mb-3 text-gray-800">Rating</h2>
+			<div className="space-y-3 flex-col gap-3">
+        {
+          [5, 4,3,2,1 ].map((stars)=>(
+            <label className="flex cursor-pointer justify-between items-center rounded-lg border p-3 border-gray-300 ">
+                 <span className="flex items-center gap-1">
+                   {Array.from({length:5}, (_,i)=>(
+                        <FaStar key={i} fontSize={24} className={i<stars ? 'text-amber-400' : 'text-gray-200'}/>
+                    ))}
+                 </span>
+                  <span className="flex justify-between">
+          <input type='radio' name="rating" value={stars} className="ml-4 mr-2" /> 
+        </span>
+      </label>
+
+          ))
+        }
+		
+	
 			</div>					
 								</div>
                 <div className='flex justify-between gap-3'>
@@ -90,7 +96,6 @@ const FilterModal = ({ open, onClose, selectedCategory, setSelectedCategory }) =
 		</div>
 	</div>
  )
-
 }
 
 const Courses = () => {
@@ -151,7 +156,7 @@ const Courses = () => {
               className={`cursor-pointer py-2 px-4 rounded-full ${
                 selectedCategory === category
                   ? "bg-indigo-700 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-indigo-700 hover:text-white"
+                  : "border border-gray-200 text-gray-700 hover:bg-indigo-700 hover:text-white"
               }`}
               onClick={() => {setSelectedCategory(category)
                 setOpenCategories(false)
@@ -161,10 +166,10 @@ const Courses = () => {
           ))}
           <button
 
-              className='cursor-pointer py-2 px-4 rounded-full bg-indigo-700 text-white'
+              className='cursor-pointer py-2 px-4 rounded-full border border-gray-200 text-gray-700'
               onClick={() => setOpenCategories(true)}
             >
-              Hamisi
+              <IoIosArrowForward fontSize={20}/>
             </button>
         </div>
       </div>

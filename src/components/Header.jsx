@@ -61,12 +61,12 @@ const Header = () =>{
              <IoIosMenu fontSize={24}/>
               </button>
               {
-openMenu &&   <ul className=" fixed flex flex-col gap-3 bg-white shadow-lg absolute top-16 right-3 p-3 z-10 rounded-md w-48">
+openMenu &&   <ul className=" fixed flex flex-col gap-2 bg-white shadow-lg absolute top-16 right-3 p-3 z-10 rounded-md w-48">
                         {
                           navItems.map((item)=>(
                           <li className="mt-1" key={item.to}>
                           <NavLink 
-                            className="flex gap-3 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full" 
+                            className="flex gap-2 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full" 
                             to={item.to}   
                           >
                              {/* <img src={item.src}/> */}

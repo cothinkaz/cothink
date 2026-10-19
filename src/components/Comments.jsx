@@ -21,6 +21,11 @@ export const CommentCard=({comment})=>{
             </div>
              {/*<div> <img src ={moreImage}/></div>*/}
             <p className="mt-3 text-gray-400">{comment.comment_text}</p>
+                             <div className="flex gap-5 text-indigo-500 comment-reactions pt-3">
+
+            <div className="comment-count flex items-center gap-2" ><FaRegComment fontSize={24}/>Cavabla</div>
+                        <div className="like-count flex items-center gap-2"><FaRegThumbsUp fontSize={24}/>{comment?.likes}</div>
+    </div>
             </div>
       
                     </div> 
@@ -29,13 +34,10 @@ export const CommentCard=({comment})=>{
 
        
             </div>
-                 <div className="flex gap-5 text-indigo-500 comment-reactions pt-3">
-
-            <div className="comment-count flex items-center gap-2" ><FaRegComment fontSize={24}/>Cavabla</div>
-                        <div className="like-count flex items-center gap-2"><FaRegThumbsUp fontSize={24}/>{comment?.likes}</div>
-    </div>
+                           
                   
                                         </div>
+
                            
 </>
 

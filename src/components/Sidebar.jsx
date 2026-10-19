@@ -17,7 +17,7 @@ const Sidebar = ({open, setOpen})=>{
       <ul className="w-full flex flex-col">      
       
         {navItems.map((item) => (
-          <li className="mt-3" key={item.to}>
+          <li className="mt-2" key={item.to}>
             {item.children && item.children.length > 0 ? (
               <>
                 <button

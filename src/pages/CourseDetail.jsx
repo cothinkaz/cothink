@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { ratingImage, durationImage, eyeImage, profileImage, playImage, saveImage } from "../assets/assets";
 import { IoIosNotificationsOutline, IoIosArrowDown } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
-
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Comments from "../components/Comments";
 import courseComments from "../data/courseComments";
 
@@ -33,8 +33,6 @@ const CourseDetail = () => {
   const filteredComments = courseComments.filter(
     (item) => String(item.course_id) === String(id)
   );
-
-
 
   const handleComment = () => {
     setOpenCommentForm(!openCommentForm);
@@ -88,7 +86,7 @@ const CourseDetail = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-7">
-        <div className="col-span-7">
+        <div className="md:col-span-7 col-span-12 md:order-1 order-2">
           {
             course.started === false ? (
 <div className="">
@@ -109,13 +107,13 @@ const CourseDetail = () => {
     </div>
     <div className='course-include mb-3'>
       <h4 className="text-lg font-semibold">Kursa daxildir:</h4>
-      <div className='flex gap-3 w-full'>
-      <div className='flex-col gap-4 mt-3 text-gray-400'>
+      <div className='flex gap-3 w-full '>
+      <div className='flex-col gap-4 space-y-3 mt-3 text-gray-400'>
         <p>Başlanğıc səviyyə</p>
         <p>20 video dərs</p>
         <p>{course.duration}</p>
       </div>
-        <div className='flex-col gap-4 mt-3 text-gray-400'>
+        <div className='flex-col gap-4  space-y-3 mt-3 text-gray-400'>
         <p>Azərbaycan dilində</p>
         <p>20 Quiz</p>
         <p>Sertifikat</p>
@@ -183,23 +181,23 @@ const CourseDetail = () => {
 
           <div className="flex justify-between mt-3">
             <button
-              className="px-5 py-2 border border-gray-200 bg-white rounded-full"
+              className="flex items-center gap-2 px-5 py-2 border border-gray-200 bg-white rounded-full"
               onClick={handlePrev}
-            >
+            > <IoIosArrowBack fontSize={20}/>
               Əvvəlki
             </button>
             <button
-              className="px-5 py-2 bg-indigo-400 text-white rounded-full"
+              className="flex items-center gap-2 items-center px-5 py-2 bg-indigo-400 text-white rounded-full"
               onClick={handleNext}
             >
-              növbəti
+              Növbəti <IoIosArrowForward fontSize={20}/>
             </button>
           </div>
              <div className="mt-4 mb-4 flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-gray-200 text-xs font-medium">
             <div className="flex h-full w-1/2 items-center justify-center overflow-hidden bg-indigo-600 text-white" />
           </div>
 
-          <div className="flex justify-between gap-5">
+          <div className="md:flex justify-between gap-5">
             <h4 className="font-semibold text-xl">{course.lessons[0].lesson_title}</h4>
             <div className="flex items-center gap-3">
               <div className="flex gap-3">
@@ -224,7 +222,7 @@ const CourseDetail = () => {
             </div>
           </div>
           <div className="nav-tabs mt-5 mb-5">
-            <div className="flex">
+            <div className="md:flex">
               {courseTabs.map((tab) => (
                 <button
                   className={`w-full px-5 py-2 font-semibold border-b ${
@@ -289,7 +287,7 @@ const CourseDetail = () => {
           )}
         </div>
 
-        <div className="col-span-5">
+        <div className="md:col-span-5 col-span-12 md:order-2 order-1">
           {
             course.started === false ? (
                 <div className=" relative gap-3 text-indigo-600 rounded-md px-5 py-2 mb-3">
