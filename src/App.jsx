@@ -17,7 +17,6 @@ import CourseDetail from "./pages/CourseDetail";
 import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
 import Certificates from "./pages/Certificates/Certificates";
 import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificateDetailsPage";
-import BlogDetails from './pages/blogDetails';
 
 function App() {
   return (
