@@ -25,4 +25,5 @@ import durationImage from "../assets/duration.svg";
 import eyeImage from "../assets/eye.svg"
 import playImage from "../assets/play.svg"
 import saveImage from '../assets/archive.svg'
-export {profileImage, mainLogo, moreImage,eyeImage, playImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage}
+import courseBanner from "../assets/courseBanner.png"
+export {courseBanner,profileImage, mainLogo, moreImage,eyeImage, playImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage}
