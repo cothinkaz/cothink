@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import  {FaRegCircleUser} from "react-icons/fa6";
 import {FaStar } from "react-icons/fa"
-import {saveImage} from '../assets/assets';
+import {courseBanner, saveImage,searchImage, playImage} from '../assets/assets';
 import Categories from '../components/Categories';
 import {Link} from "react-router-dom";
+import {CiFilter} from "react-icons/ci"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const categories = [ "Frontend", "Backend", "Fullstack", "Data Science", "DevOps", "Mobile Development"];
 const handleFilter= ()=>{
@@ -36,14 +37,14 @@ const FilterModal = ({ open, onClose, selectedCategory, setSelectedCategory }) =
 	</label>
   </div>
 	<h4 className='font-semibold text-gray-800 mt-3 mb-3'>Vaxt aralığı</h4>
-	<div className="flex items-center gap-4 border-b border-gray-200 pb-2 mb-2">
-		<p className='text-gray-600'>Minimium </p>
+	<div className="md:flex md: flex-row flex-col items-center gap-4 border-b border-gray-200 pb-2 mb-2">
+		<p className='text-gray-600 mb-2'>Minimium </p>
 		<select name="minimum" className="w-full outline-none border border-gray-300 rounded-md p-1">
            <option value="hamısı">Hamısı</option>
 		   <option value="20">20 dəqiqə</option>
 		   <option value="30">30 dəqiqə</option>
 			</select>
-			<p className='text-gray-600'>Maximum</p>
+			<p className='text-gray-600 mb-2 mt-2'>Maximum</p>
             <select name="maximum" className="w-full outline-none border border-gray-300 rounded-md p-1">
 								<option value="hamısı">Hamısı</option>
 								<option value ='1'>1 saat</option>
@@ -129,27 +130,42 @@ const Courses = () => {
   
   return (
     <div>
+      <div className="flex items-center justify-between">
+        <div className='w-full'>
       <h2 className="text-2xl font-semibold mb-2">Kurslar</h2>
       <p className="text-gray-600">Bacarıqlarını inkişaf etdir yeni biliklər qazan!</p>
       <div className="mb-4 mt-4">
         <form className="relative flex gap-2 items-center" onSubmit={(e) => e.preventDefault()}>
-          <img src="../src/assets/search-normal.svg" className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" alt="search" />
+          <img src={searchImage} className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" alt="search" />
           <input
             type="text"
             value={query}
             placeholder="Kursları axtar..."
-            className="border border-gray-300 rounded-full p-2 pl-10 pr-2 outline-none text-sm w-full max-w-sm"
+            className="border border-gray-300 rounded-full p-2 pl-10 pr-2 outline-none text-sm w-full max-w-lg"
             onChange={handleSearch}
           />
           <button
-            className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-full cursor-pointer"
+            className="flex gap-2 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-full cursor-pointer"
             onClick={() => setOpenFilterModal(true)}
           >
-            Filtrlə
+            <CiFilter fontSize={24}/>Filtrlə
           </button>
         </form>
-          
+          </div>
+          </div>
+          <div className="w-full items-center justify-center md:flex hidden">
+            <img src={courseBanner} className="h-40 object-cover"/>
+          </div>
+          </div>
+                
         <div className="categories flex gap-2 mt-4 flex-wrap">
+           <button
+
+              className='cursor-pointer py-2 px-4 rounded-full border border-gray-200 text-gray-700'
+              onClick={() => setOpenCategories(true)}
+            >
+              Hamısı
+            </button>
           {categories.map((category, index) => (
             <button
               key={index}
@@ -172,14 +188,13 @@ const Courses = () => {
               <IoIosArrowForward fontSize={20}/>
             </button>
         </div>
-      </div>
   { openCategories ? ( <>
             <Categories/>
         </>
         )   : <>
   <div className="flex justify-between items-center mb-4 mt-4">
         <h2 className="text-xl font-semibold">Tövsiyyə olunan kurslar</h2>
-        <a className="text-indigo-600">Hamısına bax</a>
+        <a className="flex gap-2 items-center text-indigo-600">Hamısına bax  <IoIosArrowForward fontSize={20}/></a>
       </div>
 
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
@@ -213,8 +228,8 @@ const Courses = () => {
               <p className="text-gray-400">19/20 dərs tamamlandı</p>
               <a>Sonuncu 2 gün əvvəl</a>
             </div>
-                 <Link className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" to={`/courses/${course.id}`}>
-              Davam et 
+                 <Link className="flex gap-2 items-center justify-center text-white block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" to={`/courses/${course.id}`}>
+           <img src={playImage}/>   Davam et 
             </Link>
                   </>
                    : (

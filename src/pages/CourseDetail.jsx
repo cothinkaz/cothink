@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { ratingImage, durationImage, eyeImage, profileImage, playImage, saveImage } from "../assets/assets";
-import { IoIosNotificationsOutline, IoIosArrowDown } from "react-icons/io";
+import { IoIosNotificationsOutline, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Comments from "../components/Comments";
@@ -13,11 +13,14 @@ const CourseDetail = () => {
   const [course, setCourse] = useState(null);
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  const [openLesson, setOpenLesson] =useState(null)
   const [openCommentForm, setOpenCommentForm] = useState(false);
   const [activeTab, setActiveTab] = useState("summary");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(true);
+  const [rating, setRating] = useState(0);
   const [error, setError] = useState("");
+    const rows = [15, 25, 50, 75, 100];
 
   useEffect(() => {
     axios.get("/data/courses.json").then((res) => {
@@ -35,7 +38,7 @@ const CourseDetail = () => {
   );
 
   const handleComment = () => {
-    setOpenCommentForm(!openCommentForm);
+    setOpenCommentForm(false);
   } 
 
   const getEmbedUrl = (url) => {
@@ -85,7 +88,7 @@ const CourseDetail = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-7">
+      <div className=" grid grid-cols-1 md:grid-cols-12 gap-7">
         <div className="md:col-span-7 col-span-12 md:order-1 order-2">
           {
             course.started === false ? (
@@ -247,18 +250,7 @@ const CourseDetail = () => {
 
           }
         
-{
-  openCommentForm && (
-    <div className="mt-4 fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md z-50">
-      <textarea
-        className="w-full p-2 border border-gray-300 rounded-md"
-        placeholder="Şərhinizi yazın..."  > </textarea>
-        <button onClick={handleSendComment} className="px-4 py-2 bg-indigo-600 text-white rounded-md">
-          Şərh göndər
-        </button>
-    </div>
-  )  
-}
+
        
 
    
@@ -272,7 +264,7 @@ const CourseDetail = () => {
             <h4 className="mt-5 font-bold text-lg">Rəylər</h4>
             <div className="flex justify-between">
               <img src={ratingImage} alt="rating" />
-              <button className="border border-indigo-600 text-indigo-600 rounded-full px-4 py-2" onClick={openCommentForm}>
+              <button className="border border-indigo-600 text-indigo-600 rounded-full px-4 py-2" onClick={()=>setOpenCommentForm(true)}>
                 Şərhinizi yazın
               </button>
             </div>
@@ -288,6 +280,7 @@ const CourseDetail = () => {
         </div>
 
         <div className="md:col-span-5 col-span-12 md:order-2 order-1">
+       
           {
             course.started === false ? (
                 <div className=" relative gap-3 text-indigo-600 rounded-md px-5 py-2 mb-3">
@@ -317,7 +310,9 @@ const CourseDetail = () => {
                           Kursa qoşul
                         </a>
                       </div>
+
                       </div>
+
              
 
             ) : (
@@ -328,14 +323,29 @@ const CourseDetail = () => {
                 course.lessons.map((lesson, index) => (
                   <div
                     key={`${lesson.lesson_title}-${index}`}
-                    className="w-full mt-5 mb-5 bg-white rounded-md px-5 py-2"
+                    className="w-full mt-5 mb-5 bg-white rounded-md px-4 py-3 shadow-md"
                   >
                     <div className="cursor-pointer">
                       <div className="flex w-full justify-between">
                         <div className="text-gray-500 font-semibold">{lesson.lesson_title}</div>
-                        <IoIosArrowDown fontSize={24} className="text-gray-400" />
+                       
+{
+  openLesson === index ?  <IoIosArrowUp fontSize={24} className="text-gray-400" onClick={()=>setOpenLesson(null)}/> 
+ :  <IoIosArrowDown fontSize={24} className="text-gray-400" onClick={()=>setOpenLesson(openLesson === index ? null : index)}/>
+}
+                       
                       </div>
                       <div className="text-gray-400">3 dəq 45 san</div>
+                      {
+                        openLesson === index && (
+                          <>
+                          <div className='mt-3 pt-3 border-t border-gray-200'>
+
+<p className='text-gray-500'>Course content</p>
+</div>
+                          </>
+                        )
+                      }
                     </div>
                   </div>
                 ))
@@ -347,9 +357,44 @@ const CourseDetail = () => {
               </>
             )
           }
-        
+            <div className="flex flex-col gap-2 p-4 border border-gray-100 rounded-lg shadow-md px-5 py-2 mt-4">
+      <div className='flex justify-center gap-3 items-center'>
+
+      <h2 className='text-center text-gray-600 text-2xl font-semibold'>4.9<span className='pl-3 text-yellow-400'>★ ★  ★ ★ ★</span> </h2>
+      <div className='text-indigo-600'>(250 rəy)</div>
+      </div>
+      {rows.map((count, index) => (
+        <div key={index} className="flex text-yellow-400 gap-2 font-bold text-xl">
+           ★
+          <div className='w-full h-3 bg-gray-200 rounded-full overflow-hidden mt-2'>
+            <div className='bg-indigo-600 w-full h-full' style={{width:`${count}%`}}></div>
+          </div>
+        </div>
+      ))}
+    </div>
         </div>
       </div>
+      {
+  openCommentForm && (
+    <div className='fixed inset-0 z-50 flex items-center justify-center p-5  bg-black/50 '>
+    <div className="relative mt-4 p-5 w-full max-w-lg flex-col bg-white justify-end items-center p-4 rounded-lg shadow-md">
+      <button onClick={()=>setOpenCommentForm(false)} className="absolute right-2 top-0 text-end px-4 py-2 text-3xl text-gray-500">
+          &times;
+        </button>
+      <h2 className='text-center text-gray-700 font-medium text-lg mb-2'>Şərhlərinizi bizimlə bölüşün</h2>
+      <div className='flex items-center gap-2'>
+      <input type='text'
+        className="w-full rounded-full p-2 border border-gray-300 outline-none"
+        placeholder="Şərh yazın"  />
+       <div className='flex justify-center'>
+        <button onClick={handleSendComment} className=" w-10 h-10 px-5 py-2 bg-indigo-600 text-white rounded-full">
+        </button>
+    </div>
+      </div>
+     </div>
+     </div>
+  )  
+}
     </div>
   );
 };
