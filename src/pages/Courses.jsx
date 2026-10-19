@@ -208,7 +208,7 @@ const Courses = () => {
               <p className="text-gray-400">19/20 dərs tamamlandı</p>
               <a>Sonuncu 2 gün əvvəl</a>
             </div>
-                 <Link className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
+                 <Link className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" to={`/courses/${course.id}`}>
               Davam et 
             </Link>
                   </>
@@ -228,7 +228,7 @@ const Courses = () => {
               </div>
               <h2 className="text-xl font-bold">35 AZN</h2>
             </div>
-              <Link className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
+              <Link className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" to ={`/courses/${course.id}`}>
               Kursa başla
             </Link>
             </>
@@ -270,9 +270,9 @@ const Courses = () => {
               <h2 className="text-xl font-bold">35 AZN</h2>
             </div>
 
-            <a className="block text-white font-semibold bg-indigo-600 flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
+            <Link className="block text-white font-semibold bg-indigo-600 flex-1 w-full text-center py-2 px-4 rounded-full" to={`/courses/${course.id}`}>
               Kursa başla
-            </a>
+            </Link>
           </div>
         ))}
       </div>
@@ -309,7 +309,7 @@ const Courses = () => {
               <h2 className="text-xl font-bold">35 AZN</h2>
             </div>
 
-            <Link className="block text-white font-semibold bg-indigo-600 flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
+            <Link className="block text-white font-semibold bg-indigo-600 flex-1 w-full text-center py-2 px-4 rounded-full" to={`/courses/${course.id}`}>
               Kursa başla
             </Link>
           </div>
