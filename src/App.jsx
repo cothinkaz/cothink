@@ -13,6 +13,7 @@ import SlideReader from "./pages/SlideReader";
 import MainLayout from "./MainLayout";
 import ScrollToTop from "./components/ScrollToTop";
 
+import BlogDetails from './pages/blogDetails';
 function App() {
 
   return (

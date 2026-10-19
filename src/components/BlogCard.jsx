@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import lookIcon from "../assets/look.svg";
 import likeIcon from "../assets/like.svg";
 import commentsIcon from "../assets/comments.svg";
@@ -6,14 +7,6 @@ import saveIcon from "../assets/save.svg";
 
 const BookmarkIcon = () => (
  <img src={saveIcon} alt="" className="h-[18px] w-[18px] sm:h-[20px] sm:w-[20px]" /> 
-);
-
-const CommentIcon = () => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#404040"
-       strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 5h16v11H9l-5 4V5z" />
-    <path d="M8 9.5h8M8 12.5h5" />
-  </svg>
 );
 
 const Avatar = ({ src, alt }) => {
@@ -42,7 +35,7 @@ const Avatar = ({ src, alt }) => {
 
 const BlogCard = ({ blog }) => {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-[#D9D9D9] bg-white">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-[20px] border border-[#D9D9D9] bg-white">
       {/* Şəkil + bookmark */}
       <div className="relative aspect-[2/1] shrink-0 bg-[#F0F2F8]">
         <img
@@ -55,7 +48,7 @@ const BlogCard = ({ blog }) => {
         <button
           type="button"
           aria-label="Yadda saxla"
-          className="absolute right-2 top-2 flex h-[40px] w-[40px] sm:h-[44px] sm:w-[44px] items-center justify-center rounded-full bg-white shadow-sm"
+          className="absolute right-2 top-2 z-10 flex h-[40px] w-[40px] sm:h-[44px] sm:w-[44px] items-center justify-center rounded-full bg-white shadow-sm"
         >
           <BookmarkIcon />
         </button>
@@ -78,7 +71,9 @@ const BlogCard = ({ blog }) => {
 
         {/* Başlıq */}
         <h6 className="mt-6 text-[18px] font-medium leading-snug text-[#171717] sm:text-[22px]">
-          {blog.title}
+          <Link to={`/blogs/${blog.id}`} className="after:absolute after:inset-0">
+            {blog.title}
+          </Link>
         </h6>
 
         {/* Teqlər */}
