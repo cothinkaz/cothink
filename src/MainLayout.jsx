@@ -17,11 +17,11 @@ function MainLayout(){
 	return(
 		<div className="min-h-screen flex flex-col">
 			<Header/>
-		  <div className="grid grid-cols-12 flex-1">
-			<aside className={ open ? "col-span-2" : "col-span-1"}>
+		  <div className="grid grid-cols-12 flex-1 ">
+			<aside className={ `hidden md:block ${open ? "md:col-span-2" : "md:col-span-1"}`}>
 				<Sidebar open = {open} setOpen = {setOpen}/>
 			</aside >
-			<main className={open ? "p-4 col-span-10" : "p-4 col-span-11"}>
+			<main className={ open ? "p-4 col-span-12 md:col-span-10 bg-white/50" : "p-4 col-span-12 md:col-span-11"}>
 				<Outlet/>
 			</main>
 		   </div>
