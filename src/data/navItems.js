@@ -1,4 +1,4 @@
- import { homeImage, courseImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
+ import { homeImage, noteImage, booksImage, courseImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
  const navItems = [
     {
     to:"/",
@@ -17,11 +17,13 @@
     children:[
       {
         to:"/library/resources",
-        title: "Resurslar"
+        title: "Resurslar",
+        src:booksImage
       },
       {
         to:"/library/blogs",
-        title: "Bloqlar"
+        title: "Bloqlar",
+        src:noteImage
       }
     ]
   },

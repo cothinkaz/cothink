@@ -22,8 +22,10 @@ import profileImage from "../assets/avatarr.svg"
 import ratingImage from "../assets/stars.svg";
 import moreImage from "../assets/more.svg"
 import durationImage from "../assets/duration.svg";
-import eyeImage from "../assets/eye.svg"
+import eyeImage from "../assets/eye.svg";
+import noteImage from "../assets/note.svg";
+import booksImage from "../assets/books.svg";
 import playImage from "../assets/play.svg"
 import saveImage from '../assets/archive.svg'
 import courseBanner from "../assets/courseBanner.png"
-export {courseBanner,profileImage, mainLogo, moreImage,eyeImage, playImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage}
+export {courseBanner,profileImage, mainLogo, moreImage,eyeImage, playImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage, noteImage, booksImage}
