@@ -29,7 +29,7 @@ const ChevronDownIcon = () => (
 );
 
 const Grid = ({ items }) => (
-  <div className="mt-5 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div className="mt-4 grid grid-cols-1 gap-4 sm:mt-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
     {items.map((blog) => (
       <BlogCard key={blog.id} blog={blog} />
     ))}
@@ -42,15 +42,15 @@ const Section = ({ title, items, expanded, onToggle }) => {
   const visible = expanded ? items : items.slice(0, 3);
 
   return (
-    <section className="mt-10">
-      <div className="flex items-center justify-between">
+    <section className="mt-8 sm:mt-10">
+      <div className="flex items-center justify-between gap-3">
         <h3 className="text-[18px] font-medium text-[#171717] sm:text-[24px]">{title}</h3>
 
         {items.length > 3 && (
           <button
             type="button"
             onClick={onToggle}
-            className="flex items-center gap-2 text-[14px] text-[#2A4EBB]"
+            className="flex shrink-0 items-center gap-1.5 text-[13px] text-[#2A4EBB] sm:gap-2 sm:text-[14px]"
           >
             {expanded ? "Daha az" : "Hamısına bax"}
             <ArrowIcon />
@@ -106,13 +106,13 @@ const Blogs = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p className="text-[32px] font-semibold">Bloqlar</p>
+      <p className="text-[24px] font-semibold sm:text-[32px]">Bloqlar</p>
 
-      <p className="text-[#737373] text-[24px]">
+      <p className="text-[#737373] text-[16px] sm:text-[24px]">
         Təcrübələrini paylaş, öyrən və akademik müzakirələrə qoşul.
       </p>
 
-      <div className="mt-8">
+      <div className="mt-5 sm:mt-8">
         <SearchBar
           value={search}
           onChange={setSearch}
@@ -121,7 +121,7 @@ const Blogs = () => {
         />
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4 sm:mt-6">
         <CategoryChips
           categories={categories}
           selected={filters.categories}
@@ -130,7 +130,7 @@ const Blogs = () => {
       </div>
 
       {isFiltering ? (
-        <section className="mt-10">
+        <section className="mt-8 sm:mt-10">
           {results.length > 0 ? (
             <Grid items={results} />
           ) : (
@@ -156,13 +156,13 @@ const Blogs = () => {
           />
 
           {/* Bütün bloqlar: üfüqi kartlarla siyahı */}
-          <section className="mt-10">
+          <section className="mt-8 sm:mt-10">
             <h3 className="text-[18px] font-medium text-[#171717] sm:text-[24px]">
               Bütün bloqlar
             </h3>
 
             {/* Hamısı bir ümumi çərçivədə, sətirlər xətlə ayrılır */}
-            <div className="mt-5 divide-y divide-[#E5E5E5] overflow-hidden rounded-[20px] border border-[#D9D9D9] bg-white">
+            <div className="mt-4 divide-y divide-[#E5E5E5] overflow-hidden rounded-[16px] border border-[#D9D9D9] bg-white sm:mt-5 sm:rounded-[20px]">
               {latest.slice(0, visibleCount).map((blog) => (
                 <BlogListCard key={blog.id} blog={blog} />
               ))}
@@ -172,7 +172,7 @@ const Blogs = () => {
               <button
                 type="button"
                 onClick={() => setVisibleCount((c) => c + LIST_STEP)}
-                className="mt-5 flex w-full items-center justify-center gap-2 rounded-full border border-[#C7D3FB] bg-white py-3 text-[14px] text-[#404040]"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-[#C7D3FB] bg-white py-3 text-[13px] text-[#404040] sm:mt-5 sm:text-[14px]"
               >
                 Daha çoxuna bax
                 <ChevronDownIcon />
