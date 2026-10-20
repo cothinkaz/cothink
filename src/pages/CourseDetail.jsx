@@ -42,8 +42,16 @@ const CourseDetail = () => {
   } 
 
   const getEmbedUrl = (url) => {
-    const videoUrl = url?.split("youtu.be/")[1]?.split("?")[0];
-    return `https://www.youtube.com/embed/${videoUrl}`;
+         if(!url) return '';
+    try{
+      const parsed =new URL(url)
+      const videoUrl = parsed.searchParams.get('v') || parsed.pathname.split("/")[1].filter(Boolean).pop();
+
+    return videoUrl ? `https://www.youtube.com/embed/${videoUrl}` : "";
+    }
+    catch{
+      return '';
+    }
   };
 
   const handleNext = () => {
@@ -186,12 +194,14 @@ const CourseDetail = () => {
             <button
               className="flex items-center gap-2 px-5 py-2 border border-gray-200 bg-white rounded-full"
               onClick={handlePrev}
+              disabled={currentIndex === 0}
             > <IoIosArrowBack fontSize={20}/>
               Əvvəlki
             </button>
             <button
               className="flex items-center gap-2 items-center px-5 py-2 bg-indigo-400 text-white rounded-full"
               onClick={handleNext}
+              disabled = {currentIndex => (course.lessons?.length || 0) -1}
             >
               Növbəti <IoIosArrowForward fontSize={20}/>
             </button>
@@ -321,8 +331,11 @@ const CourseDetail = () => {
             <div className="bg-gray-100 shadow-md rounded-md px-5 py-2">
               {course?.lessons && course?.lessons.length > 0 ? (
                 course.lessons.map((lesson, index) => (
-                  <div
+                  <button
                     key={`${lesson.lesson_title}-${index}`}
+                    onClick={()=>{setCurrentIndex(index)
+                            setOpenLesson(index)
+                  }}
                     className="w-full mt-5 mb-5 bg-white rounded-md px-4 py-3 shadow-md"
                   >
                     <div className="cursor-pointer">
@@ -335,7 +348,7 @@ const CourseDetail = () => {
 }
                        
                       </div>
-                      <div className="text-gray-400">3 dəq 45 san</div>
+                      <div className="text-left text-gray-400">3 dəq 45 san</div>
                       {
                         openLesson === index && (
                           <>
@@ -347,7 +360,7 @@ const CourseDetail = () => {
                         )
                       }
                     </div>
-                  </div>
+                  </button>
                 ))
               ) : (
                 <p className="font-bold col-span-4 text-center text-xl">Dərs tapılmadı</p>
