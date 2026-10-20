@@ -9,11 +9,12 @@ const SearchBar = ({
   placeholder = "Bloqları axtar",
 }) => {
   return (
-    <div className="flex items-center gap-4">
+    // Mobildə alt-alta, sm və yuxarıda yan-yana
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
       {/* Search */}
-      <div className="relative flex-1">
-        <span className="absolute left-5 top-1/2 -translate-y-1/2">
-          <img src={searchIcon} alt="search" />
+      <div className="relative w-full sm:flex-1">
+        <span className="absolute left-4 top-1/2 -translate-y-1/2 sm:left-5">
+          <img src={searchIcon} alt="search" className="h-5 w-5" />
         </span>
 
         <input
@@ -21,7 +22,7 @@ const SearchBar = ({
           placeholder={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="h-[50px] w-full rounded-full border border-[#D9D9D9] pl-14 pr-5 text-[16px] outline-none"
+          className="h-[44px] w-full rounded-full border border-[#D9D9D9] pl-12 pr-4 text-[14px] outline-none sm:h-[50px] sm:pl-14 sm:pr-5 sm:text-[16px]"
         />
       </div>
 
@@ -29,7 +30,7 @@ const SearchBar = ({
       <button
         type="button"
         onClick={onFilterClick}
-        className="flex h-[50px] items-center gap-3 rounded-full border border-[#D9D9D9] px-6 text-[16px] text-[#404040]"
+        className="flex h-[44px] w-full shrink-0 items-center justify-center gap-2 rounded-full border border-[#D9D9D9] px-6 text-[14px] text-[#404040] sm:h-[50px] sm:w-auto sm:gap-3 sm:text-[16px]"
       >
         <img src={filterIcon} alt="" />
         Filtrlə
