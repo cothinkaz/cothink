@@ -8,7 +8,7 @@ import Categories from '../components/Categories';
 import {Link} from "react-router-dom";
 import {CiFilter} from "react-icons/ci"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-const categories = [ "Frontend", "Backend", "Fullstack", "Data Science", "DevOps", "Mobile Development"];
+const categories = [ "Hamısı","Frontend", "Backend", "Fullstack", "Data Science", "DevOps", "Mobile Development"];
 const handleFilter= ()=>{
   return 
 }
@@ -103,7 +103,7 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [query, setQuery] = useState("");
   const [openFilterModal, setOpenFilterModal] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Hamısı");
+  const [selectedCategory, setSelectedCategory] = useState('Hamısı');
   const [openCategories, setOpenCategories] = useState(false)
   const filteredCourses = courses.filter((course) => {
     const searchedQuery = query.toLowerCase();
@@ -159,14 +159,10 @@ const Courses = () => {
           </div>
                 
         <div className="categories flex gap-2 mt-4 flex-wrap">
-           <button
-
-              className='cursor-pointer py-2 px-4 rounded-full border border-gray-200 text-gray-700'
-              onClick={() => setOpenCategories(true)}
-            >
-              Hamısı
-            </button>
+          
           {categories.map((category, index) => (
+            <>
+          
             <button
               key={index}
               className={`cursor-pointer py-2 px-4 rounded-full ${
@@ -179,6 +175,7 @@ const Courses = () => {
               }}>
               {category}
             </button>
+            </>
           ))}
           <button
 
@@ -194,7 +191,7 @@ const Courses = () => {
         )   : <>
   <div className="flex justify-between items-center mb-4 mt-4">
         <h2 className="text-xl font-semibold">Tövsiyyə olunan kurslar</h2>
-        <a className="flex gap-2 items-center text-indigo-600">Hamısına bax  <IoIosArrowForward fontSize={20}/></a>
+        <a className="flex gap-2 items-center text-indigo-600 cursor-pointer" onClick={()=>setSelectedCategory('Hamısı')}>Hamısına bax  <IoIosArrowForward fontSize={20}/></a>
       </div>
 
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
