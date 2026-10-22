@@ -19,4 +19,6 @@ import discussionImage from "../assets/messages-2.svg"
 import progressImage from "../assets/chart.svg"
 import learningImage from "../assets/star.svg"
 import profileImage from "../assets/avatarr.svg"
-export {profileImage, mainLogo, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage}
+
+
+export {profileImage, mainLogo, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage }

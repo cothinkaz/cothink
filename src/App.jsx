@@ -10,6 +10,8 @@ import CourseDetail from "./pages/CourseDetail";
 import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
 import Certificates from "./pages/Certificates/Certificates";
 import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificateDetailsPage";
+import QuestionFeed from "./pages/PostCard/QuestionFeed";
+import PostDetails from "./pages/PostCard/PostDetails";
 
 function App() {
   return (
@@ -22,13 +24,15 @@ function App() {
             <Route path="/courses/:id" element={<CourseDetail />} />
             <Route path="/certificates" element={<Certificates />} />
             <Route path="/details/:id" element={<CertificatesDetails />} />
+            <Route path="/post" element={<QuestionFeed />} />
+            <Route path="/post/:id" element={<PostDetails />} />
             <Route
               path="/verify/:id"
               element={<PublicCertificateDetailsPage />}
             />
             {/*<Route path="/profile" element={<Profile />} />*/}
           </Route>
-          {/*<Route path="*" element={<NotFound />} />*/}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
