@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { ratingImage, durationImage, eyeImage, profileImage, playImage, saveImage } from "../assets/assets";
+import { ratingImage, durationImage, eyeImage, progressImage, certificateImage,profileImage, playImage,   courseImage, saveImage } from "../assets/assets";
 import { IoIosNotificationsOutline, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -120,14 +120,14 @@ const CourseDetail = () => {
       <h4 className="text-lg font-semibold">Kursa daxildir:</h4>
       <div className='flex gap-3 w-full '>
       <div className='flex-col gap-4 space-y-3 mt-3 text-gray-400'>
-        <p>Başlanğıc səviyyə</p>
-        <p>20 video dərs</p>
-        <p>{course.duration}</p>
+        <p className='flx gap-3'><img src={progressImage}/>Başlanğıc səviyyə</p>
+        <p className='flex gap-3'><img src={courseImage}/>20 video dərs</p>
+        <p className='flex gap-3'><img src={durationImage}/>{course.duration}</p>
       </div>
         <div className='flex-col gap-4  space-y-3 mt-3 text-gray-400'>
         <p>Azərbaycan dilində</p>
         <p>20 Quiz</p>
-        <p>Sertifikat</p>
+        <p className='flex gap-3'><img src={certificateImage}/>Sertifikat</p>
       </div>
       </div>
         </div>
@@ -336,7 +336,7 @@ const CourseDetail = () => {
                     onClick={()=>{setCurrentIndex(index)
                             setOpenLesson(index)
                   }}
-                    className="w-full mt-5 mb-5 bg-white rounded-md px-4 py-3 shadow-md"
+                    className="w-full mt-2 mb-2 bg-white rounded-md px-4 py-3 shadow-md"
                   >
                     <div className="cursor-pointer">
                       <div className="flex w-full justify-between">
