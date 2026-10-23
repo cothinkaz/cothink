@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -21,6 +20,8 @@ import SlideReader from "./pages/SlideReader";
 import Certificates from "./pages/Certificates/Certificates";
 import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
 import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificateDetailsPage";
+import QuestionFeed from "./pages/PostCard/QuestionFeed";
+import PostDetails from "./pages/PostCard/PostDetails";
 
 import NotFound from "./pages/NotFound";
 
@@ -37,9 +38,11 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
 
-
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/details/:id" element={<CertificatesDetails />} />
+          <Route path="/details/:id" element={<CertificatesDetails />} />
+          <Route path="/post" element={<QuestionFeed />} />
+          <Route path="/post/:id" element={<PostDetails />} />
           <Route
             path="/verify/:id"
             element={<PublicCertificateDetailsPage />}
@@ -47,10 +50,7 @@ function App() {
 
           <Route path="/library" element={<Resources />} />
           <Route path="/library/blogs" element={<Blogs />} />
-          <Route
-            path="/library/blogs/:id"
-            element={<BlogDetails />}
-          />
+          <Route path="/library/blogs/:id" element={<BlogDetails />} />
 
           <Route path="/library/resources" element={<Resources />} />
           <Route
@@ -68,22 +68,10 @@ function App() {
         </Route>
 
         {/* Full-screen readers */}
-        <Route
-          path="/library/resources/read/:id"
-          element={<BookReader />}
-        />
-        <Route
-          path="/library/resources/read"
-          element={<BookReader />}
-        />
-        <Route
-          path="/library/resources/slide/:id"
-          element={<SlideReader />}
-        />
-        <Route
-          path="/library/resources/slide"
-          element={<SlideReader />}
-        />
+        <Route path="/library/resources/read/:id" element={<BookReader />} />
+        <Route path="/library/resources/read" element={<BookReader />} />
+        <Route path="/library/resources/slide/:id" element={<SlideReader />} />
+        <Route path="/library/resources/slide" element={<SlideReader />} />
 
         {/* 404 page */}
         <Route path="*" element={<NotFound />} />
