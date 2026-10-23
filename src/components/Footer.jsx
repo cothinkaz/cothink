@@ -86,16 +86,16 @@ const Footer = ()=>{
             </form>
             <ul className="flex md:justify-end justify-center items-center gap-3">
                 <li>
-                    <a href="https://www.facebook.com/cothink.az"><img src={footerFacebook}/></a>
+                    <a href="https://www.facebook.com/cothink.az" target='_blank'><img src={footerFacebook}/></a>
                 </li>
                   <li>
-                    <a href="https://www.instagram.com/cothink.az"><img src={footerInstagram}/></a>
+                    <a href="https://www.instagram.com/cothink.az" target='_blank'><img src={footerInstagram}/></a>
                 </li>
                   <li>
-                    <a href="https://www.linkedin.com/company/cothink.az"><img src={footerLinkedin}/></a>
+                    <a href="https://www.linkedin.com/company/cothink.az" target='_blank'><img src={footerLinkedin}/></a>
                 </li>
                   <li>
-                    <a href=""><img src={footerYoutube}/></a>
+                    <a href="/"><img src={footerYoutube} target='_blank'/></a>
                 </li>
             </ul>
         </div>

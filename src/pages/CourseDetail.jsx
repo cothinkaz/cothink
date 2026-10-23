@@ -120,7 +120,7 @@ const CourseDetail = () => {
       <h4 className="text-lg font-semibold">Kursa daxildir:</h4>
       <div className='flex gap-3 w-full '>
       <div className='flex-col gap-4 space-y-3 mt-3 text-gray-400'>
-        <p className='flx gap-3'><img src={progressImage}/>Başlanğıc səviyyə</p>
+        <p className='flex gap-3'><img src={progressImage}/>Başlanğıc səviyyə</p>
         <p className='flex gap-3'><img src={courseImage}/>20 video dərs</p>
         <p className='flex gap-3'><img src={durationImage}/>{course.duration}</p>
       </div>
@@ -258,13 +258,7 @@ const CourseDetail = () => {
           </div>
             </>
 
-          }
-        
-
-       
-
-   
-
+          }               
           <form className="mt-5 mb-5" onSubmit={(e) => e.preventDefault()}>
             {error && (
               <p className="text-center text-red-600 bg-red-50 rounded-md p-2 font-bold text-lg mb-3">
