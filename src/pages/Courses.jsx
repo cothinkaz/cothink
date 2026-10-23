@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import  {FaRegCircleUser} from "react-icons/fa6";
 import {FaStar } from "react-icons/fa"
-import {courseBanner, saveImage,searchImage, playImage} from '../assets/assets';
+import {courseBanner, notFoundImage,saveImage,searchImage, playImage} from '../assets/assets';
 import Categories from '../components/Categories';
 import {Link} from "react-router-dom";
 import {CiFilter} from "react-icons/ci"
@@ -125,8 +125,8 @@ const Courses = () => {
     setQuery(event.target.value);
   }
   const recommendedCourses = filteredCourses.slice(0,3)
-  const latestCourses = courses.filter(course=>course.addedDate).sort((a,b)=>new Date(b.addedDate) - new Date(a.addedDate)).slice(0,3)
-  const popularCourses = courses.filter(course=>course.rating).sort((a,b)=>b.rating - a.rating).slice(0,3)
+  const latestCourses = [...filteredCourses].filter(course=>course.addedDate).sort((a,b)=>new Date(b.addedDate) - new Date(a.addedDate)).slice(0,3)
+  const popularCourses = [...filteredCourses].filter(course=>course.rating).sort((a,b)=>b.rating - a.rating).slice(0,3)
   
   return (
     <div>
@@ -158,7 +158,7 @@ const Courses = () => {
           </div>
           </div>
                 
-        <div className="categories flex gap-2 mt-4 flex-wrap">
+        <div className="categories flex gap-2 mt-4 mb-4 flex-wrap">
           
           {categories.map((category, index) => (
             <>
@@ -189,74 +189,92 @@ const Courses = () => {
             <Categories/>
         </>
         )   : <>
+   {recommendedCourses.length > 0 ? (
+    <>
   <div className="flex justify-between items-center mb-4 mt-4">
         <h2 className="text-xl font-semibold">Tövsiyyə olunan kurslar</h2>
         <a className="flex gap-2 items-center text-indigo-600 cursor-pointer" onClick={()=>setSelectedCategory('Hamısı')}>Hamısına bax  <IoIosArrowForward fontSize={20}/></a>
       </div>
 
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-        {recommendedCourses.map((course, index) => (
-          <div key={course.id || index} className="relative bg-white shadow-lg border border-gray-100 rounded-lg p-4 space-y-4">
-            <img src={course.image} alt="" className="w-full h-48 object-cover rounded-md" />
-            <a className="absolute top-2 right-2 bg-white p-2 rounded-full">
-              <img src={saveImage} alt="save" />
-            </a>
-                  <div className="flex justify-between">
-              <span className="bg-indigo-200 text-indigo-800 px-3 py-1.5 text-xs font-semibold rounded-full">
-                {course.category}
-              </span>
-              <div className="flex items-center gap-3 text-sm text-gray-500">
-                <span>⭐ {course.rating}</span>
-                <span>{course.students}</span>
-              </div>
-            </div>
-                 {
-                  course.started === true ? 
-                  <>            
-                    <p>{course.name}</p>
-            <div className="flex gap-3">
-              <FaRegCircleUser fontSize={24} />
-              <h6 className="font-medium text-sm">{course.author}</h6>
-            </div>
-             <div className="mt-4 mb-4 flex h-2.5 w-full overflow-hidden rounded-full bg-gray-200 text-xs font-medium">
-              <div className="flex h-full w-1/2 items-center justify-center overflow-hidden bg-indigo-600/50 text-white"></div>
-            </div>
-              <div className="flex justify-between text-xs">
-              <p className="text-gray-400">19/20 dərs tamamlandı</p>
-              <a>Sonuncu 2 gün əvvəl</a>
-            </div>
-                 <Link className="flex gap-2 items-center justify-center text-white block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" to={`/courses/${course.id}`}>
-           <img src={playImage}/>   Davam et 
-            </Link>
-                  </>
-                   : (
-                    <>
-                    
-            <p>{course.name}</p>          
-<div className="flex gap-3">
-              <FaRegCircleUser fontSize={24} />
-              <h6 className="font-medium text-sm">{course.author}</h6>
-            </div>
-<div className="flex justify-between items-center mt-4 mb-4">
+  {recommendedCourses.map((course) => (
+    <div
+      key={course.id}
+      className="relative rounded-lg border border-gray-100 bg-white p-4 shadow-lg space-y-4"
+    >
+      <img
+        src={course.image}
+        alt={course.name}
+        className="h-48 w-full rounded-md object-cover"
+      />
 
-              <div>
-                <p className="text-gray-400">20 dərs</p>
-                <p className="text-gray-400">42 saat</p>
-              </div>
-              <h2 className="text-xl font-bold">35 AZN</h2>
-            </div>
-              <Link className="block font-semibold bg-indigo-500 text-white flex-1 w-full text-center py-2 px-4 rounded-full" to ={`/courses/${course.id}`}>
-              Kursa başla
-            </Link>
-            </>
-                   )
-                 }
-          </div>
-        ))}
+      <div className="flex justify-between">
+        <span className="rounded-full bg-indigo-200 px-3 py-1.5 text-xs font-semibold text-indigo-800">
+          {course.category}
+        </span>
+        <span>⭐ {course.rating}</span>
       </div>
-          <h2 className="font-semibold text-xl mt-4">Populyar olan kurslar</h2>
-  <div className="grid md:grid-cols-3 grid-cols-1 gap-4 mt-4">
-        {popularCourses.map((course, index) => (
+
+      <p className="font-semibold">{course.name}</p>
+
+      <div className="flex gap-3">
+        <FaRegCircleUser fontSize={24} />
+        <h6 className="text-sm font-medium">{course.author}</h6>
+      </div>
+
+      {course.started === true ? (
+        <>
+          <div className="h-2.5 w-full overflow-hidden rounded-full bg-gray-200">
+            <div className="h-full w-1/2 bg-indigo-600/50" />
+          </div>
+          <p className="text-xs text-gray-400">19/20 dərs tamamlandı</p>
+          <Link
+            to={`/courses/${course.id}`}
+            className="block w-full rounded-full bg-indigo-600 px-4 py-2 text-center font-semibold text-white"
+          >
+            Davam et
+          </Link>
+        </>
+      ) : (
+        <>
+          <div className="flex justify-between">
+            <p className="text-gray-400">20 dərs</p>
+            <h2 className="text-xl font-bold">{course.price}</h2>
+          </div>
+          <Link
+            to={`/courses/${course.id}`}
+            className="block w-full rounded-full bg-indigo-600 px-4 py-2 text-center font-semibold text-white"
+          >
+            Kursa başla
+          </Link>
+        </>
+      )}
+    </div>
+  ))
+}
+
+</div>
+</>)
+ : (
+  <div className='mt-4 space-y-4'>
+    <div className='flex justify-center mt-4 mb-4'>
+    <img src={notFoundImage}/>
+  </div>
+  <h2 className='mt-2 mb-2 text-center font-semibold text-xl'>Nəticə tapılmadı</h2>
+     <p className=" text-center text-gray-500">
+    Axtarışa uyğun kurs tapılmadı.
+  </p>
+  </div>
+ 
+)}
+   
+      {
+        popularCourses.length>0 && (
+          <>
+       <h2 className="font-semibold text-xl mt-4">Populyar olan kurslar</h2>
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-4 mt-4">
+{popularCourses.map((course, index) => (
+          <>
           <div key={`${course.id || index}-popular`} className="relative bg-white shadow-lg border border-gray-100 rounded-lg p-4 space-y-4">
             <img src={course.image} alt="" className="w-full h-48 object-cover rounded-md" />
             <a className="absolute top-2 right-2 bg-white p-2 rounded-full">
@@ -291,8 +309,16 @@ const Courses = () => {
               Kursa başla
             </Link>
           </div>
+            
+          </>
+
         ))}
-      </div>
+    </div>
+    </>
+    )}
+        {
+          latestCourses.length>0 && (
+            <>
        <h2 className="font-semibold text-xl mt-4">Ən son paylaşılanlar</h2>
           <div className="grid md:grid-cols-3 grid-cols-1 gap-4 mt-4">
         {latestCourses.map((course, index) => (
@@ -311,7 +337,6 @@ const Courses = () => {
                 <span>{course.students}</span>
               </div>
             </div>
-
             <p>{course.name}</p>
             <div className="flex gap-3">
               <FaRegCircleUser fontSize={24} />
@@ -332,6 +357,7 @@ const Courses = () => {
           </div>
         ))}
       </div>
+      </>)}
         </>}
       <FilterModal
         open={openFilterModal}
