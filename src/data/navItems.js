@@ -28,7 +28,7 @@
     ]
   },
    {
-    to:"/discussion",
+    to:"/post",
     title: "Forum",
     src:discussionImage
 },
