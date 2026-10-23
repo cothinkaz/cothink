@@ -1,3 +1,4 @@
+
 [
   {
     "id": 1,
@@ -6,8 +7,8 @@
     "duration": "6 ay",
     "image": "https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
     "description": "Əsas hesablamalardan diferensial və inteqral hesablamalara qədər riyaziyyat kursu.",
-    "level": "Başlanğıcdan irəli səviyyəyə",
-    "rating": "4.7/5",
+    "level": "yüksək",
+    "rating": 4.7,
     "students": 777,
     "author": "Aysel Məmmədova",
     "authorImage": "",
@@ -15,7 +16,7 @@
     "started": false,
     "authorPosition": "Riyaziyyat müəllimi",
     "authorBio": "Riyaziyyat üzrə 10 ildən çox təcrübəyə malik müəllim.",
-    "price": "35 AZN",
+    "price": 35,
     "lessons": [
       {
         "id": 1,
@@ -50,8 +51,8 @@
     "duration": "3 ay",
     "image": "https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
     "description": "Proqramlaşdırmanın əsasları, alqoritmlər və kod yazmağa giriş.",
-    "level": "Başlanğıc",
-    "rating": "4.8/5",
+    "level": "başlanğıc",
+    "rating": 4.8,
     "students": 1250,
     "author": "Rəşad Əliyev",
     "authorImage": "",
@@ -59,7 +60,7 @@
     "started": true,
     "authorPosition": "Proqramlaşdırma təlimçisi",
     "authorBio": "Proqramlaşdırma üzrə 3 ildən çox təcrübəyə malik təlimçi.",
-    "price": "40 AZN",
+    "price": 40,
     "lessons": [
       {
         "id": 1,
@@ -94,8 +95,8 @@
     "duration": "4 ay",
     "image": "https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
     "description": "HTML, CSS və JavaScript vasitəsilə interaktiv və responsiv veb səhifələrin hazırlanması.",
-    "level": "Başlanğıcdan orta səviyyəyə",
-    "rating": "4.9/5",
+    "level": "orta",
+    "rating": 4.9,
     "students": 980,
     "author": "Nigar Həsənova",
     "authorImage": "",
@@ -103,7 +104,7 @@
     "started": true,
     "authorPosition": "Veb proqramlaşdırma təlimçisi",
     "authorBio": "Frontend texnologiyaları üzrə 5 ildən çox təcrübəyə malik təlimçi.",
-    "price": "50 AZN",
+    "price": 50,
     "lessons": [
       {
         "id": 1,
@@ -134,12 +135,12 @@
   {
     "id": 4,
     "name": "Frontend proqramlaşdırma",
-    "category": "Proqramlaşdırma",
+    "category": "Frontend",
     "duration": "5 ay",
     "image": "https://th.bing.com/th/id/OIP.RNntqeMcSbL4reOudFBgAwHaEu?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
     "description": "React, komponentlər, state idarəetməsi və API inteqrasiyası ilə müasir veb tətbiqlərin hazırlanması.",
-    "level": "Orta",
-    "rating": "4.8/5",
+    "level": "orta",
+    "rating": 4.8,
     "students": 860,
     "author": "Elvin Quliyev",
     "authorImage": "",
@@ -147,7 +148,7 @@
     "started": false,
     "authorPosition": "Frontend developer və mentor",
     "authorBio": "React və JavaScript üzrə praktiki layihələrdə təcrübəli mentor.",
-    "price": "60 AZN",
+    "price": 60,
     "lessons": [
       {
         "id": 1,
@@ -182,8 +183,8 @@
     "duration": "4 ay",
     "image": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800",
     "description": "Gündəlik ünsiyyət, qrammatika, dinləmə və danışıq bacarıqlarını inkişaf etdirən ingilis dili kursu.",
-    "level": "Başlanğıc və orta səviyyə",
-    "rating": "4.6/5",
+    "level": "başlanğıc",
+    "rating": 4.6,
     "students": 1120,
     "author": "Leyla İsmayılova",
     "authorImage": "",
@@ -191,7 +192,7 @@
     "started": false,
     "authorPosition": "İngilis dili müəllimi",
     "authorBio": "Ünsiyyət yönümlü dil tədrisi üzrə təcrübəli müəllim.",
-    "price": "45 AZN",
+    "price": 45,
     "lessons": [
       {
         "id": 1,
@@ -225,9 +226,9 @@
     "category": "Dizayn",
     "duration": "3 ay",
     "image": "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800",
-    "description": "Rəng nəzəriyyası, tipoqrafiya və vizual kompozisiya prinsipləri ilə dizayn bacarıqlarının inkişafı.",
-    "level": "Başlanğıc",
-    "rating": "4.7/5",
+    "description": "Rəng nəzəriyyəsi, tipoqrafiya və vizual kompozisiya prinsipləri ilə dizayn bacarıqlarının inkişafı.",
+    "level": "başlanğıc",
+    "rating": 4.7,
     "students": 690,
     "author": "Murad Rzayev",
     "authorImage": "",
@@ -235,7 +236,7 @@
     "started": true,
     "authorPosition": "Qrafik dizayner və mentor",
     "authorBio": "Brendinq və rəqəmsal dizayn sahəsində təcrübəli mentor.",
-    "price": "55 AZN",
+    "price": 55,
     "lessons": [
       {
         "id": 1,

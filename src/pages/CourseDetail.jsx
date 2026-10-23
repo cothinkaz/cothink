@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { ratingImage, durationImage, eyeImage, progressImage, certificateImage,profileImage, playImage,   courseImage, saveImage } from "../assets/assets";
+import { ratingImage, durationImage, eyeImage, learningImage, progressImage, certificateImage,profileImage, playImage, libraryImage,   courseImage, saveImage } from "../assets/assets";
 import { IoIosNotificationsOutline, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -56,13 +56,13 @@ const CourseDetail = () => {
 
   const handleNext = () => {
     if (currentIndex < course.lessons.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((prev)=>prev+1);
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex((prev)=>prev-1);
     }
   };
   const handleSendComment = () => {
@@ -118,15 +118,15 @@ const CourseDetail = () => {
     </div>
     <div className='course-include mb-3'>
       <h4 className="text-lg font-semibold">Kursa daxildir:</h4>
-      <div className='flex gap-3 w-full '>
+      <div className='flex gap-7 w-full '>
       <div className='flex-col gap-4 space-y-3 mt-3 text-gray-400'>
         <p className='flex gap-3'><img src={progressImage}/>Başlanğıc səviyyə</p>
         <p className='flex gap-3'><img src={courseImage}/>20 video dərs</p>
         <p className='flex gap-3'><img src={durationImage}/>{course.duration}</p>
       </div>
         <div className='flex-col gap-4  space-y-3 mt-3 text-gray-400'>
-        <p>Azərbaycan dilində</p>
-        <p>20 Quiz</p>
+        <p className='flex gap-3'><img src={libraryImage}/>Azərbaycan dilində</p>
+        <p className='flex gap-3'><img src={learningImage}/>20 Quiz</p>
         <p className='flex gap-3'><img src={certificateImage}/>Sertifikat</p>
       </div>
       </div>
@@ -192,16 +192,16 @@ const CourseDetail = () => {
 
           <div className="flex justify-between mt-3">
             <button
-              className="flex items-center gap-2 px-5 py-2 border border-gray-200 bg-white rounded-full"
+              className="cursor-pointer flex items-center gap-2 px-5 py-2 border border-gray-200 bg-white rounded-full"
               onClick={handlePrev}
               disabled={currentIndex === 0}
             > <IoIosArrowBack fontSize={20}/>
               Əvvəlki
             </button>
             <button
-              className="flex items-center gap-2 items-center px-5 py-2 bg-indigo-400 text-white rounded-full"
+              className="cursor-pointer flex items-center gap-2 items-center px-5 py-2 bg-indigo-400 text-white rounded-full"
               onClick={handleNext}
-              disabled = {currentIndex => (course.lessons?.length || 0) -1}
+              disabled = {currentIndex>= (course.lessons.length || 0)-1}
             >
               Növbəti <IoIosArrowForward fontSize={20}/>
             </button>
@@ -253,6 +253,13 @@ const CourseDetail = () => {
             <div className="rounded-md bg-white p-5">
               <p className="text-gray-600 leading-7">
                 {courseTabs.find((tab) => tab.key === activeTab)?.content}
+                {
+                 activeTab === 'notes' && (
+                    <>
+                    <textarea disabled rows={5} className='w-full resize-y rounded-md border border-gray-300  p-3 outline-none '/>
+                    </>
+                  )
+                }
               </p>
             </div>
           </div>
