@@ -8,15 +8,16 @@ const Footer = ()=>{
     const isValidEmail = (email)=>emailRegex.test(email);
     const sendEmail = (e) => {
     e.preventDefault();
-    if (!email.trim()) {
-      setError("Zəhmət olmasa email ünvanınızı daxil edin.");
+    if (!email) {
+      setError("E-poçt ünvanı boş ola bilməz!");
+      return;
     }
    if(!isValidEmail(email)) {
-        setError("Email ünvanı yanlışdır.");
+        setError("Zəhmət olmasa, düzgün e-poçt ünvanı daxil edin (məsələn:ad@domain.com).");
     }
     else {
       setError('');
-      alert("Email göndərildi");
+      alert("E-poçt göndərildi");
       setEmail("");
     }
   };
@@ -84,8 +85,8 @@ const Footer = ()=>{
             <h4 className="text-sm font-semibold">Yeniliklərdən xəbərdar olun.</h4>
            <p className="text-sm text-gray-400">Email ünvanınızı daxil edin və yeni kurslar, tədbirlər haqqında ilk məlumatı əldə edin.</p>
               {error && <p className="text-red-500 text-sm">{error}</p>}
-            <form className="flex mt-3 justify-between gap-2" onSubmit={sendEmail}>
-                <input type="email" className="flex-1 border border-indigo-800 outline-none text-indigo-800 text-center rounded-full px-7 py-2 w-full" required placeholder="E-poçt ünvanınız" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+            <form className="flex mt-3 justify-between gap-2" onSubmit={sendEmail} noValidate>
+                <input type="email" className="flex-1 border border-indigo-800 outline-none text-indigo-800 text-center rounded-full px-7 py-2 w-full" placeholder="E-poçt ünvanınız" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
                 <button type="submit" className="flex-1 cursor-pointer items-center justify-center rounded-full bg-indigo-700 px-4 py-2 text-sm font-semibold text-white">Abunə ol</button>
             </form>
             <ul className="flex md:justify-end justify-center items-center gap-3">
