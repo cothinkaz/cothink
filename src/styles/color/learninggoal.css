@@ -1,0 +1,19 @@
+@theme {
+    --color-ink: #050505;
+    --color-muted: #595959;
+    --color-on-brand: #ffffff;
+    --color-surface: #ffffff;
+    --color-border: #e5e5e5;
+    --color-track: #d9d9d9;
+    --color-brand: #4468D5;
+    --color-brand-hover: #223fa3;
+    --color-brand-title: #213D92;
+    --color-brand-ink: #182B68;
+    --color-tab-active: #2A4EBB;
+    --color-tab-active-text: #D9D9D9;
+    --color-day: #5EA4FF;
+    --color-icon-tile: #e6ecff;
+    --color-card-from: #F5F7FF;
+    --color-card-mid: #F3F2FF;
+    --color-card-to: #FBF6FF;
+}
