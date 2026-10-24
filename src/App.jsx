@@ -23,6 +23,11 @@ import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificate
 import QuestionFeed from "./pages/PostCard/QuestionFeed";
 import PostDetails from "./pages/PostCard/PostDetails";
 
+import LearningGoal from "./pages/LearningGoal/LearningGoal";
+import StreakHistory from "./pages/LearningGoal/StreakHistory";
+import Badges from "./pages/LearningGoal/Badges";
+import Coupons from "./pages/LearningGoal/Coupons";
+
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -43,6 +48,11 @@ function App() {
           <Route path="/details/:id" element={<CertificatesDetails />} />
           <Route path="/post" element={<QuestionFeed />} />
           <Route path="/post/:id" element={<PostDetails />} />
+          
+          <Route path="/learning-goal" element={<LearningGoal />} />
+          <Route path="/learning-goal/streak-history" element={<StreakHistory />} />
+          <Route path="/learning-goal/badges" element={<Badges />} />
+          <Route path="/learning-goal/coupons" element={<Coupons />} />
           <Route
             path="/verify/:id"
             element={<PublicCertificateDetailsPage />}
