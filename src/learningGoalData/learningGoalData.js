@@ -5,6 +5,7 @@ const badgeImages = import.meta.glob("../assets/learning-goal/badges/*.{png,svg,
 });
 import motivation from "../assets/learning-goal/badges/motivation.svg";
 import locked from "../assets/learning-goal/badges/locked.svg";
+import weekTarget from "../assets/learning-goal/badges/hedef.svg";
 const img = (name) => badgeImages[`../assets/learning-goal/badges/${name}`] ?? null;
 
 export const illustrations = {
@@ -12,7 +13,7 @@ export const illustrations = {
     return getStreakMascot(streak.current);
   },
   motivation,
-  weekTarget: null,
+  weekTarget,
   gift: null,
   mountain: null,
   emptyCoupons: null,

@@ -1,11 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
-=======
-import Home from './pages/Home';
-import LearningGoal from './pages/LearningGoal';
-function App() {
->>>>>>> dada0ce5ba5b85cd4edb416b10641d1d81d04101
 
 import MainLayout from "./MainLayout";
 import ScrollToTop from "./components/ScrollToTop";
@@ -42,7 +36,6 @@ function App() {
       <ScrollToTop />
 
       <Routes>
-<<<<<<< HEAD
         {/* Main layout and website pages */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
@@ -52,10 +45,9 @@ function App() {
 
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/details/:id" element={<CertificatesDetails />} />
-          <Route path="/details/:id" element={<CertificatesDetails />} />
           <Route path="/post" element={<QuestionFeed />} />
           <Route path="/post/:id" element={<PostDetails />} />
-          
+
           <Route path="/learning-goal" element={<LearningGoal />} />
           <Route path="/learning-goal/streak-history" element={<StreakHistory />} />
           <Route path="/learning-goal/badges" element={<Badges />} />
@@ -92,10 +84,6 @@ function App() {
 
         {/* 404 page */}
         <Route path="*" element={<NotFound />} />
-=======
-        <Route path="/" element={<Home />} />
-        <Route path="/LearningGoal" element={<LearningGoal />} />
->>>>>>> dada0ce5ba5b85cd4edb416b10641d1d81d04101
       </Routes>
     </BrowserRouter>
   );

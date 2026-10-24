@@ -161,7 +161,7 @@ const WeekTab = () => {
           <ImageSlot
             src={illustrations.weekTarget}
             alt="Hədəf"
-            className="h-[96px] w-[96px] sm:h-[180px] sm:w-[180px]"
+            className="h-[96px] w-[96px] sm:h-[220px] sm:w-[220px]"
           />
         </div>
       </section>
