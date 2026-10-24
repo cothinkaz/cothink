@@ -1,4 +1,10 @@
   @import "tailwindcss";
+<<<<<<< HEAD
   footer h3{
     margin-bottom:0.5rem;
   }
+=======
+  @import "./styles/color/learninggoal.css";
+  @import "./styles/typography/learninggoal.css";
+  
+>>>>>>> dada0ce5ba5b85cd4edb416b10641d1d81d04101
