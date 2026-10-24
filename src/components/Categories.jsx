@@ -1,6 +1,5 @@
 
-import categories from '../data/categories'
-
+import categories from '../data/categories';
 const Categories = ()=>{
     return (
         <div class='grid md:grid-cols-3 grid-cols-1 gap-4 mt-4 mb-4'>
@@ -17,4 +16,4 @@ const Categories = ()=>{
         </div>
     )
 }
-export default Categories
+export default Categories;
