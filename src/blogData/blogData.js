@@ -19,6 +19,9 @@ const rawBlogs = [
     likes: 777,
     comments: 14,
     isPopular: true,
+    started: true,
+    progress: 60,
+    completed: false,
   },
   {
     id: 2,
@@ -35,6 +38,9 @@ const rawBlogs = [
     likes: 777,
     comments: 14,
     isPopular: true,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 3,
@@ -51,6 +57,9 @@ const rawBlogs = [
     likes: 777,
     comments: 14,
     isPopular: true,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 4,
@@ -67,6 +76,9 @@ const rawBlogs = [
     likes: 777,
     comments: 14,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 5,
@@ -83,6 +95,9 @@ const rawBlogs = [
     likes: 540,
     comments: 9,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 6,
@@ -99,6 +114,9 @@ const rawBlogs = [
     likes: 912,
     comments: 22,
     isPopular: true,
+    started: true,
+    progress: 35,
+    completed: false,
   },
   {
     id: 7,
@@ -115,6 +133,9 @@ const rawBlogs = [
     likes: 1200,
     comments: 31,
     isPopular: true,
+    started: true,
+    progress: 80,
+    completed: false,
   },
   {
     id: 8,
@@ -131,6 +152,9 @@ const rawBlogs = [
     likes: 430,
     comments: 5,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 9,
@@ -147,6 +171,9 @@ const rawBlogs = [
     likes: 610,
     comments: 11,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 10,
@@ -163,6 +190,9 @@ const rawBlogs = [
     likes: 850,
     comments: 18,
     isPopular: true,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 11,
@@ -179,6 +209,9 @@ const rawBlogs = [
     likes: 490,
     comments: 8,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 12,
@@ -195,6 +228,9 @@ const rawBlogs = [
     likes: 1020,
     comments: 25,
     isPopular: true,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 13,
@@ -211,6 +247,9 @@ const rawBlogs = [
     likes: 810,
     comments: 17,
     isPopular: true,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 14,
@@ -227,6 +266,9 @@ const rawBlogs = [
     likes: 390,
     comments: 6,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 15,
@@ -243,6 +285,9 @@ const rawBlogs = [
     likes: 1150,
     comments: 29,
     isPopular: true,
+    started: true,
+    progress: 45,
+    completed: false,
   },
   {
     id: 16,
@@ -259,6 +304,9 @@ const rawBlogs = [
     likes: 1420,
     comments: 40,
     isPopular: true,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 17,
@@ -275,6 +323,9 @@ const rawBlogs = [
     likes: 560,
     comments: 12,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 18,
@@ -291,6 +342,9 @@ const rawBlogs = [
     likes: 410,
     comments: 7,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 19,
@@ -307,6 +361,9 @@ const rawBlogs = [
     likes: 630,
     comments: 10,
     isPopular: false,
+    started: false,
+    progress: 0,
+    completed: false,
   },
   {
     id: 20,
@@ -323,6 +380,9 @@ const rawBlogs = [
     likes: 880,
     comments: 15,
     isPopular: true,
+    started: false,
+    progress: 0,
+    completed: false,
   },
 ];
 
