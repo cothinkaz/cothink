@@ -48,7 +48,6 @@ const Avatar = ({ src, alt }) => {
   );
 };
 
-
 const categories = [
   "Hamısı",
   "Davam etdiklərim",
@@ -56,22 +55,12 @@ const categories = [
 ];
  
 const Progress=()=>{
-    const CategoryIcon = ({ categoryId, size = 64 }) => {
-  return (
-    <img
-      src={`/svgs/cat_${categoryId}.svg`}
-      alt={`${categoryId} icon`}
-      width={size}
-      height={size}
-      className="object-contain"
-    />
-  );
-};
 
 
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [resources, setResources] = useState([])
+   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState('Hamısı');
   const [openCategories, setOpenCategories] = useState(false)
  
@@ -79,7 +68,50 @@ const Progress=()=>{
     axios.get("/data/courses.json").then((res) => {
       setCourses(res.data);
     });
+
   }, []);
+
+
+ const filterByStatus=(item)=>{
+   if(selectedCategory === 'Davam etdiklərim'){
+    return item.started ===true && item.completed !==true;
+   }
+    if(selectedCategory === 'Tamamladığım'){
+    return item.completed ===true;
+   }
+   return true
+ }
+
+const filteredCourses = courses.filter((course) => {
+   const searchedQuery = query.toLowerCase();
+  const matchedSearch =
+      course.name.toLowerCase().includes(searchedQuery) ||
+      course.description.toLowerCase().includes(searchedQuery);
+      const matchedCategory = filterByStatus(course)
+     return matchedCategory && matchedSearch
+    })
+const filteredBlogs = blogs.filter((blog) => {
+   const searchedQuery = query.toLowerCase();
+  const matchedSearch =
+      blog.title.toLowerCase().includes(searchedQuery) ||
+      blog.description.toLowerCase().includes(searchedQuery);
+        const matchedCategory = filterByStatus(blog)
+
+     return matchedCategory && matchedSearch
+    })
+
+const filteredResources = featuredResources.filter((resource) => {
+   const searchedQuery = query.toLowerCase();
+  const matchedSearch =
+      resource.title.toLowerCase().includes(searchedQuery) ||
+      resource.author.toLowerCase().includes(searchedQuery);
+      const matchedCategory = filterByStatus(resource)
+
+     return matchedCategory && matchedSearch
+    })
+  function handleSearch(event) {
+    setQuery(event.target.value);
+  }
 
     return(
         <div >
@@ -94,7 +126,7 @@ const Progress=()=>{
             type="text"
             placeholder="Axtar..."
             className="border border-gray-300 rounded-full p-2 pl-10 pr-2 outline-none text-sm w-full max-w-lg"
-           
+            onChange={handleSearch}
           />
           <button
             className="flex gap-2 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-full cursor-pointer"
@@ -131,9 +163,26 @@ const Progress=()=>{
           ))}
          
         </div>
-   <h2 className="text-2xl font-semibold mb-4">Kurslar</h2>
+  
+  {filteredCourses.length ===0 && filteredBlogs.length ===0 && filteredResources.length ===0 && (
+   <div className='mt-4 space-y-4'>
+    <div className='flex justify-center mb-2'>
+    <img src={notFoundImage}/>*
+  </div>
+  <h2 className=' mb-2 text-center font-semibold text-xl'>Nəticə tapılmadı</h2>
+     <p className=" text-center text-gray-500">
+    Axtarışa uyğun nəticə tapılmadı.
+  </p>
+  </div>
+
+  )
+}
+    {
+      filteredCourses.length>0 && (
+        <>
+         <h2 className="text-2xl font-semibold mb-4">Kurslar</h2>
    <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-  {courses.filter(course=>course['started']).map((course) => (
+         {filteredCourses.filter(course=>course['started']).map((course) => (
     <div
       key={course.id}
       className="relative rounded-lg border border-gray-100 bg-white p-4 shadow-lg space-y-4"
@@ -194,9 +243,16 @@ const Progress=()=>{
   ))
 }
  </div>
-   <h2 className="text-2xl font-semibold mb-4 mt-4">Bloqlar</h2>
+        </>
+      )
+    }
+ 
+{
+  filteredBlogs.length>0 && (
+    <>
+     <h2 className="text-2xl font-semibold mb-4 mt-4">Bloqlar</h2>
         <div className='grid md:grid-cols-3 gird-cols-1 mt-5 mb-5 gap-4'>
-          {blogs.filter(blog=>blog.started && !blog.completed).map((blog)=>(
+          {filteredBlogs.filter(blog=>blog.started && !blog.completed).map((blog)=>(
          <article className="relative flex h-full flex-col overflow-hidden rounded-[20px] border border-[#D9D9D9] bg-white">
       <div className="relative aspect-[2/1] shrink-0 bg-[#F0F2F8]">
         <img
@@ -267,9 +323,16 @@ const Progress=()=>{
   ))
         }
         </div>
-    <h2 className="text-2xl font-semibold mb-4 mt-4">Kitablar</h2>
+    </>
+  )
+}
+  
+        {
+          filteredResources.length>0 && (
+            <>
+                <h2 className="text-2xl font-semibold mb-4 mt-4">Kitablar</h2>
  <div className='grid md:grid-cols-3 gird-cols-1 mt-5 mb-5 gap-4'>
- {featuredResources.map((blog)=>(
+             {filteredResources.map((blog)=>(
               <article className="relative rounded-lg border border-gray-100 bg-white p-4 shadow-lg space-y-4">
       <div className='flex'>
       <div className="flex aspect-[2/1] shrink-0 bg-[#F0F2F8]">
@@ -341,12 +404,17 @@ const Progress=()=>{
         </div>
    
     </article>
-
         )
 )
     }
+     </div>
+            </>
+          )
+        }
+
+
    
-        </div>
+       
         
            </div>
     )
