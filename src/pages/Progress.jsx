@@ -15,60 +15,38 @@ import { useNavigate } from "react-router-dom";
 import { getCategoryById } from "../data/resourcesData";
 import lookIcon from "../assets/look.svg";
 import saveIcon from "../assets/save.svg";
+import likeIcon from "../assets/like.svg";
+import commentsIcon from "../assets/comments.svg";
+import {featuredResources} from "../data/resourcesData"
+import {blogs} from '../blogData/blogData';
 
-export const featuredResources = [
-  {
-    id: "featured-1",
-    resourceId: "bedii-1",
-    title: "İkigai",
-    author: "Hektor Qarsiya & Fransesik Mirales",
-    description:
-      "Həyatın mənasını tapmaq və gündəlik xoşbəxtliyi kəşf etmək",
-    quote:
-      "İkigai – hər səhər oyanmağınıza səbəb olan şeydir.",
-    quoteAuthor: "Hektor Qarsiya & Fransesik Mirales",
-    pages: 192,
-    format:'PDF',
-    downloads:777,
-    language: "Azərbaycan dili",
-    readers: 74,
-    image: "/svgs/featured_0.svg",
-  },
-  {
-    id: "featured-2",
-    resourceId: "bedii-2",
-    title: "Atomik Vərdişlər",
-    author: "Ceyms Klir",
-    description:
-      "Həyatın mənasını tapmaq və gündəlik xoşbəxtliyi kəşf etmək",
-    quote:
-      "Hər gün 1% daha yaxşı olmaq zamanla böyük dəyişikliklər yaradır.",
-    quoteAuthor: "Ceyms Klir",
-    pages: 192,
-    format:'PDF',
-      downloads:777,
-    language: "Azərbaycan dili",
-    readers: 74,
-    image: "/svgs/featured_1.svg",
-  },
-  {
-    id: "featured-3",
-    resourceId: "bedii-3",
-    title: "İtmiş Kitab Dükanı",
-    author: "Evi Vudz",
-    description:
-      "Kitabların sehrli, sirli keçmiş və yeni başlanğıclar haqqında təsirli roman. Oxucunu macəraya aparır.",
-    quote:
-      "Bəzən insanın axtardığı həyat, bir kitabın səhifələri arasında gizlənir.",
-    quoteAuthor: "Evi Vudz",
-    pages: 192,
-    format:'PDF',
-      downloads:777,
-    language: "Azərbaycan dili",
-    readers: 74,
-    image: "/svgs/featured_2.svg",
-  },
-];
+const BookmarkIcon = () => (
+  <img src={saveIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" />
+);
+
+const Avatar = ({ src, alt }) => {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) {
+    return (
+      <div className="flex h-[30px] w-[30px] shrink-0 items-end justify-center overflow-hidden rounded-full bg-[#D9D9D9] sm:h-[40px] sm:w-[40px]">
+        <svg viewBox="0 0 24 24" className="h-[26px] w-[26px] sm:h-[34px] sm:w-[34px]" fill="#8A8A8A">
+          <circle cx="12" cy="8" r="4.2" />
+          <path d="M3 24c0-5.2 4-8 9-8s9 2.8 9 8z" />
+        </svg>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      onError={() => setFailed(true)}
+      className="h-[30px] w-[30px] shrink-0 rounded-full object-cover sm:h-[40px] sm:w-[40px]"
+    />
+  );
+};
 
 
 const categories = [
@@ -91,7 +69,7 @@ const Progress=()=>{
 };
 
 
-     const navigate = useNavigate();
+  const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [resources, setResources] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('Hamısı');
@@ -216,85 +194,161 @@ const Progress=()=>{
   ))
 }
  </div>
-    <h2 className="text-2xl font-semibold mb-4 mt-4">Kitablar</h2>
- <div className='grid md:grid-cols-3 gird-cols-1 mt-5 mb-5 gap-4'>
- {featuredResources.map((resource)=>(
-            <article
-      className="flex overflow-hidden rounded-[16px] border border-[#E5E7EB] bg-white transition-shadow hover:shadow-md cursor-pointer"
-    >
-      <div className="relative flex w-[110px] shrink-0 items-center justify-center bg-[#F9FAFB] p-3">
-        {resource.image ? (
-          <img
-            src={resource.image}
-            alt={resource.title}
-            className="h-[130px] w-[90px] rounded-[6px] object-cover shadow-sm"
-          />
-        ) : (
-          <div className="flex h-[130px] w-[90px] items-center justify-center rounded-[6px] bg-[#F0F0F0]">
-            <CategoryIcon categoryId={resource.categoryId} size={48} />
-          </div>
-        )}
+   <h2 className="text-2xl font-semibold mb-4 mt-4">Bloqlar</h2>
+        <div className='grid md:grid-cols-3 gird-cols-1 mt-5 mb-5 gap-4'>
+          {blogs.filter(blog=>blog.started && !blog.completed).map((blog)=>(
+         <article className="relative flex h-full flex-col overflow-hidden rounded-[20px] border border-[#D9D9D9] bg-white">
+      <div className="relative aspect-[2/1] shrink-0 bg-[#F0F2F8]">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="h-full w-full object-cover"
+          onError={(e) => (e.currentTarget.style.display = "none")}
+        />
+
+        <button
+          type="button"
+          aria-label="Yadda saxla"
+          className="absolute right-2 top-2 z-10 flex h-[34px] w-[34px] items-center justify-center rounded-full bg-white shadow-sm sm:h-[44px] sm:w-[44px]"
+             
+        >
+   <BookmarkIcon />
+        </button>
       </div>
 
-      <div className="flex flex-1 flex-col px-4 py-3">
-        {/* Category badge */}
-        <div className="flex justify-end">
-          <span
-            className="rounded-full px-3 py-0.5 text-[11px] font-medium"
+      <div className="flex flex-1 flex-col px-4 pb-4 pt-4 sm:px-5 sm:pb-5 sm:pt-5">
+        <h6 className="mb-3 text-[15px] font-medium leading-snug text-[#171717]  sm:text-[18px]">
+  <Link to={`/library/blogs/${blog.id}`} className="after:absolute after:inset-0">
+    {blog.title}
+  </Link>
+</h6>
+        <div className="flex items-center gap-2.5 sm:gap-4">
+          <Avatar src={blog.authorAvatar} alt={blog.author} />
+          <div className="min-w-0 leading-snug">
+            <p className="truncate text-[12px] font-medium text-[#171717] sm:text-[16px]">
+              {blog.author}
+            </p>
+            <p className="text-[11px] text-[#737373] sm:text-[14px]">
+              {blog.readTime} · {blog.date}
+            </p>
+          </div>
+        </div>
 
-          >
-            {resource.categoryName}
+             <div className="h-2.5 mt-4 w-full overflow-hidden rounded-full bg-gray-200">
+            <div className="h-full w-1/2 bg-indigo-600/50" />
+          </div>
+          <div className='flex justify-between gap-3'>
+          <p className="text-xs text-gray-400 mt-2">Təkrar oxu</p>
+           <p className="text-xs text-gray-400 mt-2">Sonuncu 2 gün əvvəl</p>
+         </div>
+        <div className="mt-4 flex flex-wrap gap-2 sm:mt-5 sm:gap-3">
+          {blog.tags.map((tag) => (
+            <span
+              key={tag}
+              className="flex-1 whitespace-nowrap rounded-full bg-[#E8EDFB] px-3 py-[5px] text-center text-[11px] text-[#2A4EBB] sm:px-4 sm:py-[6px] sm:text-[12px]"
+            >
+              #{tag}
+            </span>
+          ))}
+        </div>
+        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-4 text-[#404040] sm:gap-x-8 sm:pt-6">
+          <span className="flex items-center gap-1.5 text-[11px] sm:gap-2 sm:text-[14px]">
+            <img src={lookIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" /> {blog.views}
+          </span>
+          <span className="flex items-center gap-1.5 text-[11px] sm:gap-2 sm:text-[14px]">
+            <img src={likeIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" /> {blog.likes}
+          </span>
+          <span className="flex items-center gap-1.5 text-[11px] sm:gap-2 sm:text-[14px]">
+            <img src={commentsIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" /> {blog.comments}
           </span>
         </div>
-        <h6 className="mt-1 text-[13px] font-medium leading-snug text-[#171717] line-clamp-2">
-          {resource.title}
-        </h6>
-        <p className="mt-1 text-[12px] text-[#737373]">{resource.author}</p>
-        <div className="mt-2 flex items-center gap-3 text-[11px] text-[#737373]">
+      </div>
+    </article>
+  ))
+        }
+        </div>
+    <h2 className="text-2xl font-semibold mb-4 mt-4">Kitablar</h2>
+ <div className='grid md:grid-cols-3 gird-cols-1 mt-5 mb-5 gap-4'>
+ {featuredResources.map((blog)=>(
+              <article className="relative rounded-lg border border-gray-100 bg-white p-4 shadow-lg space-y-4">
+      <div className='flex'>
+      <div className="flex aspect-[2/1] shrink-0 bg-[#F0F2F8]">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="h-48 w-full rounded-md object-cover"
+          onError={(e) => (e.currentTarget.style.display = "none")}
+        />
+          <span className="absolute top-2 right-2 text-black text-xs bg-green-100/50 font-semibold p-2 rounded-full">
+              Sərbəst iş
+            </span>
+
+      </div>
+
+      <div className="flex flex-1 flex-col px-4 pb-4 pt-4 mt-5 sm:px-5 sm:pb-5 sm:pt-5">
+        <h6 className="mb-3 text-[15px] font-medium leading-snug text-[#171717]  sm:text-[18px]">
+  <Link to={`/library/resources/detail/${blog.resourceId}`} className="after:absolute after:inset-0">
+    {blog.title}
+  </Link>
+</h6>
+        <div className="flex items-center gap-2.5 sm:gap-4">
+          <div className="min-w-0 leading-snug">
+            <p className="text-gray-500 text-sm font-medium">
+              {blog.author}
+            </p>
+          </div>
+        </div>
+         <div className="mt-2 flex items-center gap-3 text-[11px] text-[#737373]">
           <span className="flex items-center gap-1">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#737373" strokeWidth="1.8">
               <path d="M6 2h9l5 5v15H6z" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M14 2v6h6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            {resource.format}
+           PDF
           </span>
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#737373" strokeWidth="1.8">
               <path d="M4 4h16v16H4z" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M8 2v4M16 2v4M4 10h16" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            {resource.pages} səhifə
+            {blog.pages} səhifə
           </span>
         </div>
-        <div className="mt-auto flex items-center justify-between pt-3 text-[12px] text-[#737373]">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <img src={lookIcon} alt="" className="h-[16px] w-[16px]" />
-              {resource.readers}
-            </span>
-            <span className="flex items-center gap-1">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#737373" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 5v14M5 12l7 7 7-7" />
-              </svg>
-              {resource.downloads}
-            </span>
-          </div>
-          <button
-            type="button"
-            aria-label="Yadda saxla"
-            className="flex h-[28px] w-[28px] items-center justify-center rounded-md"
-          >
-            <img src={saveIcon} alt="" className="h-[16px] w-[16px]" />
-          </button>
         </div>
-      </div>
+ </div>
+
+             <div className="h-2.5 mt-4 w-full overflow-hidden rounded-full bg-gray-200">
+            <div className="h-full w-1/2 bg-indigo-600/50" />
+          </div>
+          <div className='flex justify-between gap-3'>
+          <p className="text-xs text-gray-400 ">Tamamlandı</p>
+           <p className="text-xs text-gray-400">Sonuncu 2 gün əvvəl</p>
+           </div>
+                <div className='flex items-center justify-between'>
+        <div className=" flex flex-wrap items-center gap-x-4 gap-y-2 text-[#404040] sm:gap-x-8 ">
+          <span className="flex items-center gap-1.5 text-[11px] sm:gap-2 sm:text-[14px]">
+            <img src={lookIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" /> {blog.readers}
+          </span>
+          <span className="flex items-center gap-1.5 text-[11px] sm:gap-2 sm:text-[14px]">
+            <img src={likeIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" /> 777 {blog.likes}
+          </span>       
+     </div>
+     <div>
+        <span className="flex  border border-gray-200 bg-white p-2 rounded-full">
+              <img src={saveImage} alt="save" />
+          </span> 
+     </div>
+        </div>
+   
     </article>
+
         )
 )
     }
    
         </div>
-        </div>
+        
+           </div>
     )
 }
 export default Progress;
