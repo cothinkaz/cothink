@@ -3,8 +3,10 @@ import Clock from "../../assets/icon/clock-1.svg";
 import Waiting from "../../assets/icon/gozleyir.svg";
 import ClockBlue from "../../assets/icon/clock-blue.svg";
 import PendingBlue from "../../assets/icon/Pending-blue.svg";
-import Right from "../../assets/icon/arrow-right.svg";
 import { Link } from "react-router-dom";
+
+const FALLBACK_CERTIFICATE_IMG = "https://slidemodel.com/wp-content/uploads/21672-01-award-certificate-template-for-powerpoint-16x9-1.jpg";
+const FALLBACK_AVATAR = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=120&auto=format&fit=crop";
 
 function PendingCertificateCard({ item }) {
   const {
@@ -16,6 +18,7 @@ function PendingCertificateCard({ item }) {
     estimatedTime,
     steps,
     image,
+    instructorAvatar,
   } = item;
 
   const stepIcons = [
@@ -34,37 +37,46 @@ function PendingCertificateCard({ item }) {
 
   return (
     <div
-      className="bg-[#FFFFFF] rounded-[16px] flex items-center justify-between
+      className="bg-[#FFFFFF] rounded-[16px] flex items-center justify-between border border-transparent hover:border-[#4468D5]/20 hover:shadow-lg transition-all duration-300
         max-xl:grid max-xl:grid-cols-[minmax(0,1fr)_auto] max-xl:items-stretch max-xl:overflow-hidden
         max-md:flex max-md:flex-col max-md:items-stretch max-md:p-3 max-md:gap-3"
     >
       {/* video ve melumatlar */}
       <div className="py-[16px] pl-[12px] flex gap-[20px] max-xl:min-w-0 max-xl:pr-3 max-md:p-0 max-md:gap-3">
-        <Link to={`/details/${item.id}`} className="shrink-0">
+        <Link to={`/details/${item.id}`} className="shrink-0 overflow-hidden rounded-[8px]">
           <img
-            className="w-[160px] h-[100px] rounded-[8px] max-xl:block max-xl:object-cover max-md:w-[112px] max-md:h-[72px]"
-            src={video}
-            alt="Video"
+            className="w-[160px] h-[100px] rounded-[8px] object-cover transition-transform duration-300 hover:scale-105 max-xl:block max-md:w-[112px] max-md:h-[72px]"
+            src={video || image || FALLBACK_CERTIFICATE_IMG}
+            alt="Sertifikat"
+            onError={(e) => {
+              e.currentTarget.src = FALLBACK_CERTIFICATE_IMG;
+            }}
           />
         </Link>
 
         {/* title */}
         <div className="flex flex-col gap-[16px] max-xl:min-w-0 max-xl:justify-between max-md:gap-2">
           <div className="max-xl:min-w-0">
-            <div className="text-[18px] font-sans text-[#050505] max-xl:line-clamp-2 max-md:text-[16px]">
+            <Link
+              to={`/details/${item.id}`}
+              className="text-[18px] font-medium text-[#050505] hover:text-[#4468D5] transition-colors max-xl:line-clamp-2 max-md:text-[16px]"
+            >
               {title}
-            </div>
-            <p className="text-[14px] text-[#00000033] max-xl:truncate">
+            </Link>
+            <p className="text-[14px] text-[#737373] max-xl:truncate">
               {type}
             </p>
           </div>
           <div className="flex gap-[8px] items-center min-w-0">
             <img
-              className="w-[24px] h-[24px] rounded-[36px] shrink-0 object-cover"
-              src={image}
-              alt=""
+              className="w-[24px] h-[24px] rounded-full shrink-0 object-cover border border-gray-100"
+              src={instructorAvatar || image || FALLBACK_AVATAR}
+              alt={instructor}
+              onError={(e) => {
+                e.currentTarget.src = FALLBACK_AVATAR;
+              }}
             />
-            <p className="text-[12px] text-[#050505] max-xl:truncate">
+            <p className="text-[12px] text-[#050505] max-xl:truncate font-medium">
               {instructor}
             </p>
           </div>
@@ -96,7 +108,7 @@ function PendingCertificateCard({ item }) {
                 {step.name}
               </p>
               <p
-                className={`text-[12px] ${style.color} max-md:leading-tight max-md:break-words`}
+                className={`text-[12px] font-medium ${style.color} max-md:leading-tight max-md:break-words`}
               >
                 {step.status}
               </p>
@@ -119,7 +131,7 @@ function PendingCertificateCard({ item }) {
             </span>
             <div className="h-[6px] rounded-full bg-[#E4E6EE] overflow-hidden my-[6px] max-md:flex-1 max-md:my-0">
               <div
-                className="h-full rounded-full bg-[#4468D5]"
+                className="h-full rounded-full bg-[#4468D5] transition-all duration-500"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -127,7 +139,7 @@ function PendingCertificateCard({ item }) {
 
           <div className="max-md:flex max-md:items-center max-md:justify-between max-md:gap-2">
             <p className="text-[12px] text-[#737373]">Təxmini tamamlanma:</p>
-            <p className="text-[12px] text-[#0D0D0D]">{estimatedTime}</p>
+            <p className="text-[12px] font-medium text-[#0D0D0D]">{estimatedTime}</p>
           </div>
         </div>
       </div>

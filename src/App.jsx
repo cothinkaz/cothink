@@ -40,7 +40,6 @@ function App() {
 
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/details/:id" element={<CertificatesDetails />} />
-          <Route path="/details/:id" element={<CertificatesDetails />} />
           <Route path="/post" element={<QuestionFeed />} />
           <Route path="/post/:id" element={<PostDetails />} />
           <Route
