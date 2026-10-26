@@ -49,7 +49,9 @@ function CertificatesCard({ item }) {
       <div className="px-[11px] flex gap-[6px]">
         <button
           type="button"
+          onClick={() => window.open(video || image || FALLBACK_IMG, "_blank")}
           className="flex-1 h-[38px] rounded-[32px] border border-[#D9D9D9] flex items-center justify-center gap-[4px] cursor-pointer hover:bg-gray-50 transition-colors"
+          title="PDF formatında aç / yüklə"
         >
           <img className="w-[20px] h-[20px]" src={Download} alt="" />
           <span className="text-[14px] text-[#595959]">PDF</span>
