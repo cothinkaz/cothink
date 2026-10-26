@@ -96,9 +96,6 @@ function CertificatesDetails() {
       title: "PDF Yüklə",
       desc: "Sertifikatı PDF formatında yükləyin",
       icon: Download,
-      onClick: () => {
-        window.open(video || image || FALLBACK_CERTIFICATE_IMG, "_blank");
-      },
     },
     {
       title: copied ? "Kopyalandı!" : "Linki Kopyala",
