@@ -121,16 +121,6 @@ export const featuredResources = [
 /* Keep backward compat */
 export const featuredResource = featuredResources[0];
 
-/* ─── Book cover images for resource cards ─── */
-const BOOK_COVERS = [
-  "/books/ikigai.jpg",
-  "/books/atomik.jpg",
-  "/books/itmis.jpg",
-  "/books/itirilmis.jpg",
-  "/books/kim_deyir.jpg",
-  "/books/yasil.jpg",
-];
-
 /* ─── Default uploader ─── */
 const DEFAULT_UPLOADER = {
   name: "Murad Məmmədzadə",
@@ -313,6 +303,22 @@ const BOOK_DETAILS = [
 
 const generateResources = (categoryId, count = 18) => {
   const cat = getCategoryById(categoryId);
+  // Metadata for the local demo collection; real records can supply these fields directly.
+  const educationByCategory = {
+    bedii: "Mütaliə/Bədii",
+    dissertasiya: "Magistr",
+    serbest: "Bakalavr",
+    teqdimat: "Bakalavr",
+    elmi: "Doktorantura",
+  };
+  const subjectsByBook = [
+    ["Psixologiya"],
+    ["Psixologiya", "Təhsil"],
+    ["Digər"],
+    ["Digər"],
+    ["Digər"],
+    ["Psixologiya"],
+  ];
   return Array.from({ length: count }, (_, i) => {
     const book = BOOK_DETAILS[i % BOOK_DETAILS.length];
     return {
@@ -321,6 +327,8 @@ const generateResources = (categoryId, count = 18) => {
       author: book.author,
       categoryId,
       categoryName: cat?.name ?? "Bədii kitab",
+      educationLevel: educationByCategory[categoryId] ?? "Digər",
+      subjects: subjectsByBook[i % BOOK_DETAILS.length],
       format: book.format,
       pages: book.pages,
       views: book.views,

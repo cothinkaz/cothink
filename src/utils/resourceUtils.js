@@ -1,4 +1,4 @@
-import { parseDate } from "./blogUtils";
+import { parseDate } from "./blogUtils.js";
 
 /* ─── Filter constants ─── */
 export const EDUCATION_LEVELS = [
@@ -65,7 +65,7 @@ const matchesDate = (resource, option) => {
     case "today":
       return date.toDateString() === now.toDateString();
     case "week":
-      return now - date <= 7 * DAY;
+      return date <= now && now - date <= 7 * DAY;
     case "month":
       return (
         date.getFullYear() === now.getFullYear() &&
@@ -83,13 +83,11 @@ const matchesDate = (resource, option) => {
 };
 
 const matchesSearch = (resource, text) => {
-  if (!text) return true;
-  const q = text.toLowerCase();
-  return (
-    resource.title.toLowerCase().includes(q) ||
-    resource.author.toLowerCase().includes(q) ||
-    resource.categoryName.toLowerCase().includes(q)
-  );
+  const normalize = (value) => String(value ?? "").normalize("NFC").toLocaleLowerCase("az");
+  const q = normalize(text).trim();
+  if (!q) return true;
+  return [resource.title, resource.author, resource.categoryName, ...(resource.subjects ?? [])]
+    .some((value) => normalize(value).includes(q));
 };
 
 const sortResources = (list, sort) => {
@@ -117,9 +115,10 @@ export const applyResourceFilters = (resources, search, filters) => {
 
   const filtered = resources.filter((r) => {
     if (!matchesSearch(r, search)) return false;
+    if (filters.educationLevel && r.educationLevel !== filters.educationLevel) return false;
     if (
       filters.categories.length &&
-      !filters.categories.includes(r.categoryName)
+      !filters.categories.some((category) => category === r.categoryName || r.subjects?.includes(category))
     )
       return false;
     if (filters.languages.length && !filters.languages.includes(r.language))
