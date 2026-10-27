@@ -16,6 +16,12 @@ import ResourceListing from "./pages/ResourceListing";
 import ResourceDetail from "./pages/ResourceDetail";
 import BookReader from "./pages/BookReader";
 import SlideReader from "./pages/SlideReader";
+import MainLayout from "./MainLayout";
+import ScrollToTop from "./components/ScrollToTop";
+
+import BlogDetails from "./pages/BlogDetails";
+import CourseDetail from "./pages/CourseDetail";
+import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
 import Progress from "./pages/Progress";
 import Certificates from "./pages/Certificates/Certificates";
 import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
@@ -42,6 +48,11 @@ function App() {
 
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:id" element={<BlogDetails />} />
+          <Route path="/certificates" element={<Certificates />} />
+          <Route path="/details/:id" element={<CertificatesDetails />} />
+          <Route path="/verify/:id" element={<PublicCertificateDetailsPage />} />
           <Route path="/progress" element={<Progress />} />
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/details/:id" element={<CertificatesDetails />} />
