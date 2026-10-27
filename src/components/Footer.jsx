@@ -1,16 +1,23 @@
 import { footerLogo, footerEmail, footerPhone, footerLocation, footerFacebook, footerInstagram, footerLinkedin, footerYoutube } from "../assets/assets";
-import {useState} from "react"
+import {useState} from "react";
+import { Link, NavLink } from "react-router-dom";
 const Footer = ()=>{
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
-
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    const isValidEmail = (email)=>emailRegex.test(email);
     const sendEmail = (e) => {
     e.preventDefault();
     if (!email) {
-      setError("Zəhmət olmasa email ünvanınızı daxil edin.");
-    } else {
+      setError("E-poçt ünvanı boş ola bilməz!");
+      return;
+    }
+   if(!isValidEmail(email)) {
+        setError("Zəhmət olmasa, düzgün e-poçt ünvanı daxil edin (məsələn:ad@domain.com).");
+    }
+    else {
       setError('');
-      alert("Email göndərildi");
+      alert("E-poçt göndərildi");
       setEmail("");
     }
   };
@@ -24,19 +31,19 @@ const Footer = ()=>{
             <h4 className="text-sm font-semibold">Platforma</h4>
             <ul className="mt-4 space-y-2 text-sm text-gray-600" >
                 <li>
-                    <a href="/">Ana səhifə</a>
+                    <NavLink to = "/">Ana səhifə</NavLink>
                 </li>
                  <li>
-                    <a href="/courses">Kurslar</a>
+                    <NavLink to="/courses">Kurslar</NavLink>
                 </li>
                  <li>
-                    <a href="/mentors">Mentorlar</a>
+                    <NavLink to ="/mentors">Mentorlar</NavLink>
                 </li>
                  <li>
-                    <a href="certificates">Sertifikatlar</a>
+                    <NavLink to ="/certificates">Sertifikatlar</NavLink>
                 </li>
                    <li>
-                    <a href="/blog">Blog</a>
+                    <NavLink to ="/library/blogs">Blog</NavLink>
                 </li>
             </ul>
         </div>
@@ -78,23 +85,22 @@ const Footer = ()=>{
             <h4 className="text-sm font-semibold">Yeniliklərdən xəbərdar olun.</h4>
            <p className="text-sm text-gray-400">Email ünvanınızı daxil edin və yeni kurslar, tədbirlər haqqında ilk məlumatı əldə edin.</p>
               {error && <p className="text-red-500 text-sm">{error}</p>}
-            <form className="flex mt-3 justify-between gap-2">
-                <input type="email" className="flex-1 border border-indigo-800 outline-none text-indigo-800 text-center rounded-full px-7 py-2 w-full" required placeholder="E-poçt ünvanınız" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
-                  
-                <button type="submit" className="flex-1 cursor-pointer items-center justify-center rounded-full bg-indigo-700 px-4 py-2 text-sm font-semibold text-white" onClick={sendEmail}>Abunə ol</button>
+            <form className="flex mt-3 justify-between gap-2" onSubmit={sendEmail} noValidate>
+                <input type="email" className="flex-1 border border-indigo-800 outline-none text-indigo-800 text-center rounded-full px-7 py-2 w-full" placeholder="E-poçt ünvanınız" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+                <button type="submit" className="flex-1 cursor-pointer items-center justify-center rounded-full bg-indigo-700 px-4 py-2 text-sm font-semibold text-white">Abunə ol</button>
             </form>
             <ul className="flex md:justify-end justify-center items-center gap-3">
                 <li>
-                    <a href="https://www.facebook.com/cothink.az"><img src={footerFacebook}/></a>
+                    <a href="https://www.facebook.com/cothink.az" target='_blank'><img src={footerFacebook}/></a>
                 </li>
                   <li>
-                    <a href="https://www.instagram.com/cothink.az"><img src={footerInstagram}/></a>
+                    <a href="https://www.instagram.com/cothink.az" target='_blank'><img src={footerInstagram}/></a>
                 </li>
                   <li>
-                    <a href="https://www.linkedin.com/company/cothink.az"><img src={footerLinkedin}/></a>
+                    <a href="https://www.linkedin.com/company/cothink.az" target='_blank'><img src={footerLinkedin}/></a>
                 </li>
                   <li>
-                    <a href=""><img src={footerYoutube}/></a>
+                    <a href="/"><img src={footerYoutube} target='_blank'/></a>
                 </li>
             </ul>
         </div>

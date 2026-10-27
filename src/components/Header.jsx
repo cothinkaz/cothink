@@ -3,13 +3,26 @@
 import { Link, NavLink } from "react-router-dom";
 import {FaPlus} from "react-icons/fa";
 import {IoIosMenu} from "react-icons/io";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import navItems from "../data/navItems";
 import { mainLogo, searchImage, chatImage, notificationImage, profileImage } from "../assets/assets";
 const Header = () =>{
     const [search, setSearch] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const [openMenu, setOpenMenu] = useState(false);
+    const menuRef = useRef(null)
+
+    useEffect(()=>{
+      function closeMenu(e){
+        if(menuRef.current && !menuRef.current.contains(e.target)){
+          setOpenMenu(false)
+        }
+      }
+      document.addEventListener('mousedown', closeMenu)
+      return ()=>{
+        document.removeEventListener('mousedown', closeMenu)
+      }
+    },[])
     function handleSearch(event) {
 
         setSearchValue(event.target.value);
@@ -56,18 +69,19 @@ const Header = () =>{
             <a href="/" className="flex items-center justify-center md:hidden">
             <img src={mainLogo} />
             </a>
-            <div className="md:hidden flex justify-end items-center gap-3">
+            <div className="md:hidden flex justify-end items-center gap-3"  ref={menuRef}>
             <button className="cursor-pointer p-2" onClick={()=>setOpenMenu(!openMenu)}>
              <IoIosMenu fontSize={24}/>
               </button>
               {
-openMenu &&   <ul className=" fixed flex flex-col gap-3 bg-white shadow-lg absolute top-16 right-3 p-3 z-10 rounded-md w-48">
+openMenu &&   <ul className=" fixed flex flex-col gap-2 bg-white shadow-lg absolute top-16 right-3 p-3 z-10 rounded-md w-48">
                         {
                           navItems.map((item)=>(
                           <li className="mt-1" key={item.to}>
                           <NavLink 
-                            className="flex gap-3 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full" 
+                            className="flex gap-2 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full" 
                             to={item.to}   
+                            onClick={()=>setOpenMenu(false)}
                           >
                              {/* <img src={item.src}/> */}
                              { open && <span>

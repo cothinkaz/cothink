@@ -10,8 +10,8 @@ const Avatar = ({ src, alt }) => {
 
   if (!src || failed) {
     return (
-      <div className="flex h-[28px] w-[28px] shrink-0 items-end justify-center overflow-hidden rounded-full bg-[#D9D9D9] sm:h-[40px] sm:w-[40px]">
-        <svg viewBox="0 0 24 24" className="h-[24px] w-[24px] sm:h-[34px] sm:w-[34px]" fill="#8A8A8A">
+      <div className="flex h-[30px] w-[30px] shrink-0 items-end justify-center overflow-hidden rounded-full bg-[#D9D9D9] sm:h-[40px] sm:w-[40px]">
+        <svg viewBox="0 0 24 24" className="h-[26px] w-[26px] sm:h-[34px] sm:w-[34px]" fill="#8A8A8A">
           <circle cx="12" cy="8" r="4.2" />
           <path d="M3 24c0-5.2 4-8 9-8s9 2.8 9 8z" />
         </svg>
@@ -24,13 +24,13 @@ const Avatar = ({ src, alt }) => {
       src={src}
       alt={alt}
       onError={() => setFailed(true)}
-      className="h-[28px] w-[28px] shrink-0 rounded-full object-cover sm:h-[40px] sm:w-[40px]"
+      className="h-[30px] w-[30px] shrink-0 rounded-full object-cover sm:h-[40px] sm:w-[40px]"
     />
   );
 };
 
 const DotsIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="#404040">
+  <svg viewBox="0 0 24 24" fill="#404040" className="h-[16px] w-[16px] sm:h-[18px] sm:w-[18px]">
     <circle cx="12" cy="5" r="1.8" />
     <circle cx="12" cy="12" r="1.8" />
     <circle cx="12" cy="19" r="1.8" />
@@ -39,14 +39,14 @@ const DotsIcon = () => (
 
 /*
   "Bütün bloqlar" siyahısının bir sətri.
-  Öz border-i yoxdur: kartları Blogs.jsx-dəki ümumi çərçivə və
-  divide-y xətləri birləşdirir.
+  Mobil: adi kart kimi (şəkil üstdə, məzmun altda).
+  sm və yuxarı: üfüqi (şəkil solda, məzmun sağda).
 */
 const BlogListCard = ({ blog }) => {
   return (
-    <article className="relative flex gap-3 p-3 sm:gap-5 sm:p-5">
+    <article className="relative flex flex-col gap-3 p-4 sm:flex-row sm:gap-5 sm:p-5">
       {/* Şəkil */}
-      <div className="aspect-[2/1] w-[150px] shrink-0 self-center overflow-hidden rounded-[10px] bg-[#F0F2F8] sm:w-[300px] sm:rounded-[14px] lg:w-[360px]">
+      <div className="aspect-[2/1] w-full shrink-0 overflow-hidden rounded-[14px] bg-[#F0F2F8] sm:w-[300px] sm:self-center lg:w-[360px]">
         <img
           src={blog.image}
           alt={blog.title}
@@ -59,13 +59,13 @@ const BlogListCard = ({ blog }) => {
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Müəllif + menyu */}
         <div className="flex items-start justify-between gap-2">
-          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+          <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
             <Avatar src={blog.authorAvatar} alt={blog.author} />
             <div className="min-w-0 leading-snug">
               <p className="truncate text-[12px] font-medium text-[#171717] sm:text-[16px]">
                 {blog.author}
               </p>
-              <p className="truncate text-[10px] text-[#737373] sm:text-[14px]">
+              <p className="truncate text-[11px] text-[#737373] sm:text-[14px]">
                 {blog.readTime} · {blog.date}
               </p>
             </div>
@@ -81,23 +81,23 @@ const BlogListCard = ({ blog }) => {
         </div>
 
         {/* Başlıq */}
-        <h6 className="mt-2 text-[14px] font-semibold leading-snug text-[#171717] sm:mt-3 sm:text-[20px]">
-          <Link to={`/blogs/${blog.id}`} className="after:absolute after:inset-0">
-            {blog.title}
-          </Link>
-        </h6>
+<h6 className="mt-3 text-[15px] font-medium leading-snug text-[#171717] sm:text-[20px] sm:font-semibold">
+  <Link to={`/library/blogs/${blog.id}`} className="after:absolute after:inset-0">
+    {blog.title}
+  </Link>
+</h6>
 
         {/* Təsvir */}
-        <p className="mt-1 line-clamp-3 text-[11px] leading-snug text-[#404040] sm:mt-2 sm:text-[14px]">
+        <p className="mt-1.5 line-clamp-3 text-[12px] leading-snug text-[#404040] sm:mt-2 sm:text-[14px]">
           {blog.description}
         </p>
 
         {/* Teqlər */}
-        <div className="mt-2 flex flex-wrap gap-2 sm:mt-3 sm:gap-3">
+        <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
           {blog.tags.map((tag) => (
             <span
               key={tag}
-              className="whitespace-nowrap rounded-full bg-[#E8EDFB] px-3 py-[4px] text-[10px] text-[#2A4EBB] sm:px-4 sm:py-[6px] sm:text-[12px]"
+              className="whitespace-nowrap rounded-full bg-[#E8EDFB] px-3 py-[5px] text-[11px] text-[#2A4EBB] sm:px-4 sm:py-[6px] sm:text-[12px]"
             >
               #{tag}
             </span>
@@ -105,16 +105,16 @@ const BlogListCard = ({ blog }) => {
         </div>
 
         {/* Statistika + bookmark (həmişə aşağıda) */}
-        <div className="mt-auto flex items-center justify-between pt-3 sm:pt-4">
+        <div className="mt-auto flex items-center justify-between pt-4">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[#404040] sm:gap-x-8">
-            <span className="flex items-center gap-1 text-[10px] sm:gap-2 sm:text-[14px]">
-              <img src={lookIcon} alt="" className="h-[14px] w-[14px] sm:h-[20px] sm:w-[20px]" /> {blog.views}
+            <span className="flex items-center gap-1.5 text-[11px] sm:gap-2 sm:text-[14px]">
+              <img src={lookIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" /> {blog.views}
             </span>
-            <span className="flex items-center gap-1 text-[10px] sm:gap-2 sm:text-[14px]">
-              <img src={likeIcon} alt="" className="h-[14px] w-[14px] sm:h-[20px] sm:w-[20px]" /> {blog.likes}
+            <span className="flex items-center gap-1.5 text-[11px] sm:gap-2 sm:text-[14px]">
+              <img src={likeIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" /> {blog.likes}
             </span>
-            <span className="flex items-center gap-1 text-[10px] sm:gap-2 sm:text-[14px]">
-              <img src={commentsIcon} alt="" className="h-[14px] w-[14px] sm:h-[20px] sm:w-[20px]" /> {blog.comments}
+            <span className="flex items-center gap-1.5 text-[11px] sm:gap-2 sm:text-[14px]">
+              <img src={commentsIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" /> {blog.comments}
             </span>
           </div>
 

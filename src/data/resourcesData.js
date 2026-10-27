@@ -63,13 +63,15 @@ export const featuredResources = [
     author: "Hektor Qarsiya & Fransesik Mirales",
     description:
       "Həyatın mənasını tapmaq və gündəlik xoşbəxtliyi kəşf etmək",
-    quote:
-      "İkigai – hər səhər oyanmağınıza səbəb olan şeydir.",
+    quote: "İkigai – hər səhər oyanmağınıza səbəb olan şeydir.",
     quoteAuthor: "Hektor Qarsiya & Fransesik Mirales",
     pages: 192,
     language: "Azərbaycan dili",
     readers: 74,
     image: "/svgs/featured_0.svg",
+    started: true,
+    completed: false,
+    progress: 45,
   },
   {
     id: "featured-2",
@@ -78,13 +80,15 @@ export const featuredResources = [
     author: "Ceyms Klir",
     description:
       "Həyatın mənasını tapmaq və gündəlik xoşbəxtliyi kəşf etmək",
-    quote:
-      "Hər gün 1% daha yaxşı olmaq zamanla böyük dəyişikliklər yaradır.",
+    quote: "Hər gün 1% daha yaxşı olmaq zamanla böyük dəyişikliklər yaradır.",
     quoteAuthor: "Ceyms Klir",
     pages: 192,
     language: "Azərbaycan dili",
     readers: 74,
     image: "/svgs/featured_1.svg",
+    started: true,
+    completed: true,
+    progress: 100,
   },
   {
     id: "featured-3",
@@ -93,13 +97,15 @@ export const featuredResources = [
     author: "Evi Vudz",
     description:
       "Kitabların sehrli, sirli keçmiş və yeni başlanğıclar haqqında təsirli roman. Oxucunu macəraya aparır.",
-    quote:
-      "Bəzən insanın axtardığı həyat, bir kitabın səhifələri arasında gizlənir.",
+    quote: "Bəzən insanın axtardığı həyat, bir kitabın səhifələri arasında gizlənir.",
     quoteAuthor: "Evi Vudz",
     pages: 192,
     language: "Azərbaycan dili",
     readers: 74,
     image: "/svgs/featured_2.svg",
+    started: false,
+    completed: false,
+    progress: 0,
   },
   {
     id: "featured-4",
@@ -108,13 +114,15 @@ export const featuredResources = [
     author: "Xanım Mehdixanlı",
     description:
       "Keçmişin izləri, peşmanlıqlar və yenidən başlamaq arzusu haqqında duyğusal Azərbaycan romanı.",
-    quote:
-      "Zaman geri qayıtmır, amma insan hər gün yenidən başlaya bilər.",
+    quote: "Zaman geri qayıtmır, amma insan hər gün yenidən başlaya bilər.",
     quoteAuthor: "Xanım Mehdixanlı",
     pages: 192,
     language: "Azərbaycan dili",
     readers: 74,
     image: "/svgs/featured_3.svg",
+    started: false,
+    completed: false,
+    progress: 0,
   },
 ];
 
