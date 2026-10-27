@@ -1,7 +1,8 @@
-
-import './App.css'
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './pages/Home';
+
+import Home from "./pages/Home";
+
 import Courses from "./pages/Courses";
 import Blogs from "./pages/Blogs";
 import Resources from "./pages/Resources";
@@ -13,8 +14,13 @@ import SlideReader from "./pages/SlideReader";
 import MainLayout from "./MainLayout";
 import ScrollToTop from "./components/ScrollToTop";
 
-function App() {
+import BlogDetails from "./pages/BlogDetails";
+import CourseDetail from "./pages/CourseDetail";
+import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
+import Certificates from "./pages/Certificates/Certificates";
+import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificateDetailsPage";
 
+function App() {
   return (
     <>
     <BrowserRouter>
@@ -30,7 +36,12 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:id" element={<BlogDetails />} />
+          <Route path="/certificates" element={<Certificates />} />
+          <Route path="/details/:id" element={<CertificatesDetails />} />
+          <Route path="/verify/:id" element={<PublicCertificateDetailsPage />} />
           <Route path="/library" element={<Resources />} />
           <Route path="/library/resources" element={<Resources />} />
           <Route path="/library/resources/category/:slug" element={<ResourceCategory />} />
@@ -41,7 +52,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
