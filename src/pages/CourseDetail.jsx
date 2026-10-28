@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { ratingImage, durationImage, eyeImage, learningImage, progressImage, certificateImage,profileImage, playImage, libraryImage,   courseImage, saveImage } from "../assets/assets";
 import { IoIosNotificationsOutline, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
@@ -18,6 +18,7 @@ const CourseDetail = () => {
   const [activeTab, setActiveTab] = useState("summary");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(true);
+  const [promoCode,setPromoCode]=useState('')
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0)
   const [error, setError] = useState("");
@@ -41,6 +42,17 @@ const CourseDetail = () => {
   const handleComment = () => {
     setOpenCommentForm(false);
   } 
+  const handlePromocode=()=>{
+    if(promoCode === ''){
+    setError('Promokod boş ola bilməz')
+
+  }
+  else{
+    setError('')
+  }
+
+
+  }
 
   const getEmbedUrl = (url) => {
          if(!url) return '';
@@ -98,8 +110,11 @@ const CourseDetail = () => {
 
   return (
     <div>
+      <div className='flex gap-1 mb-3 items-center'>
       <Link to={'/courses'}>Kurslar </Link> 
+      <IoIosArrowForward  fontSize={18}/>
       <span className='text-indigo-600'>{course.name}</span>
+    </div>
       <div className=" grid grid-cols-1 md:grid-cols-12 gap-7">
         <div className="md:col-span-7 col-span-12 md:order-1 order-2">
           {
@@ -125,7 +140,7 @@ const CourseDetail = () => {
       <div className='flex gap-7 w-full '>
       <div className='flex-col gap-4 space-y-3 mt-3 text-gray-400'>
         <p className='flex gap-3'><img src={progressImage}/>Başlanğıc səviyyə</p>
-        <p className='flex gap-3'><img src={courseImage}/>20 video dərs</p>
+        <p className='flex gap-3'><img src={playImage}/>20 video dərs</p>
         <p className='flex gap-3'><img src={durationImage}/>{course.duration}</p>
       </div>
         <div className='flex-col gap-4  space-y-3 mt-3 text-gray-400'>
@@ -177,7 +192,12 @@ const CourseDetail = () => {
                 <p className="font-bold col-span-4 text-center text-xl">Dərs tapılmadı</p>
               )}
           
-              <div className='author-about gap-3 mt-5 mb-5'>
+           
+            </div>
+          )}
+          </div>
+    </div>
+    <div className='author-about gap-3 mt-5 mb-5'>
                   <h4 className="font-bold text-lg">Təlimçi</h4>
                    <h4 className="font-bold">{course.author}</h4>
                    <p className="text-gray-400">{course.authorPosition}</p>
@@ -192,11 +212,8 @@ const CourseDetail = () => {
                   <h2 className="text-xl font-bold">Təlimçi haqqında</h2>
                 <p className="text-gray-600">{course.authorBio}</p>
               </div>
-            </div>
-          )}
-          </div>
-    </div>
   </div>
+
 
             )
             : <>
@@ -321,10 +338,15 @@ const CourseDetail = () => {
                          <span className="text-red-400 text-sm bg-red-200/50 px-2 py-1 rounded-full">50% endirim</span>
                         </div>
             <p className='text-gray-500'>Promokod</p>
+               {error && (
+              <p className="text-center text-red-600 bg-red-50 rounded-md p-2 font-bold text-lg mb-3">
+                {error}
+              </p>
+            )}
             <div className="flex items-center w-full gap-3 mt-2 mb-2">
-              <input type="text" placeholder="COTHINK10" className="w-full rounded-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+              <input type="text" placeholder="COTHINK10" className="w-full rounded-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" onChange={(e)=>setPromoCode(e.target.value)}/>
              
-              <button className=" w-full border border-indigo-600 text-indigo-600 font-semibold py-2 px-4 rounded-full">Tətbiq et</button>
+              <button className=" w-full border border-indigo-600 text-indigo-600 font-semibold py-2 px-4 rounded-full" onClick={handlePromocode}>Tətbiq et</button>
               </div>
                         <a className="mb-3 mt-3 block text-white font-semibold bg-indigo-700 flex-1 w-full text-center py-2 px-4 rounded-full" href={`/courses/${course.id}`}>
                           Kursa qoşul
