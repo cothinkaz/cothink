@@ -6,10 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
-import CourseDetail from "./pages/CourseDetail";
 import Blogs from "./pages/Blogs";
-import BlogDetails from "./pages/BlogDetails";
-
 import Resources from "./pages/Resources";
 import ResourceCategory from "./pages/ResourceCategory";
 import ResourceListing from "./pages/ResourceListing";
@@ -23,8 +20,7 @@ import BlogDetails from "./pages/BlogDetails";
 import CourseDetail from "./pages/CourseDetail";
 import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
 import Progress from "./pages/Progress";
-import Certificates from "./pages/Certificates/Certificates";
-import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
+import Certificates from "./pages/Certificates/Certificates"
 import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificateDetailsPage";
 import QuestionFeed from "./pages/PostCard/QuestionFeed";
 import PostDetails from "./pages/PostCard/PostDetails";
