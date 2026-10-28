@@ -1,18 +1,21 @@
 import { useCallback, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   RESOURCE_CATEGORIES,
-  featuredResources,
+  allResources,
   getLatestResources,
   getPopularResources,
   getRecommendedResources,
 } from "../data/resourcesData";
 import ResourceCard, { CategoryIcon } from "../components/ResourceCard";
+import FeaturedResource from "../components/FeaturedResource";
+import ResourcePagination from "../components/ResourcePagination";
 import SearchBar from "../components/SearchBar";
 import ResourceFilterModal from "../components/ResourceFilterModal";
 import {
   defaultResourceFilters,
   countActiveResourceFilters,
+  applyResourceFilters,
 } from "../utils/resourceUtils";
 
 /* ─── Arrow icon ─── */
@@ -58,107 +61,6 @@ const ResourceSection = ({ title, items, linkTo }) => {
   );
 };
 
-/* ─── Featured Resource Banner (Carousel) ─── */
-const FeaturedResource = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const navigate = useNavigate();
-  const res = featuredResources[activeIndex];
-
-  const goTo = (idx) => setActiveIndex(idx);
-
-  return (
-    <div className="mt-14 mb-8 pt-6 pb-2">
-      {/* Main Hero Card with overflow-visible */}
-      <div className="relative rounded-[32px] border border-[#E7ECF8] bg-[#F6F8FE] p-6 sm:p-8 md:px-12 md:py-9 overflow-visible transition-all duration-300">
-        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          
-          {/* Left Column: Book Details */}
-          <div className="flex-1 min-w-0 max-w-[320px] lg:max-w-[340px] z-10">
-            <h3 className="text-[32px] font-bold tracking-tight text-[#111827]">
-              {res.title}
-            </h3>
-            <p className="mt-2 text-[15px] font-medium text-[#4B5563]">
-              {res.author}
-            </p>
-            <p className="mt-3 text-[14px] text-[#6B7280] leading-relaxed line-clamp-3">
-              {res.description}
-            </p>
-            <div className="mt-5 flex items-center gap-10 text-[13px] text-[#6B7280]">
-              <span>{res.pages} səhifə</span>
-              <span>{res.language}</span>
-            </div>
-            <button
-              type="button"
-              onClick={() => navigate(`/library/resources/detail/${res.resourceId ?? `bedii-${activeIndex + 1}`}`)}
-              className="mt-7 inline-flex items-center justify-center rounded-full border border-[#4A72FF] px-8 py-2.5 text-[14px] font-medium text-[#4A72FF] transition-all hover:bg-[#4A72FF] hover:text-white"
-            >
-              Ətraflı bax
-            </button>
-          </div>
-
-          {/* Center Column: Extra Large Book Cover with 3D Pop-out overflow */}
-          <div className="flex shrink-0 items-center justify-center z-20 md:-my-14 my-2">
-            <div 
-              onClick={() => navigate(`/library/resources/detail/${res.resourceId ?? `bedii-${activeIndex + 1}`}`)}
-              className="relative cursor-pointer transition-transform duration-300 hover:scale-[1.03]"
-            >
-              {res.image ? (
-                <img
-                  src={res.image}
-                  alt={res.title}
-                  className="h-[340px] w-[230px] sm:h-[355px] sm:w-[240px] rounded-[14px] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.22)] ring-1 ring-black/5"
-                />
-              ) : (
-                <div className="flex h-[340px] w-[230px] sm:h-[355px] sm:w-[240px] items-center justify-center rounded-[14px] bg-gradient-to-b from-[#4ECDC4] to-[#2A9D8F] shadow-[0_20px_50px_rgba(0,0,0,0.22)]">
-                  <p className="text-[30px] font-bold text-white">{res.title}</p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Right Column: White Quote Box + Readers count */}
-          <div className="flex flex-col items-start md:items-end justify-center flex-1 min-w-0 z-10">
-            <div className="w-full max-w-[340px] rounded-[22px] border border-[#E5E7EB]/80 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
-              <div className="flex items-start gap-3">
-                <span className="text-[30px] font-serif font-black leading-none text-[#4A72FF] select-none">
-                  “
-                </span>
-                <p className="text-[14px] sm:text-[15px] leading-relaxed text-[#1F2937]">
-                  {res.quote}
-                </p>
-              </div>
-              <p className="mt-4 text-right text-[12px] text-[#6B7280]">
-                ~{res.quoteAuthor}
-              </p>
-            </div>
-            <p className="mt-4 text-[13px] text-[#6B7280] self-start md:self-auto md:w-[340px]">
-              {res.readers} tələbə bu kitabı oxuyur
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Carousel dots below the card */}
-      <div className="mt-8 flex items-center justify-center gap-2.5">
-        {featuredResources.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => goTo(i)}
-            aria-label={`Slayd ${i + 1}`}
-            className={`transition-all duration-300 ${
-              i === activeIndex
-                ? "h-2.5 w-9 rounded-full bg-[#4A72FF]"
-                : "h-2.5 w-2.5 rounded-full bg-[#D1D5DB] hover:bg-gray-400"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
 /* ─── Category Cards ─── */
 const CategoryCards = () => (
   <section className="mt-10">
@@ -190,9 +92,24 @@ const Resources = () => {
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState(defaultResourceFilters);
   const [modalOpen, setModalOpen] = useState(false);
+  const [page, setPage] = useState(1);
 
   const closeModal = useCallback(() => setModalOpen(false), []);
   const filterCount = countActiveResourceFilters(filters);
+  const isFiltering = search.trim() !== "" || filterCount > 0;
+  const results = useMemo(
+    () => applyResourceFilters(allResources, search.trim(), filters),
+    [search, filters]
+  );
+  const totalPages = Math.max(1, Math.ceil(results.length / 15));
+  const currentPage = Math.min(page, totalPages);
+  const pagedResults = results.slice((currentPage - 1) * 15, currentPage * 15);
+
+  const resetSearch = () => {
+    setSearch("");
+    setFilters(defaultResourceFilters);
+    setPage(1);
+  };
 
   const latest = useMemo(() => getLatestResources(4), []);
   const popular = useMemo(() => getPopularResources(4), []);
@@ -219,43 +136,74 @@ const Resources = () => {
       <div className="mt-6">
         <SearchBar
           value={search}
-          onChange={setSearch}
+          onChange={(value) => {
+            setSearch(value);
+            setPage(1);
+          }}
           onFilterClick={() => setModalOpen(true)}
           filterCount={filterCount}
           placeholder="Axtar"
         />
       </div>
 
-      {/* Featured */}
-      <FeaturedResource />
-
-      {/* Category cards */}
-      <CategoryCards />
-
-      {/* Sections */}
-      <ResourceSection
-        title="Ən son paylaşılan resurslar"
-        items={latest}
-        linkTo="/library/resources/latest"
-      />
-
-      <ResourceSection
-        title="Populyar resurslar"
-        items={popular}
-        linkTo="/library/resources/popular"
-      />
-
-      <ResourceSection
-        title="Tövsiyə olunan resurslar"
-        items={recommended}
-        linkTo="/library/resources/recommended"
-      />
+      {isFiltering ? (
+        <section className="mt-10" aria-label="Axtarış nəticələri">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h3 aria-live="polite" className="text-[20px] font-medium text-[#171717]">
+              Nəticələr ({results.length})
+            </h3>
+            <button type="button" onClick={resetSearch} className="text-[14px] text-[#2A4EBB] hover:underline">
+              Axtarışı və filtrləri sıfırla
+            </button>
+          </div>
+          {results.length > 0 ? (
+            <>
+              <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                {pagedResults.map((resource) => <ResourceCard key={resource.id} resource={resource} />)}
+              </div>
+              <ResourcePagination
+                current={currentPage}
+                total={totalPages}
+                onChange={(nextPage) => {
+                  setPage(nextPage);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              />
+            </>
+          ) : (
+            <p className="py-16 text-center text-[#737373]">Axtarışınıza uyğun resurs tapılmadı.</p>
+          )}
+        </section>
+      ) : (
+        <>
+          <FeaturedResource />
+          <CategoryCards />
+          <ResourceSection
+            title="Ən son paylaşılan resurslar"
+            items={latest}
+            linkTo="/library/resources/latest"
+          />
+          <ResourceSection
+            title="Populyar resurslar"
+            items={popular}
+            linkTo="/library/resources/popular"
+          />
+          <ResourceSection
+            title="Tövsiyə olunan resurslar"
+            items={recommended}
+            linkTo="/library/resources/recommended"
+          />
+        </>
+      )}
 
       {/* Filter modal */}
       {modalOpen && (
         <ResourceFilterModal
           initialFilters={filters}
-          onApply={setFilters}
+          onApply={(nextFilters) => {
+            setFilters(nextFilters);
+            setPage(1);
+          }}
           onClose={closeModal}
         />
       )}
