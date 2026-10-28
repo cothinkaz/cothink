@@ -8,7 +8,7 @@ import {
   illustrations,
   streak,
   todayStatus,
-} from "../../learningGoalData/learningGoalData.js";
+} from "../../data/learningGoalData.js";
 import {
   MONTHS,
   WEEKDAYS_MON,

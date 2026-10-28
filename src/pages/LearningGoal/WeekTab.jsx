@@ -9,7 +9,7 @@ import {
   weekStats,
   weeklyGoal,
   wonCoupon,
-} from "../../learningGoalData/learningGoalData.js";
+} from "../../data/learningGoalData.js";
 import { addDays, dayMonth, formatMinutes, getWeekDays, weekdayLabel } from "../../utils/learningGoalUtils";
 import { CouponWonModal, WeeklyGoalModal } from "../../components/LearningGoal/modals";
 import { Icon, ImageSlot, ProgressBar, card } from "../../components/LearningGoal/shared";
