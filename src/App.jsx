@@ -15,8 +15,10 @@ import ResourceListing from "./pages/ResourceListing";
 import ResourceDetail from "./pages/ResourceDetail";
 import BookReader from "./pages/BookReader";
 import SlideReader from "./pages/SlideReader";
-import Certificates from "./pages/Certificates/Certificates";
+
 import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
+import Progress from "./pages/Progress";
+import Certificates from "./pages/Certificates/Certificates";
 import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificateDetailsPage";
 import Progress from "./pages/Progress";
 import QuestionFeed from "./pages/PostCard/QuestionFeed";
@@ -49,6 +51,10 @@ function App() {
           <Route path="/post" element={<QuestionFeed />} />
           <Route path="/post/:id" element={<PostDetails />} />
           <Route path="/learning-goal" element={<LearningGoal />} />
+          <Route path="/learning-goal/streak-history" element={<StreakHistory />} />
+          <Route path="/learning-goal/badges" element={<Badges />} />
+          <Route path="/learning-goal/coupons" element={<Coupons />} />
+
           <Route
             path="/learning-goal/streak-history"
             element={<StreakHistory />}

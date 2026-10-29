@@ -104,6 +104,7 @@ const ResourceListing = () => {
       {/* Search + Filter */}
       <div className="mt-6">
         <SearchBar
+          variant="resources"
           value={search}
           onChange={(v) => {
             setSearch(v);
