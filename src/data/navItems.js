@@ -1,4 +1,4 @@
- import { homeImage, courseImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
+ import { homeImage, noteImage, booksImage, courseImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
  const navItems = [
     {
     to:"/",
@@ -17,16 +17,18 @@
     children:[
       {
         to:"/library/resources",
-        title: "Resurslar"
+        title: "Resurslar",
+        src:booksImage
       },
       {
-        to:"/library/bloqs",
-        title: "Bloqlar"
+        to:"/library/blogs",
+        title: "Bloqlar",
+        src:noteImage
       }
     ]
   },
    {
-    to:"/discussion",
+    to:"/post",
     title: "Forum",
     src:discussionImage
 },
@@ -36,7 +38,7 @@
     src:progressImage
   },
   {
-    to:"/learning",
+    to:"/learning-goal",
     title: "Öyrənmə hədəfi",
     src:learningImage
   },

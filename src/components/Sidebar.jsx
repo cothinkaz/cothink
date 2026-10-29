@@ -17,14 +17,14 @@ const Sidebar = ({open, setOpen})=>{
       <ul className="w-full flex flex-col">      
       
         {navItems.map((item) => (
-          <li className="mt-3" key={item.to}>
+          <li className="mt-2" key={item.to}>
             {item.children && item.children.length > 0 ? (
               <>
                 <button
                   type="button"
                   aria-expanded={expandedItem === item.title}
                   onClick={() => setExpandedItem(expandedItem === item.title ? null : item.title)}
-                  className="flex gap-3 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full"
+                  className="flex w-full gap-3 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full"
                 >
                   <img src={item.src} alt="" />
                   {open && <span>{item.title}</span>}

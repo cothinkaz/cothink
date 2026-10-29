@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { ratingImage, durationImage, eyeImage, profileImage, playImage, saveImage } from "../assets/assets";
-import { IoIosNotificationsOutline, IoIosArrowDown } from "react-icons/io";
+import { ratingImage, durationImage, eyeImage, learningImage, progressImage, certificateImage,profileImage, playImage, libraryImage,   courseImage, saveImage } from "../assets/assets";
+import { IoIosNotificationsOutline, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
-
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Comments from "../components/Comments";
 import courseComments from "../data/courseComments";
 
@@ -13,11 +13,14 @@ const CourseDetail = () => {
   const [course, setCourse] = useState(null);
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  const [openLesson, setOpenLesson] =useState(null)
   const [openCommentForm, setOpenCommentForm] = useState(false);
   const [activeTab, setActiveTab] = useState("summary");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(true);
+  const [rating, setRating] = useState(0);
   const [error, setError] = useState("");
+    const rows = [15, 25, 50, 75, 100];
 
   useEffect(() => {
     axios.get("/data/courses.json").then((res) => {
@@ -34,26 +37,32 @@ const CourseDetail = () => {
     (item) => String(item.course_id) === String(id)
   );
 
-
-
   const handleComment = () => {
-    setOpenCommentForm(!openCommentForm);
+    setOpenCommentForm(false);
   } 
 
   const getEmbedUrl = (url) => {
-    const videoUrl = url?.split("youtu.be/")[1]?.split("?")[0];
-    return `https://www.youtube.com/embed/${videoUrl}`;
+         if(!url) return '';
+    try{
+      const parsed =new URL(url)
+      const videoUrl = parsed.searchParams.get('v') || parsed.pathname.split("/")[1].filter(Boolean).pop();
+
+    return videoUrl ? `https://www.youtube.com/embed/${videoUrl}` : "";
+    }
+    catch{
+      return '';
+    }
   };
 
   const handleNext = () => {
     if (currentIndex < course.lessons.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((prev)=>prev+1);
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex((prev)=>prev-1);
     }
   };
   const handleSendComment = () => {
@@ -87,8 +96,8 @@ const CourseDetail = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-7">
-        <div className="col-span-7">
+      <div className=" grid grid-cols-1 md:grid-cols-12 gap-7">
+        <div className="md:col-span-7 col-span-12 md:order-1 order-2">
           {
             course.started === false ? (
 <div className="">
@@ -109,16 +118,16 @@ const CourseDetail = () => {
     </div>
     <div className='course-include mb-3'>
       <h4 className="text-lg font-semibold">Kursa daxildir:</h4>
-      <div className='flex gap-3 w-full'>
-      <div className='flex-col gap-4 mt-3 text-gray-400'>
-        <p>Başlanğıc səviyyə</p>
-        <p>20 video dərs</p>
-        <p>{course.duration}</p>
+      <div className='flex gap-7 w-full '>
+      <div className='flex-col gap-4 space-y-3 mt-3 text-gray-400'>
+        <p className='flex gap-3'><img src={progressImage}/>Başlanğıc səviyyə</p>
+        <p className='flex gap-3'><img src={courseImage}/>20 video dərs</p>
+        <p className='flex gap-3'><img src={durationImage}/>{course.duration}</p>
       </div>
-        <div className='flex-col gap-4 mt-3 text-gray-400'>
-        <p>Azərbaycan dilində</p>
-        <p>20 Quiz</p>
-        <p>Sertifikat</p>
+        <div className='flex-col gap-4  space-y-3 mt-3 text-gray-400'>
+        <p className='flex gap-3'><img src={libraryImage}/>Azərbaycan dilində</p>
+        <p className='flex gap-3'><img src={learningImage}/>20 Quiz</p>
+        <p className='flex gap-3'><img src={certificateImage}/>Sertifikat</p>
       </div>
       </div>
         </div>
@@ -183,23 +192,25 @@ const CourseDetail = () => {
 
           <div className="flex justify-between mt-3">
             <button
-              className="px-5 py-2 border border-gray-200 bg-white rounded-full"
+              className="cursor-pointer flex items-center gap-2 px-5 py-2 border border-gray-200 bg-white rounded-full"
               onClick={handlePrev}
-            >
+              disabled={currentIndex === 0}
+            > <IoIosArrowBack fontSize={20}/>
               Əvvəlki
             </button>
             <button
-              className="px-5 py-2 bg-indigo-400 text-white rounded-full"
+              className="cursor-pointer flex items-center gap-2 items-center px-5 py-2 bg-indigo-400 text-white rounded-full"
               onClick={handleNext}
+              disabled = {currentIndex>= (course.lessons.length || 0)-1}
             >
-              növbəti
+              Növbəti <IoIosArrowForward fontSize={20}/>
             </button>
           </div>
              <div className="mt-4 mb-4 flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-gray-200 text-xs font-medium">
             <div className="flex h-full w-1/2 items-center justify-center overflow-hidden bg-indigo-600 text-white" />
           </div>
 
-          <div className="flex justify-between gap-5">
+          <div className="md:flex justify-between gap-5">
             <h4 className="font-semibold text-xl">{course.lessons[0].lesson_title}</h4>
             <div className="flex items-center gap-3">
               <div className="flex gap-3">
@@ -224,7 +235,7 @@ const CourseDetail = () => {
             </div>
           </div>
           <div className="nav-tabs mt-5 mb-5">
-            <div className="flex">
+            <div className="md:flex">
               {courseTabs.map((tab) => (
                 <button
                   className={`w-full px-5 py-2 font-semibold border-b ${
@@ -242,29 +253,19 @@ const CourseDetail = () => {
             <div className="rounded-md bg-white p-5">
               <p className="text-gray-600 leading-7">
                 {courseTabs.find((tab) => tab.key === activeTab)?.content}
+                {
+                 activeTab === 'notes' && (
+                    <>
+                    <textarea disabled rows={5} className='w-full resize-y rounded-md border border-gray-300  p-3 outline-none '/>
+                    </>
+                  )
+                }
               </p>
             </div>
           </div>
             </>
 
-          }
-        
-{
-  openCommentForm && (
-    <div className="mt-4 fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md z-50">
-      <textarea
-        className="w-full p-2 border border-gray-300 rounded-md"
-        placeholder="Şərhinizi yazın..."  > </textarea>
-        <button onClick={handleSendComment} className="px-4 py-2 bg-indigo-600 text-white rounded-md">
-          Şərh göndər
-        </button>
-    </div>
-  )  
-}
-       
-
-   
-
+          }               
           <form className="mt-5 mb-5" onSubmit={(e) => e.preventDefault()}>
             {error && (
               <p className="text-center text-red-600 bg-red-50 rounded-md p-2 font-bold text-lg mb-3">
@@ -274,7 +275,7 @@ const CourseDetail = () => {
             <h4 className="mt-5 font-bold text-lg">Rəylər</h4>
             <div className="flex justify-between">
               <img src={ratingImage} alt="rating" />
-              <button className="border border-indigo-600 text-indigo-600 rounded-full px-4 py-2" onClick={openCommentForm}>
+              <button className="border border-indigo-600 text-indigo-600 rounded-full px-4 py-2" onClick={()=>setOpenCommentForm(true)}>
                 Şərhinizi yazın
               </button>
             </div>
@@ -289,7 +290,8 @@ const CourseDetail = () => {
           )}
         </div>
 
-        <div className="col-span-5">
+        <div className="md:col-span-5 col-span-12 md:order-2 order-1">
+       
           {
             course.started === false ? (
                 <div className=" relative gap-3 text-indigo-600 rounded-md px-5 py-2 mb-3">
@@ -319,7 +321,9 @@ const CourseDetail = () => {
                           Kursa qoşul
                         </a>
                       </div>
+
                       </div>
+
              
 
             ) : (
@@ -328,18 +332,36 @@ const CourseDetail = () => {
             <div className="bg-gray-100 shadow-md rounded-md px-5 py-2">
               {course?.lessons && course?.lessons.length > 0 ? (
                 course.lessons.map((lesson, index) => (
-                  <div
+                  <button
                     key={`${lesson.lesson_title}-${index}`}
-                    className="w-full mt-5 mb-5 bg-white rounded-md px-5 py-2"
+                    onClick={()=>{setCurrentIndex(index)
+                            setOpenLesson(index)
+                  }}
+                    className="w-full mt-2 mb-2 bg-white rounded-md px-4 py-3 shadow-md"
                   >
                     <div className="cursor-pointer">
                       <div className="flex w-full justify-between">
                         <div className="text-gray-500 font-semibold">{lesson.lesson_title}</div>
-                        <IoIosArrowDown fontSize={24} className="text-gray-400" />
+                       
+{
+  openLesson === index ?  <IoIosArrowUp fontSize={24} className="text-gray-400" onClick={()=>setOpenLesson(null)}/> 
+ :  <IoIosArrowDown fontSize={24} className="text-gray-400" onClick={()=>setOpenLesson(openLesson === index ? null : index)}/>
+}
+                       
                       </div>
-                      <div className="text-gray-400">3 dəq 45 san</div>
+                      <div className="text-left text-gray-400">3 dəq 45 san</div>
+                      {
+                        openLesson === index && (
+                          <>
+                          <div className='mt-3 pt-3 border-t border-gray-200'>
+
+<p className='text-gray-500'>Course content</p>
+</div>
+                          </>
+                        )
+                      }
                     </div>
-                  </div>
+                  </button>
                 ))
               ) : (
                 <p className="font-bold col-span-4 text-center text-xl">Dərs tapılmadı</p>
@@ -349,9 +371,44 @@ const CourseDetail = () => {
               </>
             )
           }
-        
+            <div className="flex flex-col gap-2 p-4 border border-gray-100 rounded-lg shadow-md px-5 py-2 mt-4">
+      <div className='flex justify-center gap-3 items-center'>
+
+      <h2 className='text-center text-gray-600 text-2xl font-semibold'>4.9<span className='pl-3 text-yellow-400'>★ ★  ★ ★ ★</span> </h2>
+      <div className='text-indigo-600'>(250 rəy)</div>
+      </div>
+      {rows.map((count, index) => (
+        <div key={index} className="flex text-yellow-400 gap-2 font-bold text-xl">
+           ★
+          <div className='w-full h-3 bg-gray-200 rounded-full overflow-hidden mt-2'>
+            <div className='bg-indigo-600 w-full h-full' style={{width:`${count}%`}}></div>
+          </div>
+        </div>
+      ))}
+    </div>
         </div>
       </div>
+      {
+  openCommentForm && (
+    <div className='fixed inset-0 z-50 flex items-center justify-center p-5  bg-black/50 '>
+    <div className="relative mt-4 p-5 w-full max-w-lg flex-col bg-white justify-end items-center p-4 rounded-lg shadow-md">
+      <button onClick={()=>setOpenCommentForm(false)} className="absolute right-2 top-0 text-end px-4 py-2 text-3xl text-gray-500">
+          &times;
+        </button>
+      <h2 className='text-center text-gray-700 font-medium text-lg mb-2'>Şərhlərinizi bizimlə bölüşün</h2>
+      <div className='flex items-center gap-2'>
+      <input type='text'
+        className="w-full rounded-full p-2 border border-gray-300 outline-none"
+        placeholder="Şərh yazın"  />
+       <div className='flex justify-center'>
+        <button onClick={handleSendComment} className=" w-10 h-10 px-5 py-2 bg-indigo-600 text-white rounded-full">
+        </button>
+    </div>
+      </div>
+     </div>
+     </div>
+  )  
+}
     </div>
   );
 };

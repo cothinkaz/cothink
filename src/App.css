@@ -2,3 +2,6 @@
   footer h3{
     margin-bottom:0.5rem;
   }
+  @import "./styles/color/learninggoal.css";
+  @import "./styles/typography/learninggoal.css";
+  
