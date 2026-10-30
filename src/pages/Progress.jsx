@@ -16,7 +16,7 @@ import saveIcon from "../assets/save.svg";
 import likeIcon from "../assets/like.svg";
 import commentsIcon from "../assets/comments.svg";
 import {featuredResources} from "../data/resourcesData"
-import {blogs} from '../blogData/blogData';
+import {blogs} from '../data/blogData';
 
 const BookmarkIcon = () => (
   <img src={saveIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" />
