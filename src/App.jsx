@@ -16,7 +16,7 @@ import ResourceListing from "./pages/ResourceListing";
 import ResourceDetail from "./pages/ResourceDetail";
 import BookReader from "./pages/BookReader";
 import SlideReader from "./pages/SlideReader";
-import Progress from "./pages/Progress";
+
 import Certificates from "./pages/Certificates/Certificates";
 import CertificatesDetails from "./pages/Certificates/CertificatesDetails";
 import PublicCertificateDetailsPage from "./pages/Certificates/PublicCertificateDetailsPage";
@@ -42,7 +42,7 @@ function App() {
 
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
-          <Route path="/progress" element={<Progress />} />
+
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/details/:id" element={<CertificatesDetails />} />
           <Route path="/post" element={<QuestionFeed />} />

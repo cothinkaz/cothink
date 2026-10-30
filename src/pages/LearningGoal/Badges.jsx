@@ -1,4 +1,4 @@
-import { badges, illustrations, streak, streakFaq } from "../../learningGoalData/learningGoalData.js";
+import { badges, illustrations, streak, streakFaq } from "../../data/learningGoalData.js";
 import { ordinalAz } from "../../utils/learningGoalUtils";
 import { Breadcrumb, FaqSection, Icon, ImageSlot, PageHeader, ProgressBar } from "../../components/LearningGoal/shared";
 
