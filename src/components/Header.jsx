@@ -6,9 +6,10 @@ import {IoIosMenu} from "react-icons/io";
 import { useState, useEffect, useRef } from "react";
 import navItems from "../data/navItems";
 import { mainLogo, searchImage, chatImage, notificationImage, profileImage } from "../assets/assets";
-const Header = () =>{
+const Header = ({share,setShare}) =>{
     const [search, setSearch] = useState(false);
     const [searchValue, setSearchValue] = useState("");
+
     const [openMenu, setOpenMenu] = useState(false);
     const menuRef = useRef(null)
 
@@ -51,7 +52,7 @@ const Header = () =>{
                  </div>
               <div className="flex justify-end items-center gap-3">
                 
-            <button className="cursor-pointer md:flex gap-2 hidden bg-indigo-800 text-white  rounded-full p-2 lg:px-4 lg:py-2 text-sm">
+            <button className="cursor-pointer md:flex gap-2 hidden bg-indigo-800 text-white  rounded-full p-2 lg:px-4 lg:py-2 text-sm" onClick={()=>setShare(true)}>
               <FaPlus fontSize={18}/> Yarat
             </button>
                    <button className="cursor-pointer md:flex hidden border border-gray-100 rounded-full p-2">

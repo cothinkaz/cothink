@@ -9,7 +9,7 @@ import {
   streak,
   todayStatus,
   todayTasks,
-} from "../../learningGoalData/learningGoalData.js";
+} from "../../data/learningGoalData.js";
 
 import { countActiveInMonth, daysInMonth, getLastDays, parseISO } from "../../utils/learningGoalUtils";
 import { ReminderModal } from "../../components/LearningGoal/modals";

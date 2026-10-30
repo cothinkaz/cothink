@@ -9,6 +9,7 @@ import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 import Blogs from "./pages/Blogs";
 import BlogDetails from "./pages/BlogDetails";
+
 import Resources from "./pages/Resources";
 import ResourceCategory from "./pages/ResourceCategory";
 import ResourceListing from "./pages/ResourceListing";
@@ -37,6 +38,7 @@ function App() {
       <ScrollToTop />
 
       <Routes>
+        {/* Main layout and website pages */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
 
@@ -59,10 +61,7 @@ function App() {
           <Route path="/post/:id" element={<PostDetails />} />
 
           <Route path="/learning-goal" element={<LearningGoal />} />
-          <Route
-            path="/learning-goal/streak-history"
-            element={<StreakHistory />}
-          />
+          <Route path="/learning-goal/streak-history" element={<StreakHistory />} />
           <Route path="/learning-goal/badges" element={<Badges />} />
           <Route path="/learning-goal/coupons" element={<Coupons />} />
 
@@ -85,6 +84,7 @@ function App() {
           />
         </Route>
 
+        {/* Full-screen readers */}
         <Route path="/library/resources/read/:id" element={<BookReader />} />
         <Route path="/library/resources/read" element={<BookReader />} />
 

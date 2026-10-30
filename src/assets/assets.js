@@ -29,4 +29,8 @@ import playImage from "../assets/play.svg";
 import saveImage from '../assets/archive.svg'
 import notFoundImage from '../assets/notfound.svg'
 import courseBanner from "../assets/courseBanner.png"
-export {courseBanner, playImage,profileImage, notFoundImage, mainLogo, moreImage,eyeImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage, noteImage, booksImage}
+import courseShare from '../assets/kurs_share.svg'
+import blogShare from '../assets/blog_share.svg'
+import forumShare from '../assets/forum_share.svg'
+import resursShare from '../assets/resurs_share.svg'
+export {courseBanner, playImage,profileImage, notFoundImage, mainLogo, moreImage,eyeImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, courseShare, forumShare, blogShare,resursShare, learningImage, noteImage, booksImage}

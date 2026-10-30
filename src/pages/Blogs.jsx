@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { blogs } from "../blogData/blogData.js";
+import { blogs } from "../data/blogData.js";
 import BlogCard from "../components/BlogCard";
 import BlogListCard from "../components/BlogListCard";
 import SearchBar from "../components/SearchBar";
@@ -16,14 +16,14 @@ const LIST_STEP = 4; // "Daha çox göstər" hər dəfə neçə bloq əlavə edi
 
 const ArrowIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M5 12h14M13 6l6 6-6 6" />
   </svg>
 );
 
 const ChevronDownIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 9l6 6 6-6" />
   </svg>
 );
