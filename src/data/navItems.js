@@ -38,7 +38,7 @@
     src:progressImage
   },
   {
-    to:"/learning",
+    to:"/learning-goal",
     title: "Öyrənmə hədəfi",
     src:learningImage
   },
