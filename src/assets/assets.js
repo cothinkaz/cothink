@@ -12,7 +12,7 @@ import footerLinkedin from "../assets/logos_linkedin.svg";
 import footerYoutube from "../assets/logos_youtube.svg";
 import certificateImage from "../assets/certificate.svg"
 import homeImage from "../assets/home-2.svg"
-import courseImage from "../assets/play-circle.svg"
+import courseImage from "../assets/play.svg"
 import logoutImage from "../assets/logout.svg"
 import libraryImage from "../assets/book.svg"
 import discussionImage from "../assets/messages-2.svg"
@@ -25,7 +25,7 @@ import durationImage from "../assets/duration.svg";
 import eyeImage from "../assets/eye.svg";
 import noteImage from "../assets/note.svg";
 import booksImage from "../assets/books.svg";
-import playImage from "../assets/play.svg";
+import playImage from "../assets/play-circle.svg";
 import saveImage from '../assets/archive.svg'
 import notFoundImage from '../assets/notfound.svg'
 import courseBanner from "../assets/courseBanner.png"
