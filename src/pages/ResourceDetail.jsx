@@ -8,6 +8,8 @@ import {
 import ResourceCard from "../components/ResourceCard";
 import ShareModal from "../components/ShareModal";
 
+const actionButtonClass = "flex h-12 w-full max-w-[240px] shrink-0 items-center justify-center gap-2 rounded-full border px-4 text-[14px] font-medium transition-colors lg:min-w-0 lg:max-w-none lg:gap-1 lg:px-2 lg:text-xs xl:gap-2 xl:text-sm [&>svg]:shrink-0";
+
 /* ─────────────────────────────────────────────
    SVGs / Icons
 ───────────────────────────────────────────── */
@@ -249,6 +251,7 @@ const ResourceDetail = () => {
         <button
           type="button"
           aria-label="Yadda saxla"
+          aria-pressed={bookmarked}
           onClick={() => setBookmarked((v) => !v)}
           className="absolute right-6 top-6 sm:right-8 sm:top-8 flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[#E5E7EB] bg-white transition-colors hover:border-[#EA580C]"
         >
@@ -257,11 +260,11 @@ const ResourceDetail = () => {
 
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-10">
           {/* Sol: Kitab Qapağı */}
-          <div className="flex shrink-0 justify-center md:justify-start">
+          <div className="mx-auto flex w-full max-w-[215px] shrink-0 justify-center sm:max-w-[230px] md:mx-0">
             <img
               src={displayCover}
               alt={displayTitle}
-              className="h-[310px] w-[215px] sm:h-[330px] sm:w-[230px] rounded-[16px] object-cover shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
+              className="aspect-[215/310] w-full rounded-[16px] object-cover shadow-[0_4px_24px_rgba(0,0,0,0.08)] sm:aspect-[23/33]"
               onError={(e) => {
                 e.currentTarget.src = "/books/ikigai.jpg";
               }}
@@ -269,8 +272,8 @@ const ResourceDetail = () => {
           </div>
 
           {/* Sağ: Kitab Məlumatları */}
-          <div className="flex-1 min-w-0 pr-8">
-            <h1 className="text-[26px] sm:text-[28px] font-bold text-[#111827] leading-tight">
+          <div className="min-w-0 flex-1">
+            <h1 className="pr-8 text-[26px] sm:text-[28px] font-bold text-[#111827] leading-tight">
               {displayTitle}
             </h1>
             <p className="mt-1 text-[15px] text-[#4B5563]">
@@ -349,7 +352,7 @@ const ResourceDetail = () => {
             </div>
 
             {/* Alt Əməliyyat Düymələri */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:grid lg:grid-cols-4">
               {/* Oxumağa başla */}
               <button
                 type="button"
@@ -366,7 +369,7 @@ const ResourceDetail = () => {
                     navigate(`/library/resources/read/${resource.id}`);
                   }
                 }}
-                className="flex items-center gap-2 rounded-full bg-[#E8F0FE] px-6 py-2.5 text-[14px] font-medium text-[#2563EB] hover:bg-[#DCE7FD] transition-colors shadow-sm"
+                className={`${actionButtonClass} border-transparent bg-[#E8F0FE] text-[#2563EB] shadow-sm hover:bg-[#DCE7FD]`}
               >
                 {Icons.bookOpen}
                 Oxumağa başla
@@ -376,7 +379,7 @@ const ResourceDetail = () => {
               <button
                 type="button"
                 onClick={() => alert("Resurs yüklənməyə başladı!")}
-                className="flex items-center gap-2 rounded-full border border-[#D1D5DB] bg-white px-6 py-2.5 text-[14px] font-medium text-[#374151] hover:bg-gray-50 transition-colors"
+                className={`${actionButtonClass} border-[#D1D5DB] bg-white text-[#374151] hover:bg-gray-50`}
               >
                 {Icons.downloadTray}
                 Yüklə
@@ -386,7 +389,8 @@ const ResourceDetail = () => {
               <button
                 type="button"
                 onClick={() => setBookmarked((v) => !v)}
-                className="flex items-center gap-2 rounded-full border border-[#D1D5DB] bg-white px-6 py-2.5 text-[14px] font-medium text-[#374151] hover:bg-gray-50 transition-colors"
+                aria-pressed={bookmarked}
+                className={`${actionButtonClass} border-[#D1D5DB] bg-white text-[#374151] hover:bg-gray-50`}
               >
                 {Icons.bookmarkGray}
                 Saxla
@@ -396,7 +400,7 @@ const ResourceDetail = () => {
               <button
                 type="button"
                 onClick={() => setShareOpen(true)}
-                className="flex items-center gap-2 rounded-full border border-[#D1D5DB] bg-white px-6 py-2.5 text-[14px] font-medium text-[#374151] hover:bg-gray-50 transition-colors"
+                className={`${actionButtonClass} border-[#D1D5DB] bg-white text-[#374151] hover:bg-gray-50`}
               >
                 {Icons.shareNodes}
                 Paylaş
