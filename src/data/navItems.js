@@ -1,4 +1,4 @@
- import { homeImage, noteImage, booksImage, courseImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
+ import { homeImage, noteImage, playImage, booksImage, courseImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
  const navItems = [
     {
     to:"/",
