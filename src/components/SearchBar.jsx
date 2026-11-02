@@ -1,3 +1,4 @@
+import { searchBarStyles } from "../utils/resources/shared/searchBarStyles";
 import searchIcon from "../assets/search-normal.svg";
 import filterIcon from "../assets/filter.svg";
 
@@ -10,11 +11,12 @@ const SearchBar = ({
   variant = "default",
 }) => {
   const resourceVariant = variant === "resources";
+  const styles = searchBarStyles[resourceVariant ? "resources" : "default"];
   return (
-    <div className={resourceVariant ? "flex flex-col gap-3 sm:flex-row sm:items-center" : "flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"}>
+    <div className={styles.container}>
       {/* Search */}
-      <div className={resourceVariant ? "relative w-full min-w-0 flex-1" : "relative w-full sm:flex-1"}>
-        <span className={resourceVariant ? "absolute left-5 top-1/2 -translate-y-1/2" : "absolute left-4 top-1/2 -translate-y-1/2 sm:left-5"}>
+      <div className={styles.inputContainer}>
+        <span className={styles.icon}>
           <img src={searchIcon} alt={resourceVariant ? "" : "search"} className="h-5 w-5" />
         </span>
 
@@ -25,7 +27,7 @@ const SearchBar = ({
           placeholder={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={resourceVariant ? "h-[50px] w-full rounded-full border border-[#D9D9D9] pl-14 pr-12 text-[16px] outline-none focus-visible:ring-2 focus-visible:ring-[#2A4EBB]/30 [&::-webkit-search-cancel-button]:appearance-none" : "h-[44px] w-full rounded-full border border-[#D9D9D9] pl-12 pr-4 text-[14px] outline-none sm:h-[50px] sm:pl-14 sm:pr-5 sm:text-[16px]"}
+          className={styles.input}
         />
         {resourceVariant && value && (
           <button
@@ -45,7 +47,7 @@ const SearchBar = ({
       <button
         type="button"
         onClick={onFilterClick}
-        className={resourceVariant ? "flex h-[50px] w-full shrink-0 items-center justify-center gap-3 rounded-full border border-[#D9D9D9] px-6 text-[16px] text-[#404040] sm:w-auto" : "flex h-[44px] w-full shrink-0 items-center justify-center gap-2 rounded-full border border-[#D9D9D9] px-6 text-[14px] text-[#404040] sm:h-[50px] sm:w-auto sm:gap-3 sm:text-[16px]"}
+        className={styles.filter}
       >
         <img src={filterIcon} alt="" />
         Filtrlə
