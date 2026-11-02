@@ -10,7 +10,7 @@ import {
   illustrations,
   sectionsByDate,
   weeklyGoal,
-} from "../../learningGoalData/learningGoalData.js";
+} from "../../data/learningGoalData.js";
 import { getWeekDays } from "../../utils/learningGoalUtils";
 import { CouponRulesModal } from "../../components/LearningGoal/modals";
 import {

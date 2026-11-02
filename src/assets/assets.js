@@ -12,7 +12,7 @@ import footerLinkedin from "../assets/logos_linkedin.svg";
 import footerYoutube from "../assets/logos_youtube.svg";
 import certificateImage from "../assets/certificate.svg"
 import homeImage from "../assets/home-2.svg"
-import courseImage from "../assets/play-circle.svg"
+import courseImage from "../assets/play.svg"
 import logoutImage from "../assets/logout.svg"
 import libraryImage from "../assets/book.svg"
 import discussionImage from "../assets/messages-2.svg"
@@ -25,8 +25,12 @@ import durationImage from "../assets/duration.svg";
 import eyeImage from "../assets/eye.svg";
 import noteImage from "../assets/note.svg";
 import booksImage from "../assets/books.svg";
-import playImage from "../assets/play.svg";
+import playImage from "../assets/play-circle.svg";
 import saveImage from '../assets/archive.svg'
 import notFoundImage from '../assets/notfound.svg'
 import courseBanner from "../assets/courseBanner.png"
-export {courseBanner, playImage,profileImage, notFoundImage, mainLogo, moreImage,eyeImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage, noteImage, booksImage}
+import courseShare from '../assets/kurs_share.svg'
+import blogShare from '../assets/blog_share.svg'
+import forumShare from '../assets/forum_share.svg'
+import resursShare from '../assets/resurs_share.svg'
+export {courseBanner, playImage,profileImage, notFoundImage, mainLogo, moreImage,eyeImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, courseShare, forumShare, blogShare,resursShare, learningImage, noteImage, booksImage}

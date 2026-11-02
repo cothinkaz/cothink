@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { blogs } from "../blogData/blogData.js";
-import { getAuthorInfo, getBlogDetails } from "../blogData/blogDetailsData.js";
+import { blogs } from "../data/blogData.js";
+import { getAuthorInfo, getBlogDetails } from "../data/blogDetailsData.js";
 import { parseViews } from "../utils/blogUtils";
 import BlogCard from "../components/BlogCard";
 import BlogListCard from "../components/BlogListCard";
@@ -75,7 +75,7 @@ const CodeBlock = ({ language, code }) => {
             "Kopyalandı"
           ) : (
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <rect x="9" y="9" width="12" height="12" rx="2" />
               <path d="M5 15V5a2 2 0 0 1 2-2h8" />
             </svg>
@@ -197,7 +197,7 @@ const AuthorCard = ({ name, avatar, bio, stats, following, onToggleFollow }) => 
           >
             {following ? "İzlənilir" : "Mövzuya izlə"}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 6l6 6-6 6" />
             </svg>
           </button>
@@ -221,7 +221,7 @@ const AuthorCard = ({ name, avatar, bio, stats, following, onToggleFollow }) => 
 /* ================= Şərhlər ================= */
 const SmallThumbIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M7 10v12" />
     <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
   </svg>
@@ -229,7 +229,7 @@ const SmallThumbIcon = () => (
 
 const ReplyIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 5h16v11H9l-5 4V5z" />
   </svg>
 );
@@ -244,7 +244,7 @@ const DotsIcon = () => (
 
 const SendIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
-       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M22 2 11 13" />
     <path d="M22 2 15 22l-4-9-9-4 20-7z" />
   </svg>
@@ -374,7 +374,7 @@ const ThumbIcon = ({ down = false }) => (
 
 const ClockIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="9" />
     <path d="M12 7v5l3 2" />
   </svg>
@@ -382,14 +382,14 @@ const ClockIcon = () => (
 
 const ChevronRight = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M9 6l6 6-6 6" />
   </svg>
 );
 
 const ArrowIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M5 12h14M13 6l6 6-6 6" />
   </svg>
 );

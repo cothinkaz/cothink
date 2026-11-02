@@ -1,5 +1,3 @@
-
-   
 import { useState, useEffect } from "react";
 import axios from "axios";
 import  {FaRegCircleUser} from "react-icons/fa6";
@@ -18,7 +16,7 @@ import saveIcon from "../assets/save.svg";
 import likeIcon from "../assets/like.svg";
 import commentsIcon from "../assets/comments.svg";
 import {featuredResources} from "../data/resourcesData"
-import {blogs} from '../blogData/blogData';
+import {blogs} from '../data/blogData';
 
 const BookmarkIcon = () => (
   <img src={saveIcon} alt="" className="h-[16px] w-[16px] sm:h-[20px] sm:w-[20px]" />
@@ -55,8 +53,6 @@ const categories = [
 ];
  
 const Progress=()=>{
-
-
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [resources, setResources] = useState([])
@@ -83,7 +79,7 @@ const Progress=()=>{
  }
 
 const filteredCourses = courses.filter((course) => {
-   const searchedQuery = query.toLowerCase();
+   const searchedQuery = query.trim().toLowerCase();
   const matchedSearch =
       course.name.toLowerCase().includes(searchedQuery) ||
       course.description.toLowerCase().includes(searchedQuery);
@@ -91,7 +87,7 @@ const filteredCourses = courses.filter((course) => {
      return matchedCategory && matchedSearch
     })
 const filteredBlogs = blogs.filter((blog) => {
-   const searchedQuery = query.toLowerCase();
+   const searchedQuery = query.trim().toLowerCase();
   const matchedSearch =
       blog.title.toLowerCase().includes(searchedQuery) ||
       blog.description.toLowerCase().includes(searchedQuery);
@@ -101,7 +97,7 @@ const filteredBlogs = blogs.filter((blog) => {
     })
 
 const filteredResources = featuredResources.filter((resource) => {
-   const searchedQuery = query.toLowerCase();
+   const searchedQuery = query.trim().toLowerCase();
   const matchedSearch =
       resource.title.toLowerCase().includes(searchedQuery) ||
       resource.author.toLowerCase().includes(searchedQuery);
