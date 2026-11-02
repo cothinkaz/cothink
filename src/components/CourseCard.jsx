@@ -58,7 +58,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
         <>
           <div className="flex justify-between">
             <p className="text-gray-400">20 dərs</p>
-            <h2 className="text-xl font-bold">{course.price}</h2>
+            <h2 className="text-xl font-bold">{course.price} AZN</h2>
           </div>
           <Link
             to={`/courses/${course.id}`}

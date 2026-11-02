@@ -1,4 +1,4 @@
- import { homeImage, noteImage, booksImage, courseImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
+ import { homeImage, noteImage, booksImage, playImage, libraryImage, discussionImage, progressImage, learningImage, certificateImage } from "../assets/assets";
  const navItems = [
     {
     to:"/",
@@ -8,7 +8,7 @@
 {
      to:"/courses",
     title: "Kurslar",
-    src:courseImage
+    src:playImage
   },
   {
     to:"/library",
@@ -33,12 +33,12 @@
     src:discussionImage
 },
 {
-     to:"/progress",
+    to:"/progress",
     title: "İrəliləyişim",
     src:progressImage
   },
   {
-    to:"/learning-goal",
+    to:"/learning",
     title: "Öyrənmə hədəfi",
     src:learningImage
   },

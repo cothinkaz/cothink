@@ -2,6 +2,7 @@ import { useState } from "react"
 import courseComments from "../data/courseComments";
 import {FaRegThumbsUp} from "react-icons/fa";
 import {FaRegComment} from "react-icons/fa";
+import { BsThreeDots } from "react-icons/bs";
 import {profileImage, moreImage} from "../assets/assets";
 export const CommentCard=({comment})=>{
         return(
@@ -13,7 +14,6 @@ export const CommentCard=({comment})=>{
               src={profileImage}
               alt="Profile"
             />
-
             <div className="pl-4">
             <div className='flex justify-between gap-3'>
                <h4 className="font-semibold">{comment.student_name}</h4>
@@ -31,6 +31,7 @@ export const CommentCard=({comment})=>{
                     </div> 
 
                           <div>
+                               <BsThreeDots fontSize={24} className='md:flex hidden'/>
 
        
             </div>

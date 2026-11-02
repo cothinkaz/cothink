@@ -152,7 +152,7 @@ const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState('Hamısı');
   const [openCategories, setOpenCategories] = useState(false)
   const filteredCourses = courses.filter((course) => {
-  const searchedQuery = query.toLowerCase();
+  const searchedQuery = query.trim().toLowerCase();
   const matchedSearch =
       course.name.toLowerCase().includes(searchedQuery) ||
       course.description.toLowerCase().includes(searchedQuery);
@@ -221,14 +221,13 @@ const Courses = () => {
           </div>
           </div>
                 
-        <div className="categories flex gap-2 mt-4 mb-4 flex-wrap">
+        <div className="categories flex flex-nowrap whitespace-nowrap overflow-x-auto pb-2 gap-2 mt-4 mb-4 ">
           
           {categories.map((category, index) => (
             <>
-          
             <button
               key={index}
-              className={`cursor-pointer py-2 px-4 rounded-full ${
+              className={`shrink-0 cursor-pointer py-2 px-4 rounded-full ${
                 selectedCategory === category
                   ? "bg-indigo-700 text-white"
                   : "border border-gray-200 text-gray-700 hover:bg-indigo-700 hover:text-white"
@@ -242,7 +241,7 @@ const Courses = () => {
           ))}
           <button
 
-              className='cursor-pointer py-2 px-4 rounded-full border border-gray-200 text-gray-700'
+              className='hidden md:flex cursor-pointer py-2 px-4 rounded-full border border-gray-200 text-gray-700'
               onClick={() => setOpenCategories(true)}
             >
               <IoIosArrowForward fontSize={20}/>

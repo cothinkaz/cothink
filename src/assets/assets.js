@@ -25,8 +25,8 @@ import durationImage from "../assets/duration.svg";
 import eyeImage from "../assets/eye.svg";
 import noteImage from "../assets/note.svg";
 import booksImage from "../assets/books.svg";
-import playImage from "../assets/play.svg"
+import playImage from "../assets/play.svg";
 import saveImage from '../assets/archive.svg'
 import notFoundImage from '../assets/notfound.svg'
 import courseBanner from "../assets/courseBanner.png"
-export {courseBanner,profileImage, notFoundImage, mainLogo, moreImage,eyeImage, playImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage, noteImage, booksImage}
+export {courseBanner, playImage,profileImage, notFoundImage, mainLogo, moreImage,eyeImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, learningImage, noteImage, booksImage}
