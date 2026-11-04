@@ -1,5 +1,6 @@
 import {useState} from 'react';
-
+import {courseBanner, durationImage, notFoundImage,saveImage,searchImage,noteImage, playImage} from '../assets/assets';
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 const CourseShare = () => {
     const [courseTitle, setCourseTitle] = useState('');
     const [courseCategory, setCourseCategory] = useState('');
@@ -70,12 +71,12 @@ const prevStep=()=>{
       ) : <>
    <div className="mb-5 mt-5 overflow-x-auto">
         <div className="relative flex min-w-max items-start justify-between mt-7 mb-7">
-           <div className='absolute left-10 right-5 top-5 h-0.2 bg-indigo-700 transition-all' 
-            style={{width:`${((courseShareStep-1) / (steps.length) )*100}`}}>
+           <div className='absolute left-10 right-5 top-5 h-0.2 bg-green-500/50 transition-all' 
+            style={{width:`${(courseShareStep-1) *20}`}}>
              
            </div>
             <div
-    className="absolute left-5 top-5 h-0.5 bg-indigo-700 transition-all z-50"
+    className="absolute left-5 top-5 h-0.5 bg-green-500/50 transition-all z-50"
     style={{
       width: `${((courseShareStep - 1) / (steps.length - 1)) * 100}%`,
     }}
@@ -83,7 +84,7 @@ const prevStep=()=>{
            {
             steps.map((item)=>(
               <div className='z-100 flex min-w-[100px] cursor-pointer flex-col items-center text-center'>
-              <div className={`w-10 h-10 border  rounded-full flex items-center justify-center ${courseShareStep>=item.step ? 'bg-indigo-700 text-white border-indigo-300' : 'bg-gray-200 border-gray-300 '}`}>
+              <div className={`w-10 h-10 border  rounded-full flex items-center justify-center ${courseShareStep>=item.step ? 'bg-white border-green-500' : 'bg-gray-200 border-gray-300 '}`}>
 {item.step}
                 </div>
             <span className="ml-2 text-gray-500 font-semibold" >{item.title}</span>
@@ -95,8 +96,8 @@ const prevStep=()=>{
     </div>
    {
         courseShareStep === 1 && ( <>
-  <div className="grid md:grid-cols-2 grid-cols-1 gap-4 ">
-        <div className="bg-white shadow-md p-4 border border-gray-300 rounded-lg">
+  <div className="grid md:grid-cols-12 grid-cols-1 gap-4 ">
+        <div className="col-span-7 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
             <form>
                 <div className="mb-4">
                     <label htmlFor="courseTitle" className="block text-gray-700 font-semibold mb-2">Kurs Başlığı</label>
@@ -154,7 +155,7 @@ const prevStep=()=>{
             </form>
             </div>
      
-<div className="bg-white shadow-md p-4 border border-gray-300 h-80  rounded-lg">
+<div className="col-span-5 bg-white shadow-md p-4 border border-gray-300 h-80  rounded-lg">
                 <div className='flex justify-center'>
                     <div className="w-full text-center justify-center bg-gray-600/50 rounded-md w-64 h-64"></div>
                   </div>
@@ -165,8 +166,8 @@ const prevStep=()=>{
     }
     {
         courseShareStep === 2 && ( <>
-            <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-        <div className="bg-white shadow-md p-4 border border-gray-300 rounded-lg">
+            <div className="grid md:grid-cols-12 grid-cols-2 gap-4">
+        <div className="col-span-7 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
                   <form>
                 <div className="mb-4">
                     <label htmlFor="courseTitle" className="block text-gray-700 font-semibold mb-2">Bu kurs kimlər üçündür?</label>
@@ -190,13 +191,20 @@ const prevStep=()=>{
                    <textarea className='w-full rounded-md border border-gray-300 px-5 py-2' placeholder='1-2 cümlə ilə ifadə edin.' rows={5}/>
                 </div>
                
-            </form>
-        </div>
-        <div className="bg-white shadow-md p-4 border border-gray-300 h-80  rounded-lg">
+            </form> 
+   </div>
+          <div className="col-span-5 max-h-[450px] bg-white shadow-md p-4 border border-gray-300   rounded-lg">
                 <div className='flex justify-center'>
-                    <div className="w-full text-center justify-center bg-gray-600/50 rounded-md w-64 h-64"></div>
+                    <div className="w-full text-center justify-center bg-gray-600/50 rounded-md ">
+                    <img src='https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3' className='w-full rounded-md'/>
+                    </div>
                   </div>
-                <p className='text-center text-gray-400 mt-3 mb-3'>Kurs kartının tələbələrə görünən forması</p>
+                  <h4 className='text-center mt-3 mb-3 font-semibold text-lg'>UI/UX kursları</h4>
+                <p className='text-center text-gray-400 mb-3'>Kurs kartının tələbələrə görünən forması</p>
+                <div className='flex gap-3 justify-center'>
+                <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Python</a>
+                <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Figma</a>
+                </div>
                 </div>
     </div>
 
@@ -216,16 +224,62 @@ const prevStep=()=>{
         </div>
         <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
+                 <div className='flex items-center gap-2'>
+                    <img src={playImage}/>
                 <h4 className='text-lg font-semibold mb-2'>1. Frame, grid and constratins</h4>
-                <p className='text-gray-600'>2 dərs</p>
+                  </div>
+                      <div className='flex items-center gap-3'>
+       <p className='text-gray-600'>2 dərs</p>
+       <div className='px-2 py-1  rounded-md border border-gray-300'>
+<IoIosArrowDown fontSize={24}/>
+       </div>
+                 </div>
+                </div>
+            </div>
+                   <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
+            <div className='flex justify-between gap-3 items-center'>
+                    <div className='flex gap-2'>
+                        <img src={noteImage}/>
+                <h4 className='text-lg font-semibold mb-2'>Quiz</h4>
+                 </div>
+                 <div className='flex items-center gap-3'>
+       <p className='text-gray-600'>2 dərs</p>
+       <div className='px-2 py-1  rounded-md border border-gray-300'>
+<IoIosArrowDown fontSize={24}/>
+       </div>
+                 </div>
+         
+                </div>
+            </div>
+                 <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
+            <div className='flex justify-between gap-3 items-center'>
+                <div className='flex gap-2'>
+                             <img src={noteImage}/>
+            <h4 className='text-lg font-semibold mb-2'>Tapşırıq</h4>
+
+                </div>
+               
+                      <div className='flex items-center gap-3'>
+       <p className='text-gray-600'>2 dərs</p>
+       <div className='px-2 py-1  rounded-md border border-gray-300'>
+<IoIosArrowDown fontSize={24}/>
+       </div>
+                 </div>
                 </div>
             </div>
         </div>
-             <div className="col-span-5 bg-white shadow-md p-4 border border-gray-300 h-80  rounded-lg">
+             <div className="col-span-5 bg-white shadow-md p-4 border border-gray-300   rounded-lg">
                 <div className='flex justify-center'>
-                    <div className="w-full text-center justify-center bg-gray-600/50 rounded-md w-64 h-64"></div>
+                    <div className="w-full text-center justify-center bg-gray-600/50 rounded-md ">
+                    <img src='https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3' className='w-full rounded-md'/>
+                    </div>
                   </div>
-                <p className='text-center text-gray-400 mt-3 mb-3'>Kurs kartının tələbələrə görünən forması</p>
+                  <h4 className='text-center mt-3 mb-3 font-semibold text-lg'>UI/UX kursları</h4>
+                <p className='text-center text-gray-400 mb-3'>Kurs kartının tələbələrə görünən forması</p>
+                <div className='flex gap-3 justify-center'>
+                <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Python</a>
+                <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Figma</a>
+                </div>
                 </div>
                 </div>
     </>
@@ -234,19 +288,23 @@ const prevStep=()=>{
 {
         courseShareStep === 4 && ( <>
             <div className='grid md:grid-cols-12 grid-cols-1 gap-4'>
-        <div className="col-span-7 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
+        <div className="col-span-7 space-y-4 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
             <form>
                 <div className="mb-4">
-                    <div className='flex items-center justify-between gap-3'>
+                    <div className='md:flex md:flex-row flex-col items-center justify-between gap-3'>
                     <div className="w-full px-5 py-2 rounded-md flex border border-gray-300 items-center gap-4 mb-2">
                          <input type='radio' name="coursePriceType" id="coursePriceType1"></input>
+                     <div>
                     <label htmlFor="coursePriceType" className="block text-gray-700 font-semibold">Ödənişli kurs</label>
-                   
+                   <p className='text-gray-400'>Kursa qiymət təyin et və izlə</p>
+                    </div>
                     </div>
                     <div className="w-full px-5 py-2 rounded-md flex border border-gray-300 items-center gap-4 mb-2">
                     <input type ='radio'></input>
+                    <div>
                     <label htmlFor="coursePriceType" className="block text-gray-700 font-semibold">Ödənişsiz kurs</label>
-                    
+                      <p className='text-gray-400'>Kontentini hamı ilə paylaş</p>
+                     </div>
                     </div>
                     </div>
                      </div>
@@ -254,6 +312,15 @@ const prevStep=()=>{
                     <label htmlFor="coursePrice" className="block text-gray-700 font-semibold mb-2">Əsas Qiymət</label>
                     <input type="number" id="coursePrice" className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="49" />
                 </div>
+                 <div className='flex items-center justify-between gap-3'>
+                    <div className="w-full px-5 py-2 rounded-md flex border border-gray-300 items-center gap-4 mb-2">
+                         <input type='checkbox' name="coursePriceType" id="coursePriceType1"></input>
+                     <div>
+                    <label htmlFor="coursePriceType" className="block text-gray-700 font-semibold">Endirim tətbiq et</label>
+                   <p className='text-gray-400'>Endirim etmək istəmirsənsə, bu seçimi aktiv etmə</p>
+                    </div>
+                    </div>
+                     </div>
                  <div className="mb-4">
                     <label htmlFor="courseDiscount" className="block text-gray-700 font-semibold mb-2"> Endirimli Qiymət</label>
                     <input type="number" id="courseDiscount" className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="39" />
@@ -267,11 +334,19 @@ const prevStep=()=>{
                  </div>
             </form>
             </div>
-               <div className="col-span-5 bg-white shadow-md p-4 border border-gray-300 h-80  rounded-lg">
+                  <div className="col-span-5 bg-white shadow-md p-4 border border-gray-300   rounded-lg">
                 <div className='flex justify-center'>
-                    <div className="w-full text-center justify-center bg-gray-600/50 rounded-md w-64 h-64"></div>
+                    <div className="w-full text-center justify-center bg-gray-600/50 rounded-md ">
+                    <img src='https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3' className='w-full rounded-md'/>
+                    </div>
+
                   </div>
-                <p className='text-center text-gray-400 mt-3 mb-3'>Kurs kartının tələbələrə görünən forması</p>
+                  <h4 className='text-center mt-3 mb-3 font-semibold text-lg'>UI/UX kursları</h4>
+                <p className='text-center text-gray-400 mb-3'>Kurs kartının tələbələrə görünən forması</p>
+                <div className='flex gap-3 justify-center'>
+                <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Python</a>
+                <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Figma</a>
+                </div>
                 </div>
 
  </div>
@@ -293,12 +368,12 @@ const prevStep=()=>{
     </div>
     <div className="mb-4">
         <h4 className='text-lg font-semibold mb-2'>Video Endirmə icazəsi</h4>
-                <div className='flex items-center justify-between gap-3'>
+                <div className='md:flex md:flex-row flex-col items-center justify-between gap-3'>
              <div className="w-full px-5 py-2 rounded-md flex border border-gray-300 items-center gap-4 mb-2">
                          <input type='radio' name="coursePriceType" id="coursePriceType1"></input>
                     <div>
                     <label htmlFor="coursePriceType" className="block text-gray-700 font-semibold">Endirməyə icazə ver</label>
-                     <p className='text-gray-400'>Tələbələr videonu oflayn izləyə bilər</p>
+                     <p className='text-gray-400 '>Tələbələr videonu oflayn izləyə bilər</p>
                     </div>
                     </div>
                     <div className="w-full px-5 py-2 rounded-md flex border border-gray-300 items-center gap-4 mb-2">
@@ -309,10 +384,14 @@ const prevStep=()=>{
                    </div>
                       </div>
                     </div>
+                    
         </div>
-         <div className='mb-4'>
-     <h4 className="text-lg font-semibold mb-2">Göndərilmə statusu</h4>
-            <p className='text-gray-400'>Təsdiq barədə bildiriş alacaqsan</p>
+         <div className='mb-4 space-y-4'>
+ <span className='flex mt-4 mb-4 px-5 py-2 font-semibold rounded-full border border-yellow-500 bg-yellow-300/50 text-yellow-700'>
+             Paylaşdıqdan sonra kurs dərhal yayımlanmayacaq.Əvvəlcə Cothink moderasiya komandası yoxlayacaq.</span>
+     <h4 className="text-lg font-semibold mb-5 mt-5">Göndərilmə statusu</h4>
+     <span className='mt-3 mb-3 px-5 py-2 font-semibold rounded-full border border-yellow-500 bg-yellow-300/50 text-yellow-700'>Moderasiya gözləyir</span>
+            <p className='text-gray-400 mt-4'>Təsdiq barədə bildiriş alacaqsan</p>
    </div>
     </div>
 
@@ -323,19 +402,92 @@ const prevStep=()=>{
     courseShareStep === 5 && ( <>
 <div className="bg-white shadow-md p-4 border border-gray-300 rounded-lg">
   <div className='w-full rounded-md mb-4'>
-    
+                   <p className=' mb-4 rounded-md p-2 text-indigo-600 bg-indigo-400/50'>Bu tələbə görünüşünün ön baxışıdır. Redaktəyə qayıtmaq üçün addımlardan birini təkrar edin.</p>
     <img src='https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3' className='w-full h-64 rounded-md'></img>
   </div>
+          
+                <div className='flex gap-3'>
+                <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Python</a>
+                <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Figma</a>
+                </div>
+                    <div className='gap-3 mt-3 mb-3'>
+                <div className='flex gap-2 text-gray-400'>
+                    <img src={durationImage}/>
+                    12 dərs
+                    </div>
+                <div className='flex gap-2 text-gray-400'>
+                    <img src={durationImage}/>
+                    2 saat
+                    </div>  
+                     </div>           
     <div className="mb-4">
+                          <p className='text-gray-400 mb-3 mt-3'>Kursun qısa dəyər təklifi burada görünəcək</p>
         <h4 className='text-lg font-semibold mb-2'>Kursun adı burada görünəcək</h4>
-              <p className='text-gray-400'>Kursun qısa dəyər təklifi burada görünəcək</p>
+    </div>
+    <div>
+        <div className='flex gap-3'>
+            <img src={durationImage}/>
+            <div>
+                <p className='text-gray-400'>Tədris dili</p>
+                <h4 className='font-semibold'>Azərbaycan dili</h4>
+            </div>
+            </div>
+    </div>
+     <div className='mt-3 mb-3'>
+        <div className='flex gap-3'>
+            <img src={durationImage}/>
+            <div>
+                <p className='text-gray-400'>Sertifikat</p>
+                <h4 className='font-semibold'>Kursu bitirdikdən sonra sertifikat əldə et</h4>
+            </div>
+            </div>
     </div>
     <div className="mb-4">
                <h4 className='text-lg font-semibold mb-2'>Kurikulum</h4>
                 <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
+                 <div className='flex items-center gap-2'>
+                    <img src={playImage}/>
                 <h4 className='text-lg font-semibold mb-2'>1. Frame, grid and constratins</h4>
-                <p className='text-gray-600'>2 dərs</p>
+                  </div>
+                      <div className='flex items-center gap-3'>
+       <p className='text-gray-600'>2 dərs</p>
+       <div className='px-2 py-1  rounded-md border border-gray-300'>
+<IoIosArrowDown fontSize={24}/>
+       </div>
+                 </div>
+                </div>
+            </div>
+            <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
+            <div className='flex justify-between gap-3 items-center'>
+                <div className='flex gap-2'>
+                             <img src={noteImage}/>
+            <h4 className='text-lg font-semibold mb-2'>Tapşırıq</h4>
+
+                </div>
+               
+                      <div className='flex items-center gap-3'>
+       <p className='text-gray-600'>2 dərs</p>
+       <div className='px-2 py-1  rounded-md border border-gray-300'>
+<IoIosArrowDown fontSize={24}/>
+       </div>
+                 </div>
+                </div>
+            </div>
+            <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
+            <div className='flex justify-between gap-3 items-center'>
+                <div className='flex gap-2'>
+                             <img src={noteImage}/>
+            <h4 className='text-lg font-semibold mb-2'>Quiz</h4>
+
+                </div>
+               
+                      <div className='flex items-center gap-3'>
+       <p className='text-gray-600'>2 dərs</p>
+       <div className='px-2 py-1  rounded-md border border-gray-300'>
+<IoIosArrowDown fontSize={24}/>
+       </div>
+                 </div>
                 </div>
             </div>
     </div>

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import navItems from "../data/navItems";
 import { logoutImage } from "../assets/assets";
+import { IoIosArrowDown} from "react-icons/io";
 const Sidebar = ({open, setOpen})=>{
   const [expandedItem, setExpandedItem] = useState(null);
     return(
@@ -28,6 +29,12 @@ const Sidebar = ({open, setOpen})=>{
                 >
                   <img src={item.src} alt="" />
                   {open && <span>{item.title}</span>}
+                     <IoIosArrowDown
+                              size={18}
+                              className={`transition-transform ${
+                                expandedItem === item.title ? "rotate-180" : ""
+                              }`}
+                            />
                 </button>
                 {expandedItem === item.title && (
                   <ul className="ml-6">
