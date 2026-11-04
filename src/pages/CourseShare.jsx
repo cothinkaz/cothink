@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {courseBanner, durationImage, notFoundImage,saveImage,searchImage,noteImage, playImage} from '../assets/assets';
+import {courseBanner, durationImage, certificateImage, notFoundImage,saveImage,searchImage,noteImage, playImage} from '../assets/assets';
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 const CourseShare = () => {
     const [courseTitle, setCourseTitle] = useState('');
@@ -70,7 +70,7 @@ const prevStep=()=>{
         </>
       ) : <>
    <div className="mb-5 mt-5 overflow-x-auto">
-        <div className="relative flex min-w-max items-start justify-between mt-7 mb-7">
+        <div className="relative flex items-start justify-between mt-7 mb-7">
            <div className='absolute left-10 right-5 top-5 h-0.2 bg-green-500/50 transition-all' 
             style={{width:`${(courseShareStep-1) *20}`}}>
              
@@ -166,7 +166,7 @@ const prevStep=()=>{
     }
     {
         courseShareStep === 2 && ( <>
-            <div className="grid md:grid-cols-12 grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-12 grid-cols-1 gap-4">
         <div className="col-span-7 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
                   <form>
                 <div className="mb-4">
@@ -402,7 +402,7 @@ const prevStep=()=>{
     courseShareStep === 5 && ( <>
 <div className="bg-white shadow-md p-4 border border-gray-300 rounded-lg">
   <div className='w-full rounded-md mb-4'>
-                   <p className=' mb-4 rounded-md p-2 text-indigo-600 bg-indigo-400/50'>Bu tələbə görünüşünün ön baxışıdır. Redaktəyə qayıtmaq üçün addımlardan birini təkrar edin.</p>
+                   <p className=' mb-4 rounded-md p-2 text-indigo-600 bg-indigo-300/50'>Bu tələbə görünüşünün ön baxışıdır. Redaktəyə qayıtmaq üçün addımlardan birini təkrar edin.</p>
     <img src='https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3' className='w-full h-64 rounded-md'></img>
   </div>
           
@@ -410,13 +410,13 @@ const prevStep=()=>{
                 <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Python</a>
                 <a className='border text-indigo-600 rounded-full border-indigo-600 px-5 py-2'>#Figma</a>
                 </div>
-                    <div className='gap-3 mt-3 mb-3'>
-                <div className='flex gap-2 text-gray-400'>
-                    <img src={durationImage}/>
+                    <div className='flex items-center gap-3 mt-3 mb-3'>
+                <div className='flex items-center gap-2 text-gray-400'>
+                    <img src={durationImage} className='w-5 h-5'/>
                     12 dərs
                     </div>
-                <div className='flex gap-2 text-gray-400'>
-                    <img src={durationImage}/>
+                <div className='flex items-center gap-2 text-gray-400'>
+                    <img src={durationImage} className='w-5 h-5'/>
                     2 saat
                     </div>  
                      </div>           
@@ -425,8 +425,8 @@ const prevStep=()=>{
         <h4 className='text-lg font-semibold mb-2'>Kursun adı burada görünəcək</h4>
     </div>
     <div>
-        <div className='flex gap-3'>
-            <img src={durationImage}/>
+        <div className='flex items-center gap-3'>
+            <img src={durationImage} className='w-6 h-6'/>
             <div>
                 <p className='text-gray-400'>Tədris dili</p>
                 <h4 className='font-semibold'>Azərbaycan dili</h4>
@@ -434,8 +434,8 @@ const prevStep=()=>{
             </div>
     </div>
      <div className='mt-3 mb-3'>
-        <div className='flex gap-3'>
-            <img src={durationImage}/>
+        <div className='flex items-center gap-3'>
+            <img src={certificateImage}/>
             <div>
                 <p className='text-gray-400'>Sertifikat</p>
                 <h4 className='font-semibold'>Kursu bitirdikdən sonra sertifikat əldə et</h4>
@@ -476,7 +476,7 @@ const prevStep=()=>{
             </div>
             <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
-                <div className='flex gap-2'>
+                <div className='flex items-center gap-2'>
                              <img src={noteImage}/>
             <h4 className='text-lg font-semibold mb-2'>Quiz</h4>
 
@@ -494,7 +494,7 @@ const prevStep=()=>{
     </div>
     </>)
   }
-  <div className='flex items-center justify-between mt-6 mb-5 gap-5'>
+  <div className='md:flex md:flex-row flex-col items-center justify-between mt-6 mb-5 gap-5'>
   {
     courseShareStep !=1 && (
       <button className="cursor-pointer border border-gray-300  px-5 py-1.5 rounded-full" onClick={prevStep}>Geri</button>

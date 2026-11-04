@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { ratingImage, durationImage, usersImage, videoImage, starImage,eyeImage, learningImage, progressImage, certificateImage,profileImage, playImage, libraryImage,   courseImage, saveImage } from "../assets/assets";
+import { ratingImage, durationImage, usersImage, videoImage, starImage,eyeImage, chatImage,learningImage, progressImage, certificateImage,profileImage, playImage, libraryImage,   courseImage, saveImage } from "../assets/assets";
 import { IoIosNotificationsOutline, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -124,7 +124,7 @@ const CourseDetail = () => {
       <h4 className="font-semibold mb-2">{course.name}</h4>
           <p className="text-gray-400 ">{course.description}</p>
   <div className=" gap-2 mt-3 mb-3">
-    <div className="flex gap-3">
+    <div className="flex items-center gap-3">
       <img src={starImage}/> <p>  {course.rating}</p> <span className="text-indigo-600">(200 rəy) </span> 
      <img src={usersImage}/> <p className="text-gray-400">{course.students} Tələbə</p>
       </div>
@@ -139,14 +139,14 @@ const CourseDetail = () => {
       <h4 className="text-lg font-semibold">Kursa daxildir:</h4>
       <div className='flex gap-7 w-full '>
       <div className='flex-col gap-4 space-y-3 mt-3 text-gray-400'>
-        <p className='flex gap-3'><img src={progressImage}/>Başlanğıc səviyyə</p>
-        <p className='flex gap-3'><img src={videoImage}/>20 video dərs</p>
-        <p className='flex gap-3'><img src={durationImage}/>{course.duration}</p>
+        <p className='flex gap-3'><img src={progressImage} className='w-6 h-6'/>Başlanğıc səviyyə</p>
+        <p className='flex gap-3'><img src={playImage} className='w-6 h-6'/>20 video dərs</p>
+        <p className='flex gap-3'><img src={durationImage} className='w-6 h-6'/>{course.duration}</p>
       </div>
         <div className='flex-col gap-4  space-y-3 mt-3 text-gray-400'>
-        <p className='flex gap-3'><img src={libraryImage}/>Azərbaycan dilində</p>
-        <p className='flex gap-3'><img src={learningImage}/>20 Quiz</p>
-        <p className='flex gap-3'><img src={certificateImage}/>Sertifikat</p>
+        <p className='flex gap-3'><img src={libraryImage} className='w-6 h-6'/>Azərbaycan dilində</p>
+        <p className='flex gap-3'><img src={learningImage} className='w-6 h-6'/>20 Quiz</p>
+        <p className='flex gap-3'><img src={certificateImage} className='w-6 h-6'/>Sertifikat</p>
       </div>
       </div>
         </div>
@@ -206,7 +206,7 @@ const CourseDetail = () => {
                 <div className="flex flex-col gap-2">
                  <span  className="text-gray-400 text-sm flex gap-2">  <img src={usersImage}/> {course.students} şagird</span>
                   <span className="text-gray-400 text-sm flex gap-2"><img src={starImage}/>  {course.rating}</span>
-                  <span className="text-gray-400 text-sm">  {filteredComments.length} rəy</span>
+                  <span className="text-gray-400 text-sm flex gap-2 items-center"> <img src={chatImage} className='h-4 w-4'/> {filteredComments.length} rəy</span>
                 </div>
                   </div>
                   <h2 className="text-xl font-bold">Təlimçi haqqında</h2>
@@ -323,7 +323,7 @@ const CourseDetail = () => {
                 <div className=" relative gap-3 text-indigo-600 rounded-md py-2 mb-3">
                    <iframe
               src={course && getEmbedUrl(course?.lessons[currentIndex]?.video_link)}
-              className="h-40 w-full object-cover rounded-md"
+              className="h-64 w-full object-cover rounded-md"
               controls={true}
             />
                               <a className="absolute top-5 right-8 bg-white p-2 rounded-full">
@@ -337,14 +337,14 @@ const CourseDetail = () => {
                          </div>
                          <span className="text-red-400 text-sm bg-red-200/50 px-2 py-1 rounded-full">50% endirim</span>
                         </div>
-            <p className='text-gray-500'>Promokod</p>
+            <p className='text-gray-500 font-semibold'>Promokod</p>
                {error && (
               <p className="text-center text-red-600 bg-red-50 rounded-md p-2 font-bold text-lg mb-3">
                 {error}
               </p>
             )}
             <div className="flex items-center w-full gap-3 mt-2 mb-2">
-              <input type="text" placeholder="COTHINK10" className="w-full rounded-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" onChange={(e)=>setPromoCode(e.target.value)}/>
+              <input type="text" placeholder="COTHINK10" className="w-full rounded-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" onChange={(e)=>setPromoCode(e.target.value)}/>
              
               <button className=" w-full border border-indigo-600 text-indigo-600 font-semibold py-2 px-4 rounded-full" onClick={handlePromocode}>Tətbiq et</button>
               </div>
