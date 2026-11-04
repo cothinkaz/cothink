@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import  {FaRegCircleUser} from "react-icons/fa6";
 import {FaStar } from "react-icons/fa"
-import {courseBanner, notFoundImage,saveImage,searchImage, playImage} from '../assets/assets';
+import {courseBanner, durationImage, starImage, usersImage, notFoundImage,saveImage,searchImage, playImage} from '../assets/assets';
 import Categories from '../components/Categories';
 import {Link} from "react-router-dom";
 import {CiFilter} from "react-icons/ci"
@@ -23,22 +23,25 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
         alt={course.name}
         className="h-48 w-full rounded-md object-cover"
       />
-          <a className="absolute top-2 right-2 bg-white p-2 rounded-full">
-              <img src={saveImage} alt="save" />
+          <a className="absolute top-5 right-5 bg-white p-2 rounded-full shadow-lg">
+              <img src={saveImage} alt="save"  />
             </a>
 
-      <div className="flex justify-between">
-        <span className="rounded-full bg-indigo-200 px-3 py-1.5 text-xs font-semibold text-indigo-800">
+      <div className="flex items-center justify-between">
+        <div className="rounded-full bg-indigo-200 px-3 py-1.5 text-xs font-semibold text-indigo-800">
           {course.category}
-        </span>
-        <span>⭐ {course.rating}</span>
+        </div>
+              <div className='flex gap-3'>
+        <div className='flex items-center gap-2'><img src ={starImage}/> {course.rating}</div>
+         <div className='flex items-center gap-2'><img src ={usersImage}/> <span>110</span></div>
+       </div>
       </div>
 
       <p className="font-semibold">{course.name}</p>
 
-      <div className="flex gap-3">
-        <FaRegCircleUser fontSize={24} />
-        <h6 className="text-sm font-medium">{course.author}</h6>
+      <div className="flex items-center gap-3">
+        <FaRegCircleUser fontSize={24} className='text-gray-500'/>
+        <h6 className="text-sm font-medium text-gray-700">{course.author}</h6>
       </div>
 
       {course.started === true ? (
@@ -56,10 +59,15 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
         </>
       ) : (
         <>
-          <div className="flex justify-between">
+          <div className="flex items-center justify-between">
+            <div className='flex gap-3 items-center'>
+              <img src={durationImage} className='h-6 w-6'/>
             <p className="text-gray-400">20 dərs</p>
+          </div>
+
             <h2 className="text-xl font-bold">{course.price} AZN</h2>
           </div>
+
           <Link
             to={`/courses/${course.id}`}
             className="block w-full rounded-full bg-indigo-600 px-4 py-2 text-center font-semibold text-white"

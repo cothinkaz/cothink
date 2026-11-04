@@ -1,3 +1,5 @@
+
+import {notFoundImage} from '../assets/assets';
 const NotFound=()=>{
     return (
      

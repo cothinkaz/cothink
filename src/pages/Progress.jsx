@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import  {FaRegCircleUser} from "react-icons/fa6";
 import {FaStar } from "react-icons/fa"
-import {courseBanner, notFoundImage,saveImage,searchImage, playImage} from '../assets/assets';
+import {courseBanner, notFoundImage,starImage, videoImage, usersImage,saveImage,searchImage, playImage} from '../assets/assets';
 import Categories from '../components/Categories';
 import {Link} from "react-router-dom";
 import {CiFilter} from "react-icons/ci"
@@ -124,12 +124,6 @@ const filteredResources = featuredResources.filter((resource) => {
             className="border border-gray-300 rounded-full p-2 pl-10 pr-2 outline-none text-sm w-full max-w-lg"
             onChange={handleSearch}
           />
-          <button
-            className="flex gap-2 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-full cursor-pointer"
-            onClick={() => setOpenFilterModal(true)}
-          >
-            <CiFilter fontSize={24}/>Filtrlə
-          </button>
         </form>
           </div>
            </div>
@@ -179,7 +173,7 @@ const filteredResources = featuredResources.filter((resource) => {
          <h2 className="text-2xl font-semibold mb-4">Kurslar</h2>
    <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
          {filteredCourses.filter(course=>course['started']).map((course) => (
-    <div
+  <div
       key={course.id}
       className="relative rounded-lg border border-gray-100 bg-white p-4 shadow-lg space-y-4"
     >
@@ -189,21 +183,24 @@ const filteredResources = featuredResources.filter((resource) => {
         className="h-48 w-full rounded-md object-cover"
       />
           <a className="absolute top-2 right-2 bg-white p-2 rounded-full">
-              <img src={saveImage} alt="save" />
+              <img src={saveImage} alt="save"  />
             </a>
 
-      <div className="flex justify-between">
-        <span className="rounded-full bg-indigo-200 px-3 py-1.5 text-xs font-semibold text-indigo-800">
+      <div className="flex items-center justify-between">
+        <div className="rounded-full bg-indigo-200 px-3 py-1.5 text-xs font-semibold text-indigo-800">
           {course.category}
-        </span>
-        <span>⭐ {course.rating}</span>
+        </div>
+              <div className='flex gap-3'>
+        <div className='flex items-center gap-2'><img src ={starImage}/> {course.rating}</div>
+         <div className='flex items-center gap-2'><img src ={usersImage}/> <span>110</span></div>
+       </div>
       </div>
 
       <p className="font-semibold">{course.name}</p>
 
-      <div className="flex gap-3">
-        <FaRegCircleUser fontSize={24} />
-        <h6 className="text-sm font-medium">{course.author}</h6>
+      <div className="flex items-center gap-3">
+        <FaRegCircleUser fontSize={24} className='text-gray-500'/>
+        <h6 className="text-sm font-medium text-gray-700">{course.author}</h6>
       </div>
 
       {course.started === true ? (
@@ -221,10 +218,15 @@ const filteredResources = featuredResources.filter((resource) => {
         </>
       ) : (
         <>
-          <div className="flex justify-between">
+          <div className="flex items-center justify-between">
+            <div className='flex gap-3 items-center'>
+              <img src={durationImage} className='h-6 w-6'/>
             <p className="text-gray-400">20 dərs</p>
-            <h2 className="text-xl font-bold">{course.price}</h2>
           </div>
+
+            <h2 className="text-xl font-bold">{course.price} AZN</h2>
+          </div>
+
           <Link
             to={`/courses/${course.id}`}
             className="block w-full rounded-full bg-indigo-600 px-4 py-2 text-center font-semibold text-white"
@@ -233,7 +235,6 @@ const filteredResources = featuredResources.filter((resource) => {
           </Link>
         </>
       )}
-
     </div>
 
   ))
