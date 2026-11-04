@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { ratingImage, durationImage, eyeImage, learningImage, progressImage, certificateImage,profileImage, playImage, libraryImage,   courseImage, saveImage } from "../assets/assets";
+import { ratingImage, durationImage, usersImage, videoImage, starImage,eyeImage, learningImage, progressImage, certificateImage,profileImage, playImage, libraryImage,   courseImage, saveImage } from "../assets/assets";
 import { IoIosNotificationsOutline, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -125,8 +125,8 @@ const CourseDetail = () => {
           <p className="text-gray-400 ">{course.description}</p>
   <div className=" gap-2 mt-3 mb-3">
     <div className="flex gap-3">
-      <p> ⭐ {course.rating}</p> <span className="text-indigo-600">(200 rəy) </span> 
-      <p className="text-gray-400">{course.students} Tələbə</p>
+      <img src={starImage}/> <p>  {course.rating}</p> <span className="text-indigo-600">(200 rəy) </span> 
+     <img src={usersImage}/> <p className="text-gray-400">{course.students} Tələbə</p>
       </div>
     <div className="course-author flex items-center gap-3 mt-3 mb-3">
       <img src={profileImage} alt="profile" className="w-20 h-20 rounded-full" />
@@ -140,7 +140,7 @@ const CourseDetail = () => {
       <div className='flex gap-7 w-full '>
       <div className='flex-col gap-4 space-y-3 mt-3 text-gray-400'>
         <p className='flex gap-3'><img src={progressImage}/>Başlanğıc səviyyə</p>
-        <p className='flex gap-3'><img src={playImage}/>20 video dərs</p>
+        <p className='flex gap-3'><img src={videoImage}/>20 video dərs</p>
         <p className='flex gap-3'><img src={durationImage}/>{course.duration}</p>
       </div>
         <div className='flex-col gap-4  space-y-3 mt-3 text-gray-400'>
@@ -204,8 +204,8 @@ const CourseDetail = () => {
                     <div className="flex items-center gap-3 mb-3 mt-3">
                 <img src={profileImage} alt="profile" className="w-20 h-20 rounded-full" />
                 <div className="flex flex-col gap-2">
-                 <span  className="text-gray-400 text-sm">{course.students} şagird</span>
-                  <span className="text-gray-400 text-sm">⭐ {course.rating}</span>
+                 <span  className="text-gray-400 text-sm flex gap-2">  <img src={usersImage}/> {course.students} şagird</span>
+                  <span className="text-gray-400 text-sm flex gap-2"><img src={starImage}/>  {course.rating}</span>
                   <span className="text-gray-400 text-sm">  {filteredComments.length} rəy</span>
                 </div>
                   </div>
@@ -245,18 +245,18 @@ const CourseDetail = () => {
             <div className="flex h-full w-1/2 items-center justify-center overflow-hidden bg-indigo-600 text-white" />
           </div>
 
-          <div className="md:flex justify-between gap-5">
+          <div className="md:flex md:flex-row flex-col items-center justify-between gap-5">
             <h4 className="font-semibold text-xl">{course.lessons[0].lesson_title}</h4>
             <div className="flex items-center gap-3">
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 <img src={durationImage} alt="duration" />
                 {course.duration}
               </div>
-              <div className="flex gap-3">
-                <img src={playImage} alt="play" />
+              <div className="flex gap-3 items-center">
+                <img src={videoImage} alt="play" />
                 Video dərs
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 items-center">
                 <img src={eyeImage} alt="views" />
                 2.3k baxis
               </div>
@@ -405,12 +405,20 @@ const CourseDetail = () => {
             <div className="flex flex-col gap-2 p-4 border border-gray-100 rounded-lg shadow-md px-5 py-2 mt-4">
       <div className='flex justify-center gap-3 items-center'>
 
-      <h2 className='text-center text-gray-600 text-2xl font-semibold'>4.9<span className='pl-3 text-yellow-400'>★ ★  ★ ★ ★</span> </h2>
+      <h2 className='flex gap-3 items-center text-center text-gray-600 text-2xl font-semibold'>4.9<span className='flx gap-2 pl-3 text-yellow-400'>
+        <div className='flex gap-2 items-center'>
+        {Array.from({length:5}).map((_,index)=>(
+          <img className='flex w-5 h-5' key={index} src={starImage}/>
+          ))}
+        </div>
+      </span> 
+
+    </h2>
       <div className='text-indigo-600'>(250 rəy)</div>
       </div>
       {rows.map((count, index) => (
         <div key={index} className="flex text-yellow-400 gap-2 font-bold text-xl">
-           ★
+             <img src={starImage}/>
           <div className='w-full h-3 bg-gray-200 rounded-full overflow-hidden mt-2'>
             <div className='bg-indigo-600 w-full h-full' style={{width:`${count}%`}}></div>
           </div>

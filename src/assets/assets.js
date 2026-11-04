@@ -18,6 +18,8 @@ import libraryImage from "../assets/book.svg"
 import discussionImage from "../assets/messages-2.svg"
 import progressImage from "../assets/chart.svg"
 import learningImage from "../assets/star.svg"
+import usersImage from "../assets/users.svg"
+import starImage from "../assets/star1.svg"
 import profileImage from "../assets/avatarr.svg"
 import ratingImage from "../assets/stars.svg";
 import moreImage from "../assets/more.svg"
@@ -26,6 +28,7 @@ import eyeImage from "../assets/eye.svg";
 import noteImage from "../assets/note.svg";
 import booksImage from "../assets/books.svg";
 import playImage from "../assets/play-circle.svg";
+import videoImage from "../assets/video.svg";
 import saveImage from '../assets/archive.svg'
 import notFoundImage from '../assets/notfound.svg'
 import courseBanner from "../assets/courseBanner.png"
@@ -33,4 +36,4 @@ import courseShare from '../assets/kurs_share.svg'
 import blogShare from '../assets/blog_share.svg'
 import forumShare from '../assets/forum_share.svg'
 import resursShare from '../assets/resurs_share.svg'
-export {courseBanner, playImage,profileImage, notFoundImage, mainLogo, moreImage,eyeImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, courseShare, forumShare, blogShare,resursShare, learningImage, noteImage, booksImage}
+export {courseBanner, playImage,profileImage,videoImage, notFoundImage,starImage, usersImage, mainLogo, moreImage,eyeImage, saveImage, durationImage ,ratingImage, searchImage, notificationImage, chatImage, footerLocation, footerEmail, footerPhone, footerLogo, footerFacebook, footerInstagram, footerLinkedin, footerYoutube, certificateImage, homeImage, courseImage, logoutImage, libraryImage, discussionImage, progressImage, courseShare, forumShare, blogShare,resursShare, learningImage, noteImage, booksImage}
