@@ -4,12 +4,13 @@ import { Link, NavLink } from "react-router-dom";
 import {FaPlus} from "react-icons/fa";
 import {IoIosMenu} from "react-icons/io";
 import { useState, useEffect, useRef } from "react";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import navItems from "../data/navItems";
 import { mainLogo, searchImage, chatImage, notificationImage, profileImage } from "../assets/assets";
 const Header = ({share,setShare}) =>{
     const [search, setSearch] = useState(false);
     const [searchValue, setSearchValue] = useState("");
-
+    const [expandedItem, setExpandedItem] = useState(null);
     const [openMenu, setOpenMenu] = useState(false);
     const menuRef = useRef(null)
 
@@ -76,22 +77,52 @@ const Header = ({share,setShare}) =>{
               </button>
               {
 openMenu &&   <ul className=" fixed flex flex-col gap-2 bg-white shadow-lg absolute top-16 right-3 p-3 z-10 rounded-md w-48">
-                        {
-                          navItems.map((item)=>(
-                          <li className="mt-1" key={item.to}>
-                          <NavLink 
-                            className="flex gap-2 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full" 
-                            to={item.to}   
-                            onClick={()=>setOpenMenu(false)}
-                          >
-                             {/* <img src={item.src}/> */}
-                             { open && <span>
-                              {item.title}
-                            </span>
-                           }
-                          </NavLink>
-                        </li>
-                          ))}
+                          {navItems.map((item) => (
+          <li key={item.to}>
+            {item.children && item.children.length > 0 ? (
+              <>
+                <button
+                  type="button"
+                  aria-expanded={expandedItem === item.title}
+                  onClick={() => setExpandedItem(expandedItem === item.title ? null : item.title)}
+                  className="flex w-full gap-3 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full"
+                >
+                  {open && <span>{item.title}</span>}
+                  <IoIosArrowDown
+                              size={18}
+                              className={`transition-transform ${
+                                expandedItem === item.title ? "rotate-180" : ""
+                              }`}
+                            />
+                </button>
+                {expandedItem === item.title && (
+                  <ul className="ml-6">
+                    {item.children.map((child) => (
+                      <li key={child.to}>
+                        <NavLink
+                          className="flex gap-3 p-3 items-center text-sm text-gray-600 hover:bg-gray-200 rounded-full"
+                          to={child.to}
+                        >
+                    
+                          {open && <span>{child.title}</span>}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </>
+            ) : (
+              <NavLink
+                className="flex gap-3 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full"
+                to={item.to}
+              >
+       
+                {open && <span>{item.title}</span>}
+              </NavLink>
+            )}
+          </li>
+        ))}
+
 </ul>
               }
             

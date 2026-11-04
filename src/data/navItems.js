@@ -8,7 +8,7 @@
 {
      to:"/courses",
     title: "Kurslar",
-    src:courseImage
+    src:playImage
   },
   {
     to:"/library",
