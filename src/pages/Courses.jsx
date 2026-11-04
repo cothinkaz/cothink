@@ -103,7 +103,7 @@ const Courses = () => {
           </div>
           </div>
                 
-        <div className="categories flex flex-nowrap whitespace-nowrap overflow-x-auto pb-2 gap-2 mt-4 mb-4 ">
+        <div className="categories flex flex-nowrap whitespace-nowrap overflow-x-auto pb-2 gap-2 mb-4 ">
           
           {categories.map((category, index) => (
             <>

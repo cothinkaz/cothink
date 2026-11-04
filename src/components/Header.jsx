@@ -106,6 +106,7 @@ openMenu &&   <ul className=" fixed flex flex-col gap-2 bg-white shadow-lg absol
                     
                           {open && <span>{child.title}</span>}
                         </NavLink>
+                         
                       </li>
                     ))}
                   </ul>
@@ -114,7 +115,8 @@ openMenu &&   <ul className=" fixed flex flex-col gap-2 bg-white shadow-lg absol
             ) : (
               <NavLink
                 className="flex gap-3 md:p-3 md:justify-center items-center lg:justify-start lg:pl-7 text-sm text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-full"
-                to={item.to}
+                to={item.to} 
+                onClick={()=>setOpenMenu(false)}
               >
        
                 {open && <span>{item.title}</span>}
@@ -122,7 +124,14 @@ openMenu &&   <ul className=" fixed flex flex-col gap-2 bg-white shadow-lg absol
             )}
           </li>
         ))}
-
+ <NavLink
+                          className="flex gap-3 p-3 items-center text-sm text-gray-600 hover:bg-gray-200 rounded-full"
+                          to={'/courses/share'}
+                          onClick={()=>setOpenMenu(false)}
+                        >
+                    
+                        Yarat
+                        </NavLink>
 </ul>
               }
             
