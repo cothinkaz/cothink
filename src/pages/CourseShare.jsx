@@ -1,6 +1,8 @@
 import {useState} from 'react';
-import {courseBanner, durationImage, certificateImage, notFoundImage,saveImage,searchImage,noteImage, playImage} from '../assets/assets';
+import {courseBanner, durationImage, libraryImage, booksImage,learningImage,certificateImage, notFoundImage,saveImage,searchImage,noteImage, playImage} from '../assets/assets';
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { FaRegEdit} from "react-icons/fa";
+import {Link} from 'react-router-dom'
 const CourseShare = () => {
     const [courseTitle, setCourseTitle] = useState('');
     const [courseCategory, setCourseCategory] = useState('');
@@ -38,6 +40,9 @@ const nextStep=()=>{
 const prevStep=()=>{
   setCourseShareStep((prev)=>Math.max(prev-1,1))
 }
+const handleSummary=(e)=>{
+    e.preventDefault()
+}
     return(
         <>
         <h2 className="font-semibold text-lg">Kurs paylaşımı</h2>
@@ -70,7 +75,7 @@ const prevStep=()=>{
         </>
       ) : <>
    <div className="mb-5 mt-5 overflow-x-auto">
-        <div className="relative flex items-start justify-between mt-7 mb-7">
+        <div className="md:flex hidden relative items-start justify-between mt-7 mb-7">
            <div className='absolute left-10 right-5 top-5 h-0.2 bg-green-500/50 transition-all' 
             style={{width:`${(courseShareStep-1) *20}`}}>
              
@@ -97,16 +102,16 @@ const prevStep=()=>{
    {
         courseShareStep === 1 && ( <>
   <div className="grid md:grid-cols-12 grid-cols-1 gap-4 ">
-        <div className="col-span-7 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
-            <form>
+        <div className="md:col-span-7 col-span-12 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
+            <form onSubmit={handleSummary}>
                 <div className="mb-4">
                     <label htmlFor="courseTitle" className="block text-gray-700 font-semibold mb-2">Kurs Başlığı</label>
-                    <input type="text" id="courseTitle" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs başlığını daxil edin" value={courseTitle} onChange={(e) => setCourseTitle(e.target.value)} />
+                    <input type="text" id="courseTitle" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs başlığını daxil edin" value={courseTitle} onChange={(e) => setCourseTitle(e.target.value)} />
                 </div>
                 <div className="mb-4 grid grid-cols-2 gap-4">
                    <div>
                     <label htmlFor="courseCategory" className="block text-gray-700 font-semibold mb-2">Kateqoriya</label>
-                    <select id="courseCategory" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" value={courseCategory} onChange={(e) => setCourseCategory(e.target.value)}>
+                    <select id="courseCategory" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" value={courseCategory} onChange={(e) => setCourseCategory(e.target.value)}>
                         <option value="">Kateqoriya seçin</option>
                         <option value="riyaziyyat">Riyaziyyat</option>
                         <option value="proqramlasdirma">Proqramlaşdırma</option>
@@ -117,7 +122,7 @@ const prevStep=()=>{
                     </div>
                     <div>
                         <label htmlFor="courseLevel" className="block text-gray-700 font-semibold mb-2">Səviyyə</label>
-                        <select id="courseLevel" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" value={courseLevel} onChange={(e) => setCourseLevel(e.target.value)}>
+                        <select id="courseLevel" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" value={courseLevel} onChange={(e) => setCourseLevel(e.target.value)}>
                             <option value="">Səviyyə seçin</option>
                             <option value='başlanğıc'>Başlanğıc</option>
                             <option value='orta'>Orta</option>
@@ -127,7 +132,7 @@ const prevStep=()=>{
                 </div>
                 <div className="mb-4">
                      <label htmlFor="courseLanguage" className="block text-gray-700 font-semibold mb-2">Dil</label>
-                     <select id="courseLanguage" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" value={courseLanguage} onChange={(e) => setCourseLanguage(e.target.value)}>
+                     <select id="courseLanguage" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" value={courseLanguage} onChange={(e) => setCourseLanguage(e.target.value)}>
                          <option value="">Dil seçin</option>
                          <option value="az">Azərbaycan dili</option>
                          <option value="en">English</option>
@@ -136,7 +141,7 @@ const prevStep=()=>{
                 </div>
                 <div className="mb-4">
                     <label htmlFor="courseTags" className="block text-gray-700 font-semibold mb-2">Kurs Etiketləri</label>
-                    <input type="text" id="courseTags" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs etiketlərini daxil edin" value={courseTags} onChange={(e) => setCourseTags(e.target.value)} />
+                    <input type="text" id="courseTags" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs etiketlərini daxil edin" value={courseTags} onChange={(e) => setCourseTags(e.target.value)} />
                 </div>
                 <div className="mb-4">
                      <label htmlFor="courseCoverImage" className="block text-gray-700 font-semibold mb-2">Kurs Təsviri</label>
@@ -147,7 +152,7 @@ const prevStep=()=>{
                     <p className="text-center text-gray-500 text-sm mt-1">Sürüşdür burax və ya fayl seç</p>
                     <p className="text-center text-gray-500 text-sm mt-1">PNG, JPEG, JPG, SVG,GIF</p>
                    <div className='flex justify-center mb-3'>
-                    <button className="text-center border border-indigo-700 text-indigo-600 px-4 py-2 rounded-full hover:bg-blue-600 mt-2">Şəkil Yüklə</button>
+                    <label htmlFor='courseCoverImage'  className="text-center border border-indigo-700 text-indigo-600 px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white mt-2">Şəkil Yüklə</label>
                 </div>
                  </div>
                 </div>
@@ -155,7 +160,7 @@ const prevStep=()=>{
             </form>
             </div>
      
-<div className="col-span-5 bg-white shadow-md p-4 border border-gray-300 h-80  rounded-lg">
+<div className="md:col-span-5 col-span-12 bg-white shadow-md p-4 border border-gray-300 md:h-80 h-full  rounded-lg">
                 <div className='flex justify-center'>
                     <div className="w-full text-center justify-center bg-gray-600/50 rounded-md w-64 h-64"></div>
                   </div>
@@ -167,24 +172,24 @@ const prevStep=()=>{
     {
         courseShareStep === 2 && ( <>
             <div className="grid md:grid-cols-12 grid-cols-1 gap-4">
-        <div className="col-span-7 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
+        <div className="md:col-span-7 col-span-12 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
                   <form>
                 <div className="mb-4">
                     <label htmlFor="courseTitle" className="block text-gray-700 font-semibold mb-2">Bu kurs kimlər üçündür?</label>
-                    <input type="text" id="courseTitle" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs başlığını daxil edin" value={courseTitle} onChange={(e) => setCourseTitle(e.target.value)} />
+                    <input type="text" id="courseTitle" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs başlığını daxil edin" value={courseTitle} onChange={(e) => setCourseTitle(e.target.value)} />
                 </div>
                     <div className="mb-4">
                     <label htmlFor="courseBenefits" className="block text-gray-700 font-semibold mb-2">Tələbəyə nə qazandıracaq?</label>
-                    <input type="text" id="courseBenefits" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs başlığını daxil edin" value={courseTitle} onChange={(e) => setCourseTitle(e.target.value)} />
+                    <input type="text" id="courseBenefits" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs başlığını daxil edin" value={courseTitle} onChange={(e) => setCourseTitle(e.target.value)} />
                 </div>
               
                 <div className="mb-4">
                     <label htmlFor="courseTags" className="block text-gray-700 font-semibold mb-2">İlkin  biliklər</label>
-                    <input type="text" id="courseTags" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs etiketlərini daxil edin" value={courseTags} onChange={(e) => setCourseTags(e.target.value)} />
+                    <input type="text" id="courseTags" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs etiketlərini daxil edin" value={courseTags} onChange={(e) => setCourseTags(e.target.value)} />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="courseTags" className="block text-gray-700 font-semibold mb-2">İstifadə olunacaq program və alətlər</label>
-                    <input type="text" id="courseTags" className="w-full border border-gray-300 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs etiketlərini daxil edin" value={courseTags} onChange={(e) => setCourseTags(e.target.value)} />
+                    <input type="text" id="courseTags" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Python, Figma" value={courseTags} onChange={(e) => setCourseTags(e.target.value)} />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="courseCoverImage" className="block text-gray-700 font-semibold mb-2">Bu kurs hansı problemi həll edir?</label>
@@ -193,7 +198,7 @@ const prevStep=()=>{
                
             </form> 
    </div>
-          <div className="col-span-5 max-h-[450px] bg-white shadow-md p-4 border border-gray-300   rounded-lg">
+          <div className="md:col-span-5 col-span-12 max-h-[450px] bg-white shadow-md p-4 border border-gray-300   rounded-lg">
                 <div className='flex justify-center'>
                     <div className="w-full text-center justify-center bg-gray-600/50 rounded-md ">
                     <img src='https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3' className='w-full rounded-md'/>
@@ -214,38 +219,38 @@ const prevStep=()=>{
 {
     courseShareStep === 3 && ( <>
         <div className='grid md:grid-cols-12 grid-cols-1  gap-4'>
-    <div className='col-span-7 bg-white shadow-md p-4 border border-gray-300 rounded-md'>
+    <div className='md:col-span-7 col-span-12 bg-white shadow-md p-4 border border-gray-300 rounded-md'>
         <div className='flex justify-between gap-3'>
             <div>
         <h4 className='text-lg font-semibold mb-2'>Kurikulum</h4>
         <p className='text-gray-400'>Bölmələri və dərsləri idarə edin</p>
     </div>
-        <button className='cursor-pointer text-indigo-600 items-center flex rounded-full border text-sm border-indigo-600 px-4 py-0.5 h-10 whitespace-nowrap'>Bölmə əlavə et</button>
+        <button className='hover:bg-indigo-600 hover:text-white cursor-pointer text-indigo-600 items-center flex rounded-full border text-sm border-indigo-600 px-4 py-0.5 h-10 whitespace-nowrap'>Bölmə əlavə et</button>
         </div>
         <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
                  <div className='flex items-center gap-2'>
-                    <img src={playImage}/>
-                <h4 className='text-lg font-semibold mb-2'>1. Frame, grid and constratins</h4>
+                    <img src={playImage} className='h-5 w-5 shrink-0'/>
+                <h4 className='text-sm sm:text-base font-semibold text-gray-800'>1. Frame, grid and constratins</h4>
                   </div>
                       <div className='flex items-center gap-3'>
        <p className='text-gray-600'>2 dərs</p>
-       <div className='px-2 py-1  rounded-md border border-gray-300'>
-<IoIosArrowDown fontSize={24}/>
+       <div className='p-1.5  rounded-md border border-gray-200'>
+<IoIosArrowDown className='text-xl text-gray-600'/>
        </div>
                  </div>
                 </div>
             </div>
                    <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
-                    <div className='flex gap-2'>
-                        <img src={noteImage}/>
-                <h4 className='text-lg font-semibold mb-2'>Quiz</h4>
+                    <div className='flex items-center gap-2'>
+                        <img src={learningImage} className='h-5 w-5 shrink-0'/>
+                <h4 className='text-sm sm:text-base font-semibold text-gray-800'>Quiz</h4>
                  </div>
                  <div className='flex items-center gap-3'>
        <p className='text-gray-600'>2 dərs</p>
-       <div className='px-2 py-1  rounded-md border border-gray-300'>
-<IoIosArrowDown fontSize={24}/>
+       <div className='p-1.5 rounded-md border border-gray-200'>
+        <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
        </div>
                  </div>
          
@@ -253,22 +258,22 @@ const prevStep=()=>{
             </div>
                  <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
-                <div className='flex gap-2'>
-                             <img src={noteImage}/>
-            <h4 className='text-lg font-semibold mb-2'>Tapşırıq</h4>
+                <div className='flex items-center gap-2'>
+                             <img src={noteImage} className='h-5 w-5 shrink-0'/>
+            <h4 className='text-sm sm:text-base font-semibold text-gray-800'>Tapşırıq</h4>
 
                 </div>
                
                       <div className='flex items-center gap-3'>
        <p className='text-gray-600'>2 dərs</p>
-       <div className='px-2 py-1  rounded-md border border-gray-300'>
-<IoIosArrowDown fontSize={24}/>
+       <div className='p-1.5 rounded-md border border-gray-200'>
+        <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
        </div>
                  </div>
                 </div>
             </div>
         </div>
-             <div className="col-span-5 bg-white shadow-md p-4 border border-gray-300   rounded-lg">
+             <div className="md:col-span-5 col-span-12 bg-white shadow-md p-4 border border-gray-300   rounded-lg">
                 <div className='flex justify-center'>
                     <div className="w-full text-center justify-center bg-gray-600/50 rounded-md ">
                     <img src='https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3' className='w-full rounded-md'/>
@@ -288,7 +293,7 @@ const prevStep=()=>{
 {
         courseShareStep === 4 && ( <>
             <div className='grid md:grid-cols-12 grid-cols-1 gap-4'>
-        <div className="col-span-7 space-y-4 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
+        <div className="md:col-span-7 col-span-12 space-y-4 bg-white shadow-md p-4 border border-gray-300 rounded-lg">
             <form>
                 <div className="mb-4">
                     <div className='md:flex md:flex-row flex-col items-center justify-between gap-3'>
@@ -334,7 +339,7 @@ const prevStep=()=>{
                  </div>
             </form>
             </div>
-                  <div className="col-span-5 bg-white shadow-md p-4 border border-gray-300   rounded-lg">
+                  <div className="md:col-span-5 col-span-12 bg-white shadow-md p-4 border border-gray-300   rounded-lg">
                 <div className='flex justify-center'>
                     <div className="w-full text-center justify-center bg-gray-600/50 rounded-md ">
                     <img src='https://th.bing.com/th/id/OIP.-CAX0AN2GM7ejFAIp-OShAHaEK?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3' className='w-full rounded-md'/>
@@ -412,7 +417,7 @@ const prevStep=()=>{
                 </div>
                     <div className='flex items-center gap-3 mt-3 mb-3'>
                 <div className='flex items-center gap-2 text-gray-400'>
-                    <img src={durationImage} className='w-5 h-5'/>
+                    <img src={booksImage} className='w-5 h-5'/>
                     12 dərs
                     </div>
                 <div className='flex items-center gap-2 text-gray-400'>
@@ -426,7 +431,7 @@ const prevStep=()=>{
     </div>
     <div>
         <div className='flex items-center gap-3'>
-            <img src={durationImage} className='w-6 h-6'/>
+            <img src={libraryImage} className='w-6 h-6'/>
             <div>
                 <p className='text-gray-400'>Tədris dili</p>
                 <h4 className='font-semibold'>Azərbaycan dili</h4>
@@ -444,53 +449,52 @@ const prevStep=()=>{
     </div>
     <div className="mb-4">
                <h4 className='text-lg font-semibold mb-2'>Kurikulum</h4>
-                <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
+                      <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
                  <div className='flex items-center gap-2'>
-                    <img src={playImage}/>
-                <h4 className='text-lg font-semibold mb-2'>1. Frame, grid and constratins</h4>
+                    <img src={playImage} className='h-5 w-5 shrink-0'/>
+                <h4 className='text-sm sm:text-base font-semibold text-gray-800'>1. Frame, grid and constratins</h4>
                   </div>
                       <div className='flex items-center gap-3'>
        <p className='text-gray-600'>2 dərs</p>
-       <div className='px-2 py-1  rounded-md border border-gray-300'>
-<IoIosArrowDown fontSize={24}/>
+       <div className='p-1.5  rounded-md border border-gray-200'>
+<IoIosArrowDown className='text-xl text-gray-600'/>
        </div>
                  </div>
                 </div>
             </div>
-            <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
+                   <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
-                <div className='flex gap-2'>
-                             <img src={noteImage}/>
-            <h4 className='text-lg font-semibold mb-2'>Tapşırıq</h4>
-
-                </div>
-               
-                      <div className='flex items-center gap-3'>
+                    <div className='flex items-center gap-2'>
+                        <img src={learningImage} className='h-5 w-5 shrink-0'/>
+                <h4 className='text-sm sm:text-base font-semibold text-gray-800'>Quiz</h4>
+                 </div>
+                 <div className='flex items-center gap-3'>
        <p className='text-gray-600'>2 dərs</p>
-       <div className='px-2 py-1  rounded-md border border-gray-300'>
-<IoIosArrowDown fontSize={24}/>
+       <div className='p-1.5 rounded-md border border-gray-200'>
+        <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
        </div>
                  </div>
+         
                 </div>
             </div>
-            <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
+                 <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
                 <div className='flex items-center gap-2'>
-                             <img src={noteImage}/>
-            <h4 className='text-lg font-semibold mb-2'>Quiz</h4>
+                             <img src={noteImage} className='h-5 w-5 shrink-0'/>
+            <h4 className='text-sm sm:text-base font-semibold text-gray-800'>Tapşırıq</h4>
 
                 </div>
                
                       <div className='flex items-center gap-3'>
        <p className='text-gray-600'>2 dərs</p>
-       <div className='px-2 py-1  rounded-md border border-gray-300'>
-<IoIosArrowDown fontSize={24}/>
+       <div className='p-1.5 rounded-md border border-gray-200'>
+        <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
        </div>
                  </div>
                 </div>
             </div>
-    </div>
+            </div>
     </div>
     </>)
   }
@@ -502,7 +506,7 @@ const prevStep=()=>{
   }
                  
     <div className="ml-auto flex items-center gap-4 mt-5 mb-5">
-               <button  className=" whitespace-nowrap cursor-pointer border border-gray-300 px-4 py-2 rounded-full">Qaralama kimi yadda saxla</button>
+               <button  className=" whitespace-nowrap cursor-pointer border border-gray-300 px-4 py-2 rounded-full">Yadda saxla</button>
                {
                   courseShareStep !=6 ? (
                       <button className="whitespace-nowrap  cursor-pointer bg-indigo-700 text-white px-4 py-2 rounded-full hover:bg-blue-600" onClick={nextStep}>Növbəti addım</button>

@@ -30,6 +30,7 @@ import StreakHistory from "./pages/LearningGoal/StreakHistory";
 import Badges from "./pages/LearningGoal/Badges";
 import Coupons from "./pages/LearningGoal/Coupons";
 import CourseShare from "./pages/CourseShare";
+import CourseExercise from "./components/CourseExercise";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/courses/share" element={<CourseShare />} />
-
+          <Route path="/courses/share/exercise" element={<CourseExercise />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogDetails />} />
 
