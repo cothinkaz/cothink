@@ -1,21 +1,9 @@
+import { getPaginationItems } from "../utils/resources/resourceHelpers";
+
 const ResourcePagination = ({ current, total, onChange }) => {
   if (total <= 1) return null;
 
-  const pages = [];
-  const maxVisible = 3;
-
-  // Always show first pages
-  for (let i = 1; i <= Math.min(maxVisible, total); i++) {
-    pages.push(i);
-  }
-
-  // Add ellipsis + last page if needed
-  if (total > maxVisible + 1) {
-    pages.push("...");
-    pages.push(total);
-  } else if (total === maxVisible + 1) {
-    pages.push(total);
-  }
+  const pages = getPaginationItems(total);
 
   return (
     <nav

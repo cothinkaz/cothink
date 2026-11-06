@@ -3,19 +3,7 @@ import { getCategoryById } from "../data/resourcesData";
 import lookIcon from "../assets/look.svg";
 import saveIcon from "../assets/save.svg";
 
-/* ─── Category Icon SVGs ─── */
-const CategoryIcon = ({ categoryId, size = 64 }) => {
-  return (
-    <img
-      src={`/svgs/cat_${categoryId}.svg`}
-      alt={`${categoryId} icon`}
-      width={size}
-      height={size}
-      className="object-contain"
-    />
-  );
-};
-
+import { CategoryIcon } from "../utils/resources/shared/ResourceIcons";
 /* ─── Resource Card (horizontal layout matching screenshot) ─── */
 const ResourceCard = ({ resource }) => {
   const navigate = useNavigate();
@@ -116,5 +104,4 @@ const ResourceCard = ({ resource }) => {
   );
 };
 
-export { CategoryIcon };
 export default ResourceCard;

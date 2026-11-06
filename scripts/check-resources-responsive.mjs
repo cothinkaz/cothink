@@ -6,6 +6,7 @@ import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { resolve, join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
+import { checkResourceFlows } from "./resource-flow-checks.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const output = join(root, ".responsive-qa.local", process.argv[2] ?? "latest");
@@ -16,13 +17,14 @@ const executable = process.env.CHROME_PATH ?? "C:/Program Files/Google/Chrome/Ap
 const baseUrl = process.env.RESOURCE_TEST_URL ?? "http://127.0.0.1:5173";
 const touchOnly = process.argv.includes("--touch-only");
 const detailsOnly = process.argv.includes("--details-only");
+const flowsOnly = process.argv.includes("--flows-only");
 const chrome = spawn(executable, ["--headless=new", "--disable-gpu", "--disable-extensions", "--disable-background-networking", "--no-first-run", "--no-default-browser-check", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { windowsHide: true, stdio: "ignore" });
 let launchError;
 chrome.on("error", (error) => { launchError = error; });
 let socket;
 const pending = new Map();
 const exceptions = [];
-const report = { widths: [], search: [], details: [], interactions: [], exceptions };
+const report = { widths: [], search: [], details: [], interactions: [], flows: [], exceptions };
 let sequence = 0;
 let sessionId;
 
@@ -58,6 +60,7 @@ async function click(selector) {
   await command("Input.dispatchMouseEvent", { type: "mouseMoved", ...point });
   await command("Input.dispatchMouseEvent", { type: "mousePressed", button: "left", clickCount: 1, ...point });
   await command("Input.dispatchMouseEvent", { type: "mouseReleased", button: "left", clickCount: 1, ...point });
+  await delay(120);
 }
 
 async function settle() {
@@ -137,7 +140,7 @@ try {
   await until(() => evaluate(`Boolean(document.querySelector('[aria-roledescription="karusel"]'))`), "resources page");
   await evaluate("document.fonts.ready.then(()=>true)");
 
-  const widths = touchOnly || detailsOnly ? [] : [320, 360, 375, 390, 414, 430, 639, 640, 767, 768, 769, 1023, 1024, 1280, 1440, 1920];
+  const widths = touchOnly || detailsOnly || flowsOnly ? [] : [320, 360, 375, 390, 414, 430, 639, 640, 767, 768, 769, 1023, 1024, 1280, 1440, 1920];
   for (const width of widths) {
     await setWidth(width);
     // Fresh navigation checks the actual initial sidebar state at this width.
@@ -170,14 +173,14 @@ try {
   }
 
   await setWidth(390);
-  for (const query of touchOnly || detailsOnly ? [] : ["Sfggg", "ikigai", "YAŞIL", ""]) {
+  for (const query of touchOnly || detailsOnly || flowsOnly ? [] : ["Sfggg", "ikigai", "YAŞIL", ""]) {
     await typeSearch(query);
     const state = await evaluate(`({hero:Boolean(document.querySelector('[aria-roledescription="karusel"]')),result:document.querySelector('[aria-label="Axtarış nəticələri"]')?.textContent ?? null})`);
     const passed = query ? !state.hero && Boolean(state.result) && (query !== "Sfggg" || state.result.includes("Nəticələr (0)")) : state.hero;
     report.search.push({ query, passed, ...state });
     console.log(`Search ${JSON.stringify(query)}: ${passed ? "PASS" : "FAIL"}`);
   }
-  if (!touchOnly && !detailsOnly) {
+  if (!touchOnly && !detailsOnly && !flowsOnly) {
     await typeSearch("ikigai");
     await click('button[aria-label="Axtarışı təmizlə"]');
     const cleared = await evaluate(`document.querySelector('input[aria-label="Resursları axtar"]').value === "" && Boolean(document.querySelector('[aria-roledescription="karusel"]'))`);
@@ -185,7 +188,7 @@ try {
     console.log(`Clear search button: ${cleared ? "PASS" : "FAIL"}`);
   }
   await settle();
-  for (const width of detailsOnly ? [] : touchOnly ? [360] : [360, 768, 1280]) {
+  for (const width of detailsOnly || flowsOnly ? [] : touchOnly ? [360] : [360, 768, 1280]) {
     await setWidth(width);
     await settle();
     await click('[aria-roledescription="slayd"][aria-hidden="false"] [aria-label="Kitab seçimi"] button:nth-child(2)');
@@ -215,7 +218,7 @@ try {
 
   await command("Page.navigate", { url: `${baseUrl}/library/resources/detail/bedii-2` });
   await until(() => evaluate(`Boolean([...document.querySelectorAll('button')].find(e=>e.textContent.includes('Oxumağa başla')))`), "detail page");
-  for (const width of touchOnly ? [] : [320, 360, 390, 430, 768, 1024, 1186, 1280, 1366, 1440, 1536, 1920]) {
+  for (const width of touchOnly || flowsOnly ? [] : [320, 360, 390, 430, 768, 1024, 1186, 1280, 1366, 1440, 1536, 1920]) {
     await setWidth(width);
     await command("Page.reload");
     await delay(200);
@@ -229,8 +232,12 @@ try {
       await screenshot(`buttons-${width}.png`);
     }
   }
+  if (!touchOnly && !detailsOnly) {
+    await checkResourceFlows({ command, evaluate, click, until, delay, setWidth, screenshot, typeSearch, baseUrl, report });
+    console.log(`Resource flows: ${report.flows.length} PASS`);
+  }
   await writeFile(join(output, "report.json"), JSON.stringify(report, null, 2));
-  const failures = [...report.widths, ...report.search, ...report.details, ...report.interactions].filter((test) => !test.passed);
+  const failures = [...report.widths, ...report.search, ...report.details, ...report.interactions, ...report.flows].filter((test) => !test.passed);
   console.log(`Report: ${join(output, "report.json")}`);
   assert.equal(exceptions.length, 0, `Browser exceptions: ${exceptions.join("; ")}`);
   assert.equal(failures.length, 0, `${failures.length} checks failed; see report.json`);
