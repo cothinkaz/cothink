@@ -66,14 +66,13 @@ const CourseExercise =()=>{
                     <label htmlFor="courseTitle" className="block text-gray-700 font-semibold mb-2">Qiymətləndirmə meyarları</label>
                     <input type="text" id="courseTitle" className="w-full border border-gray-300 rounded-full p-2 pl-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs başlığını daxil edin" value={courseTitle} onChange={(e) => setCourseTitle(e.target.value)} />
                 </div>
-               <div className='flex items-center justify-between mt-6 mb-5 gap-5'>
+               <div className='md:flex md:flex-row flex-col items-center justify-between mt-6 mb-5 gap-5'>
 
-      <p className="cursor-pointer text-gray-300 px-5 py-1.5 " >Son yadda saxlama:</p>
+      <p className="cursor-pointer text-gray-400 px-5 py-1.5">Son yadda saxlama:</p>
   
                  
     <div className="ml-auto flex items-center gap-4 mt-5 mb-5">
                <button  className=" whitespace-nowrap cursor-pointer border border-gray-300 px-4 py-2 rounded-full">Önizləmə</button>
-               
                       <button className="whitespace-nowrap  cursor-pointer bg-indigo-700 text-white px-4 py-2 rounded-full hover:bg-blue-600" >Tapşırığı yadda saxla</button>
            </div>
               </div>
