@@ -17,7 +17,7 @@ const CourseExercise =()=>{
 	return(
 <>
 <div className='flex gap-1 mb-3 items-center'>
-      <Link to={'/courses'}>Kurs paylaşımı </Link> 
+      <Link to={'/courses/share'}>Kurs paylaşımı </Link> 
       <IoIosArrowForward  fontSize={18}/>
       <span className='text-indigo-600'>Tapşırıq redaktoru</span>
     </div>

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {courseBanner, durationImage, libraryImage, booksImage,learningImage,certificateImage, notFoundImage,saveImage,searchImage,noteImage, playImage} from '../assets/assets';
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { FaRegEdit} from "react-icons/fa";
+import ShareLessonModal from "../components/ShareLessonModal";
 import {Link} from 'react-router-dom'
 const CourseShare = () => {
     const [courseTitle, setCourseTitle] = useState('');
@@ -12,6 +13,7 @@ const CourseShare = () => {
     const [courseCoverImage, setCourseCoverImage] = useState(null);
     const [courseShareStep, setCourseShareStep] = useState(1);
     const [draft,setDraft] = useState(false)
+    const [lessonModal, setLessonModal]=useState(false)
 
 
 const steps = [
@@ -68,7 +70,7 @@ const handleSummary=(e)=>{
           </div>
           </div>
           <div>
-            <button className='cursor-pointer border border-gray-300 px-5 py-2 rounded-full'>Davam et</button>
+            <button className='cursor-pointer border border-gray-300 px-5 py-2 rounded-full whitespace-nowrap'>Davam et</button>
           </div>
         </div>
          </div>
@@ -225,7 +227,7 @@ const handleSummary=(e)=>{
         <h4 className='text-lg font-semibold mb-2'>Kurikulum</h4>
         <p className='text-gray-400'>Bölmələri və dərsləri idarə edin</p>
     </div>
-        <button className='hover:bg-indigo-600 hover:text-white cursor-pointer text-indigo-600 items-center flex rounded-full border text-sm border-indigo-600 px-4 py-0.5 h-10 whitespace-nowrap'>Bölmə əlavə et</button>
+        <Link  to={'/courses/share/exercise'} className='hover:bg-indigo-600 hover:text-white cursor-pointer text-indigo-600 items-center flex rounded-full border text-sm border-indigo-600 px-4 py-0.5 h-10 whitespace-nowrap'>Bölmə əlavə et</Link>
         </div>
         <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
@@ -234,28 +236,14 @@ const handleSummary=(e)=>{
                 <h4 className='text-sm sm:text-base font-semibold text-gray-800'>1. Frame, grid and constratins</h4>
                   </div>
                       <div className='flex items-center gap-3'>
-       <p className='text-gray-600'>2 dərs</p>
+  
        <div className='p-1.5  rounded-md border border-gray-200'>
 <IoIosArrowDown className='text-xl text-gray-600'/>
        </div>
                  </div>
                 </div>
             </div>
-                   <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
-            <div className='flex justify-between gap-3 items-center'>
-                    <div className='flex items-center gap-2'>
-                        <img src={learningImage} className='h-5 w-5 shrink-0'/>
-                <h4 className='text-sm sm:text-base font-semibold text-gray-800'>Quiz</h4>
-                 </div>
-                 <div className='flex items-center gap-3'>
-       <p className='text-gray-600'>2 dərs</p>
-       <div className='p-1.5 rounded-md border border-gray-200'>
-        <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
-       </div>
-                 </div>
-         
-                </div>
-            </div>
+             
                  <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
             <div className='flex justify-between gap-3 items-center'>
                 <div className='flex items-center gap-2'>
@@ -265,11 +253,31 @@ const handleSummary=(e)=>{
                 </div>
                
                       <div className='flex items-center gap-3'>
-       <p className='text-gray-600'>2 dərs</p>
-       <div className='p-1.5 rounded-md border border-gray-200'>
+       <Link className='p-1.5 rounded-md border border-gray-200' to={'/courses/share/exercise'}>
         <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
-       </div>
+       </Link>
                  </div>
+                </div>
+            </div>
+                  <div className='border border-gray-300 mt-3 mb-3 px-5 py-2 rounded-md'>
+            <div className='flex justify-between gap-5 items-center'>
+    <div className='flex-col'>
+                    <div className='flex items-center gap-2'>
+                     <img src={learningImage} className='h-5 w-5 shrink-0'/>   
+                <h4 className='text-sm sm:text-base font-semibold text-gray-800'>Quiz</h4>
+                 </div>
+                <div className='md:flex md:flex-row flex-col space-y-2 gap-3 mt-3'>
+                <button className='cursor-pointer px-5 py-2 border border-gray-300 rounded-md' onClick={()=>setLessonModal(true)}>+ Dərs əlavə et</button>
+                 <button className='cursor-pointer px-5 py-2 border border-gray-300 rounded-md'>+ Quiz</button>
+                <Link className='px-5 py-2 border border-gray-300 rounded-md' to={'/courses/share/exercise'}>+ Tapşırıq</Link>  
+                       </div>
+                 </div>
+                 <div className='flex items-center gap-3'>
+       <Link className='p-1.5 rounded-md border border-gray-200' to={'/courses/share/exercise'}>
+        <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
+       </Link>
+                 </div>
+         
                 </div>
             </div>
         </div>
@@ -392,7 +400,7 @@ const handleSummary=(e)=>{
                     
         </div>
          <div className='mb-4 space-y-4'>
- <span className='flex mt-4 mb-4 px-5 py-2 font-semibold rounded-full border border-yellow-500 bg-yellow-300/50 text-yellow-700'>
+ <span className='flex mt-4 mb-4 px-5 py-2 font-semibold md:rounded-full rounded-md border border-yellow-500 bg-yellow-300/50 text-yellow-700'>
              Paylaşdıqdan sonra kurs dərhal yayımlanmayacaq.Əvvəlcə Cothink moderasiya komandası yoxlayacaq.</span>
      <h4 className="text-lg font-semibold mb-5 mt-5">Göndərilmə statusu</h4>
      <span className='mt-3 mb-3 px-5 py-2 font-semibold rounded-full border border-yellow-500 bg-yellow-300/50 text-yellow-700'>Moderasiya gözləyir</span>
@@ -519,6 +527,9 @@ const handleSummary=(e)=>{
              
            </div>
               </div>
+              {
+                lessonModal === true && (<ShareLessonModal setLessonModal = {setLessonModal} />)
+              }
       </>
     }
  
