@@ -19,32 +19,32 @@ const  ShareLessonModal=({setLessonModal})=>{
         <div className="md:col-span-7 col-span-12 bg-white p-4 rounded-lg">
             <form>
                 <div className="mb-4">
-                    <label htmlFor="courseTitle" className="block text-gray-700 font-semibold mb-2">Dərsin adı</label>
-                    <input type="text" id="courseTitle" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Məs: UI/UX Design, Front-end, Data Analitics" value={lessonTitle} onChange={(e) => setLessonTitle(e.target.value)} />
+                    <label htmlFor="lessonTitle" className="block text-gray-700 font-semibold mb-2">Dərsin adı</label>
+                    <input type="text" id="lessonTitle" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Məs: UI/UX Design, Front-end, Data Analitics" value={lessonTitle} onChange={(e) => setLessonTitle(e.target.value)} />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="courseTags" className="block text-gray-700 font-semibold mb-2">Qısa açıqlama</label>
-                    <input type="text" id="courseTags" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Qısa açıqlama" value={lessonDesc} onChange={(e) => setLessonDesc(e.target.value)} />
+                    <label htmlFor="lessonDesc" className="block text-gray-700 font-semibold mb-2">Qısa açıqlama</label>
+                    <input type="text" id="lessonDesc" className="w-full border border-gray-300 rounded-full p-2 pl-5 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Qısa açıqlama" value={lessonDesc} onChange={(e) => setLessonDesc(e.target.value)} />
                 </div>
                 <div className="mb-4">
-                     <label htmlFor="courseCoverImage" className="block text-gray-700 font-semibold mb-2">Video</label>
+                     <label htmlFor="lessonVideo" className="block text-gray-700 font-semibold mb-2">Video</label>
                     <div className='border border-gray-300 px-5 py-2 rounded-md bg-gray-100 space-y-4'>
-                    <input type="file"  id="courseCoverImage" className="hidden w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs təsvirini daxil edin" onChange={(e) => setLessonVideo(e.target.files[0])} />
+                    <input type="file"  id="lessonVideo" className="hidden w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs təsvirini daxil edin" onChange={(e) => setLessonVideo(e.target.files[0])} />
                     <p className="text-center text-gray-500 text-sm mt-1">Sürüşdür burax və ya fayl seç</p>
                     <p className="text-center text-gray-500 text-sm mt-1">MP4, MOW, WEBM max 12GB</p>
                    <div className='flex justify-center mb-3'>
-                    <label htmlFor='courseCoverImage'  className="text-center border border-indigo-700 text-indigo-600 px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white mt-2">Video seç</label>
+                    <label htmlFor='lessonVideo'  className="text-center border border-indigo-700 text-indigo-600 px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white mt-2">Video seç</label>
                 </div>
                  </div>
                 </div>
                 <div className="mb-4">
-                     <label htmlFor="courseCoverImage" className="block text-gray-700 font-semibold mb-2">Əlavə Resurslar (PDF, ZIP)</label>
+                     <label htmlFor="lessonResources" className="block text-gray-700 font-semibold mb-2">Əlavə Resurslar (PDF, ZIP)</label>
                     <div className='border border-gray-300 px-5 py-2 rounded-md bg-gray-100 space-y-4'>
-                    <input type="file"  id="courseCoverImage" className="hidden w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs təsvirini daxil edin" onChange={(e) => setLessonResources(e.target.files[0])} />
+                    <input type="file"  id="lessonResources" className="hidden w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Kurs təsvirini daxil edin" onChange={(e) => setLessonResources(e.target.files[0])} />
                     <p className="text-center text-gray-500 text-sm mt-1">Sürüşdür burax və ya fayl seç</p>
                     <p className="text-center text-gray-500 text-sm mt-1">PDF, ZIP,DOCX max 12GB</p>
                    <div className='flex justify-center mb-3'>
-                    <label htmlFor='courseCoverImage'  className="text-center border border-indigo-700 text-indigo-600 px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white mt-2">Resurs seç</label>
+                    <label htmlFor='lessonResources'  className="text-center border border-indigo-700 text-indigo-600 px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white mt-2">Resurs seç</label>
                 </div>
                  </div>
                 </div>

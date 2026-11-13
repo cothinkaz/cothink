@@ -266,10 +266,10 @@ const handleSummary=(e)=>{
                      <img src={learningImage} className='h-5 w-5 shrink-0'/>   
                 <h4 className='text-sm sm:text-base font-semibold text-gray-800'>Quiz</h4>
                  </div>
-                <div className='md:flex md:flex-row flex-col space-y-2 gap-3 mt-3'>
+                <div className='md:flex md:flex-row flex-col gap-3 mt-3'>
                 <button className='cursor-pointer px-5 py-2 border border-gray-300 rounded-md' onClick={()=>setLessonModal(true)}>+ Dərs əlavə et</button>
                  <button className='cursor-pointer px-5 py-2 border border-gray-300 rounded-md'>+ Quiz</button>
-                <Link className='px-5 py-2 border border-gray-300 rounded-md' to={'/courses/share/exercise'}>+ Tapşırıq</Link>  
+                <Link className='cursor-pointer px-5 py-2 border border-gray-300 rounded-md' to={'/courses/share/exercise'}>+ Tapşırıq</Link>  
                        </div>
                  </div>
                  <div className='flex items-center gap-3'>
@@ -478,7 +478,6 @@ const handleSummary=(e)=>{
                 <h4 className='text-sm sm:text-base font-semibold text-gray-800'>Quiz</h4>
                  </div>
                  <div className='flex items-center gap-3'>
-       <p className='text-gray-600'>2 dərs</p>
        <div className='p-1.5 rounded-md border border-gray-200'>
         <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
        </div>
@@ -495,7 +494,6 @@ const handleSummary=(e)=>{
                 </div>
                
                       <div className='flex items-center gap-3'>
-       <p className='text-gray-600'>2 dərs</p>
        <div className='p-1.5 rounded-md border border-gray-200'>
         <FaRegEdit fontSize={24} className='text-xl text-gray-600'/>
        </div>

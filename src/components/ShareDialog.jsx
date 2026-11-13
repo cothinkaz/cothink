@@ -17,25 +17,25 @@ const ShareDialog=({share, setShare})=>{
       <h2 className='text-semibold text-xl text-center'>Paylaş</h2>
 			<p className='text-gray-400 mb-3 mt-1 text-center'>Paylaşmaq istədiyiniz material növünü seçin</p>
 <div className="grid md:grid-cols-4 grid-cols-2 gap-5 mt-5 w-full">
-	<Link className='cursor-pointer bg-white border border-gray-300 rounded-md px-5 py-2 hover:border-indigo-500 hover:bg-indigo-50' to={'/courses/share'}  onClick={handleClose}>
+	<Link className='cursor-pointer bg-indigo-100/50 border border-dashed border-gray-300 rounded-md px-5 py-2 hover:border-indigo-500 hover:bg-indigo-50' to={'/courses/share'}  onClick={handleClose}>
 		<article className='mb-3'>
 			<img src={forumShare}/>
 		</article>
 		<h2 className='text-center text-gray-700 font-semibold text-sm'>Forum</h2>
 	</Link>
-		<Link className='cursor-pointer bg-white border border-gray-300 rounded-md px-5 py-2 hover:border-indigo-500 hover:bg-indigo-50' to={'/courses/share'} onClick={handleClose}>
+		<Link className='cursor-pointer bg-yellow-100/50 border border-dashed border-gray-300 rounded-md px-5 py-2 hover:border-indigo-500 hover:bg-indigo-50' to={'/courses/share'} onClick={handleClose}>
 		<article className='mb-3'>
 			<img src={blogShare}/>
 		</article>
 		<h2 className='text-center text-gray-700 font-semibold text-sm'>Bloq</h2>
 	</Link>
-		<Link className='cursor-pointer  bg-white border border-gray-300 rounded-md px-5 py-2 hover:border-indigo-500 hover:bg-indigo-50' to={'/courses/share'}  onClick={handleClose}>
+		<Link className='cursor-pointer  bg-green-100/50 border border-dashed border-gray-300 rounded-md px-5 py-2 hover:border-indigo-500 hover:bg-indigo-50' to={'/courses/share'}  onClick={handleClose}>
 		<article className='mb-3'>
 			<img src={resursShare} className='object-cover rounded-md'/>
 		</article> 
 		<h2 className='text-center text-gray-700 font-semibold text-sm'>Resurs</h2>
 	</Link>
-		<Link className='cursor-pointer bg-white border border-gray-300 rounded-md px-5 py-2 hover:border-indigo-500 hover:bg-indigo-50' to={'/courses/share'} onClick={handleClose}>
+		<Link className='cursor-pointer bg-indigo-200/50 border border-dashed border-gray-300 rounded-md px-5 py-2 hover:border-indigo-500 hover:bg-indigo-50' to={'/courses/share'} onClick={handleClose}>
 		<article className='mb-3'>
 			<img src={courseShare}/>
 		</article>
